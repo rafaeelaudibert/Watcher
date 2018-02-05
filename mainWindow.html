@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--
+██   ██ ████████ ███    ███ ██
+██   ██    ██    ████  ████ ██
+███████    ██    ██ ████ ██ ██
+██   ██    ██    ██  ██  ██ ██
+██   ██    ██    ██      ██ ███████
+-->
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css\materialize.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>LiveTracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+  <body style="-webkit-app-region: drag">
+    <nav>
+      <div class="nav-wrapper primary-color">
+        <a class="brand-logo center" id="lista">LiveTracker App</a>
+      </div>
+    </nav>
+    <ul></ul>
+    <!--
+         ██ ███████
+         ██ ██
+         ██ ███████
+    ██   ██      ██
+     █████  ███████
+    -->
+
+    <script type="text/javascript" src="js/hammer.js"></script>
+    <script type="text/javascript" src="node_modules\jquery\dist\jquery.js"></script>
+    <script type="text/javascript" src="js\materialize.min.js"></script>
+    <script type="text/javascript" src="js\apiRequests.js"></script>
+    <script type="text/javascript" src="js\getInfo.js"></script>
+    <script>
+
+//Requires and Constants
+const electron = require("electron");
+const { ipcRenderer } = electron;
+const ul = document.querySelector("ul");
+const mainPlayer = "TyG Masked"
+
+//Global Variables
+var listaCampeoes;
+var listaParticipantes = [];
+
+//Add item
+ipcRenderer.on("item:add", function(e, item) {
+  const li = document.createElement("li");
+  const itemText = document.createTextNode(item);
+  li.appendChild(itemText);
+  ul.appendChild(li);
+
+  ul.className = "collection";
+  li.className = "collection-item";
+  li.style = "-webkit-app-region: no-drag"
+});
+
+//Clear items
+ipcRenderer.on("item:clear", function() {
+  ul.innerHTML = "";
+
+  if (ul.children.length == 0) {
+    ul.className = "";
+  }
+});
+
+//Remove individual items
+ul.addEventListener("dblclick", removeItem);
+function removeItem(e) {
+  e.target.remove();
+  if (ul.children.length == 0) {
+    ul.className = "";
+  }
+}
+</script>
+    <b></b>
+  </body>
+</html>
