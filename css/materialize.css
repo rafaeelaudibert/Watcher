@@ -1651,7 +1651,9 @@ html {
  * Remove default margin.
  */
 body {
-  margin: 0; }
+  margin: 0;
+  overflow-y: hidden;
+ }
 
 /* HTML5 display definitions
    ========================================================================== */
@@ -2467,7 +2469,9 @@ td, th {
   text-align: center; }
 
 .left {
-  float: left !important; }
+  float: left !important;
+  margin-left: 20px;
+ }
 
 .right {
   float: right !important; }
@@ -2540,17 +2544,17 @@ nav ul a span.badge {
 .container {
   margin: 0 auto;
   max-width: 1280px;
-  width: 90%; }
+  width: 100%; }
 
 @media only screen and (min-width: 601px) {
   .container {
-    width: 85%; } }
+    width: 95%; } }
 @media only screen and (min-width: 993px) {
   .container {
-    width: 70%; } }
+    width: 95%; } }
 .container .row {
-  margin-left: -0.75rem;
-  margin-right: -0.75rem; }
+  margin-left: 0rem;
+  margin-right: -2rem; }
 
 .section {
   padding-top: 1rem;
@@ -2565,7 +2569,7 @@ nav ul a span.badge {
 .row {
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 20px; }
+  margin-bottom: auto; }
   .row:after {
     content: "";
     display: table;
@@ -2573,7 +2577,7 @@ nav ul a span.badge {
   .row .col {
     float: left;
     box-sizing: border-box;
-    padding: 0 0.75rem;
+    padding: 0 0.5rem;
     min-height: 1px; }
     .row .col[class*="push-"], .row .col[class*="pull-"] {
       position: relative; }
@@ -3151,7 +3155,7 @@ nav {
     position: absolute;
     color: #fff;
     display: inline-block;
-    font-size: 2.1rem;
+    font-size: 2.2rem;
     padding: 0; }
     nav .brand-logo.center {
       left: 50%;
@@ -3240,8 +3244,8 @@ nav {
     min-height: 64px; }
 
   nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
-    height: 64px;
-    line-height: 64px; }
+    height: 56px;
+    line-height: 56px; }
 
   .navbar-fixed {
     height: 64px; } }
@@ -3414,14 +3418,14 @@ small {
 
 .card-panel {
   transition: box-shadow .25s;
-  padding: 24px;
+  padding: 0px;
   margin: 0.5rem 0 1rem 0;
   border-radius: 2px;
   background-color: #fff; }
 
 .card {
   position: relative;
-  margin: 0.5rem 0 1rem 0;
+  margin: 1.2rem 0.5rem 1rem 0;
   background-color: #fff;
   transition: box-shadow .25s;
   border-radius: 2px; }
@@ -3494,9 +3498,9 @@ small {
       bottom: 0;
       left: 0;
       max-width: 100%;
-      padding: 24px; }
+      padding: 5px; }
   .card .card-content {
-    padding: 24px;
+    padding: 10px;
     border-radius: 0 0 2px 2px; }
     .card .card-content p {
       margin: 0;
@@ -4035,15 +4039,16 @@ button.btn-floating {
 
 .modal {
   display: none;
+  overflow-x: hidden;
+  overflow-y: scroll;
   position: fixed;
   left: 0;
   right: 0;
   background-color: #fafafa;
   padding: 0;
   max-height: 70%;
-  width: 55%;
+  width: 65%;
   margin: auto;
-  overflow-y: auto;
   border-radius: 2px;
   will-change: top, opacity; }
   @media only screen and (max-width: 992px) {
@@ -4127,6 +4132,7 @@ button.btn-floating {
   border-bottom: 1px solid #ddd;
   box-sizing: border-box;
   padding: 2rem; }
+
 
 .side-nav .collapsible,
 .side-nav.fixed .collapsible {
@@ -5334,9 +5340,19 @@ input[type=range]:focus::-ms-fill-upper {
     padding-left: 18px;
     border-left: 2px solid #010a13; }
 
+.container {
+  padding-left: 16%; /*Padding container*/
+}
+
+@media only screen and (max-width : 992px) {
+  .container {
+    padding-left: 0;
+  }
+}
+
 .side-nav {
   position: fixed;
-  width: 300px;
+  width: 18%; /*side-nav-width*/
   left: 0;
   top: 0;
   margin: 0;
@@ -6869,3 +6885,9 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   /*shape-rendering: crispEdges;*/ }
 
 /*# sourceMappingURL=materialize.css.map */
+
+.card-ownimage {
+  margin: 0 auto !important;
+  max-height: 20rem !important;
+  max-width: 150px !important;
+}

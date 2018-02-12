@@ -1,5 +1,5 @@
 const jquery = require("jquery");
-const apiKey = "RGAPI-855ce9bd-7a87-40e7-8def-222ffb18add3";
+const apiKey = "RGAPI-fa7a2f07-1ad6-48d6-b323-e219477a23b1";
 const seasonAtual = 11;
 const {
   Kayn,

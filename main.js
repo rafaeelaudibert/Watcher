@@ -3,11 +3,12 @@ const url = require('url');
 const path = require('path');
 
 //Descontructors
-const {app, BrowserWindow, Menu, ipcMain} = electron;
+const {app, BrowserWindow, Menu, ipcMain, Tray} = electron;
 
 //SET ENV
 //process.env.NODE_ENV = 'production';  //UNCOMMENT QUANDO FOR UTILIZAR
 
+let iconPath = path.join(__dirname, '/assets/icons/win/icon.ico');
 let mainWindow;
 let newWindow;
 
@@ -17,8 +18,8 @@ app.on('ready', function(){
   //Create new mainWindow
 
   const {width, height} = electron.screen.getPrimaryDisplay().workAreaSize
-  var widthReal = width - 75;
-  var heightReal = height - 75;
+  var widthReal = width - 25;
+  var heightReal = height - 25;
   mainWindow = new BrowserWindow({
   width: widthReal,
   height: heightReal,
@@ -34,84 +35,58 @@ app.on('ready', function(){
     slashes: true
   }));
 
-  //Build menu from template
-  //const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
-  //Insert Menu
-  //Menu.setApplicationMenu(mainMenu);
-});
+// Tray configuration \\
+var trayMenu = new Tray(iconPath);
+trayMenu.setToolTip("LiveTracker")
 
-//Handle new window
-function createNewWindow(){
-  //Create new mainWindow
-  newWindow = new BrowserWindow({
-    width: 500,
-    height: 500,
-    title: 'Testando nova janela'
-  });
-
-  //Load the HTML file into window
-  newWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'newWindow.html'),
-    procol: 'file:',
-    slashes: true
-  }));
-}
-
-// Catch item:add
-ipcMain.on('item:add', function(e, item){
-  if(item !== ''){ //Caso haja algum item a ser adicionado
-    mainWindow.webContents.send('item:add', item);
-  }
-});
-
-// Create menu template
-const mainMenuTemplate = [
+//Tray menu
+var trayContextMenu = Menu.buildFromTemplate([
   {
-    label: 'File',
-    submenu:[
-      {
-        label: 'Add Item',
-        click(){
-          createNewWindow();
-        }
-      },
-      {
-        label: 'Clear Items',
-        click(){
-          mainWindow.webContents.send('item:clear');
-        }
-      },
-      {
-        label: 'Quit',
-        accelerator: 'CmdOrCtrl+Q',
-        click(){
-          app.quit();
-        }
-      }
-    ]
+    label: 'LiveTracker Super Tray',
+    enabled: false
+  },
+  {
+    type: 'separator',
+    enabled: false
+  },
+  {
+    label: 'Show LiveTracker',
+    click:  function(){
+      mainWindow.show();
+    }
+  },
+  {
+    label: 'Quit',
+    click:  function(){
+      mainWindow.isQuiting = true;
+      mainWindow.close();
+    }
   }
-];
-
-// If mac, add empty object to Menu
+]);
 if(process.platform == 'darwin'){
-  mainMenuTemplate.unshift({});
-}
+  trayContextMenu.unshift({});
+} // If mac, add empty object to Menu
+trayMenu.setContextMenu(trayContextMenu)
 
-//Add dev tools
-if(process.env.NODE_ENV !== 'production'){
-  mainMenuTemplate.push({
-    label: 'Dev Tools',
-    submenu:[
-      {
-        label: 'Toggle DevTools',
-        accelerator: 'CmdOrCtrl+I',
-        click(item, focusedWindow){
-          focusedWindow.toggleDevTools();
-        }
-      },
-      {
-        role: 'reload'
-      }
-    ]
-  });
-}
+
+trayMenu.on('double-click', function(event){
+  event.preventDefault();
+  mainWindow.show();
+});
+
+mainWindow.on('minimize',function(event){ //When trying to minimize, hide to tray instead
+  event.preventDefault();
+  mainWindow.hide();
+  trayMenu.setContextMenu(trayContextMenu);
+});
+
+mainWindow.on('close', function (event) { //When trying to close, hide to tray instead
+  if(!mainWindow.isQuiting){
+      event.preventDefault();
+      mainWindow.hide();
+      trayMenu.setContextMenu(trayContextMenu);
+  }
+  return false;
+});
+
+});
