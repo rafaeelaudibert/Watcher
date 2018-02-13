@@ -16,6 +16,10 @@
 .outerspace {
   background-color: #454953 !important; }
 
+.outerspace-transparent {
+  background-color: rgba(69, 73, 83, 0.7);
+}
+
 .outerspace-text {
   color: #454953 !important; }
 

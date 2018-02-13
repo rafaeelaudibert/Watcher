@@ -1,5 +1,6 @@
 const jquery = require("jquery");
-const apiKey = "RGAPI-fa7a2f07-1ad6-48d6-b323-e219477a23b1";
+var remote = require('electron').remote;
+const apiKey = remote.getGlobal('sharedObj').apiKey;
 const seasonAtual = 11;
 const {
   Kayn,

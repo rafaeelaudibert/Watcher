@@ -12,11 +12,15 @@ let iconPath = path.join(__dirname, '/assets/icons/win/icon.ico');
 let mainWindow;
 let newWindow;
 
+//Shared object, can be acessed from the console
+global.sharedObj = {
+  apiKey: "RGAPI-422a74c4-d61b-4383-a1ca-8339eae34ddc"
+};
+
 
 //Listen for the app to be ready
 app.on('ready', function(){
   //Create new mainWindow
-
   const {width, height} = electron.screen.getPrimaryDisplay().workAreaSize
   var widthReal = width - 25;
   var heightReal = height - 25;
