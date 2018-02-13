@@ -14,10 +14,10 @@
   color: #049fae !important; }
 
 .outerspace {
-  background-color: #454955 !important; }
+  background-color: #454953 !important; }
 
 .outerspace-text {
-  color: #454955 !important; }
+  color: #454953 !important; }
 
 .copper {
   background-color: #ad8033 !important; }
@@ -3501,6 +3501,7 @@ small {
       padding: 5px; }
   .card .card-content {
     padding: 10px;
+    padding-right: 0px;
     border-radius: 0 0 2px 2px; }
     .card .card-content p {
       margin: 0;
@@ -3526,7 +3527,8 @@ small {
       .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover {
         color: #ffd8a6; }
   .card .card-reveal {
-    padding: 24px;
+    padding: 7px;
+    padding-bottom: 10px;
     position: absolute;
     background-color: #fff;
     width: 100%;
@@ -6890,4 +6892,26 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   margin: 0 auto !important;
   max-height: 20rem !important;
   max-width: 150px !important;
+}
+
+.mastery-image{
+  height: 12px;
+  max-width: auto;
+}
+
+.padding-0{
+  padding: 0px !important;
+}
+
+body {
+  /* Non selectable text */
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+
+  overflow: hidden;
 }
