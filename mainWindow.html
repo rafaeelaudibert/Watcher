@@ -17,7 +17,7 @@
   </head>
   <body class="indigo lighten-5">
     <nav style="-webkit-app-region: drag">
-      <div class="nav-wrapper primary-color">
+      <div class="nav-wrapper rich-black">
         <a class="brand-logo right" id="logo" style="margin-right: 1rem">LiveTracker App</a>
       </div>
     </nav>
@@ -27,7 +27,7 @@
 
       <div class="row"> <!-- Top Information !-->
         <div class="col s6">
-          <a class="waves-effect waves-light outerspace btn modal-trigger" style="align-items: center; height: 4rem; margin-top: 1rem; margin-left: 1.5rem; padding-top: 0.9rem; font-size: 1.3rem; border-radius: 3px" href="#modal1"><i class="material-icons right">edit</i>Search Another Summoner</a>
+          <a class="waves-effect waves-light outerspace btn modal-trigger" style="align-items: center; height: 4rem; margin-top: 1rem; margin-left: 1.5rem; padding-top: 0.9rem; font-size: 1.3rem; border-radius: 3px" href="#search-modal"><i class="material-icons right">edit</i>Search Another Summoner</a>
         </div> <!--Modal Trigger !-->
         <div class="col s5 outerspace z-depth-1" style="margin-top: 1rem; margin-left: 2.5rem; border-radius: 3px"><a class="white-text"><span class="flow-text"><strong>Summoner's Rift</strong></span><br>Ranked 5x5</a></div>
       </div>
@@ -520,8 +520,8 @@
             <span class="white-text flow-text email" style="font-size: 1.5rem">Level 50</span>
           </div>
         </li>
-        <li><a class="waves-effect white-text" href="#!" style="font-size: 1.5rem"><i class="material-icons white-text" style="font-size: 3rem">person</i>Profile</a></li>
-        <li><a class="waves-effect white-text" href="#!" style="font-size: 1.5rem"><i class="material-icons white-text" style="font-size: 3rem;">settings</i>Settings</a></li>
+        <li><a class="waves-effect modal-trigger white-text" href="#profile-modal" style="font-size: 1.5rem"><i class="material-icons white-text" style="font-size: 3rem">person</i>Profile</a></li>
+        <li><a class="waves-effect modal-trigger white-text" href="#settings-modal" style="font-size: 1.5rem"><i class="material-icons white-text" style="font-size: 3rem;">settings</i>Settings</a></li>
         <div class="divider white"></div>
         <div style="margin-top: 20rem">
           <a class="right white-text" href="#!" style="padding-right: 0.4rem">Donate</a><br>
@@ -529,14 +529,16 @@
         </div>
       </ul> <!-- End Sidebar !-->
 
-      <!-- Modal Structure -->
-      <div id="modal1" class="modal">
+      <!-- Modal Structures -->
+
+      <!-- SerachModal -->
+      <div id="search-modal" class="modal">
         <div class="modal-content">
           <div class="row">
             <form>
               <div class="input-field col s8">
                 <i class="material-icons prefix">account_circle</i>
-                <input id="summoner_name" type="text" class="validate">
+                <input id="summoner_name" type="text">
                 <label for="summoner_name">Summoner Name</label>
               </div>
 
@@ -548,10 +550,10 @@
                   <option value="" data-icon="https://www.infoescola.com/wp-content/uploads/2007/08/uniao-europeia.png" class="circle">EUW</option>
                   <option value="" data-icon="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Flag_of_Japan.svg/2000px-Flag_of_Japan.svg.png" class="circle">JP</option>
                   <option value="" data-icon="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/200px-Flag_of_South_Korea.svg.png" class="circle">KR</option>
-                  <option value="" data-icon="images/yuna.jpg" class="circle">LAN</option>
-                  <option value="" data-icon="images/yuna.jpg" class="circle">LAS</option>
+                  <option value="" data-icon="" class="circle">LAN</option>
+                  <option value="" data-icon="" class="circle">LAS</option>
                   <option value="" data-icon="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/2000px-Flag_of_the_United_States.svg.png" class="circle">NA</option>
-                  <option value="" data-icon="images/yuna.jpg" class="circle">OCE</option>
+                  <option value="" data-icon="" class="circle">OCE</option>
                   <option value="" data-icon="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Russia.svg/200px-Flag_of_Russia.svg.png" class="circle">RU</option>
                   <option value="" data-icon="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Flag_of_Turkey.svg/300px-Flag_of_Turkey.svg.png" class="circle">TK</option>
                 </select>
@@ -564,7 +566,173 @@
           <a href="#!" class="modal-action waves-effect outer-space btn-flat">Search</a>
         </div>
       </div>
-    </div>
+
+      <!-- ProfileModal -->
+      <div id="profile-modal" class="modal">
+        <div class="modal-content">
+          <div class="row">
+            <form>
+              <div class="input-field col s8">
+                <i class="material-icons prefix">account_circle</i>
+                <input id="summoner_name" type="text">
+                <label for="summoner_name">Summoner Name</label>
+              </div>
+
+              <div class="input-field col s3">
+                <select class="icons" size="2">
+                  <option value="" disabled selected>Your region</option>
+                  <option value="" data-icon="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/275px-Flag_of_Brazil.svg.png" class="circle">BR</option>
+                  <option value="" data-icon="https://www.infoescola.com/wp-content/uploads/2007/08/uniao-europeia.png" class="circle">EUNE</option>
+                  <option value="" data-icon="https://www.infoescola.com/wp-content/uploads/2007/08/uniao-europeia.png" class="circle">EUW</option>
+                  <option value="" data-icon="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Flag_of_Japan.svg/2000px-Flag_of_Japan.svg.png" class="circle">JP</option>
+                  <option value="" data-icon="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/200px-Flag_of_South_Korea.svg.png" class="circle">KR</option>
+                  <option value="" data-icon="" class="circle">LAN</option>
+                  <option value="" data-icon="" class="circle">LAS</option>
+                  <option value="" data-icon="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/2000px-Flag_of_the_United_States.svg.png" class="circle">NA</option>
+                  <option value="" data-icon="" class="circle">OCE</option>
+                  <option value="" data-icon="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Russia.svg/200px-Flag_of_Russia.svg.png" class="circle">RU</option>
+                  <option value="" data-icon="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Flag_of_Turkey.svg/300px-Flag_of_Turkey.svg.png" class="circle">TK</option>
+                </select>
+                <label>Region</label>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close waves-effect outer-space btn-flat">Close</a>
+        </div>
+      </div>
+
+      <!-- SettingsModal -->
+      <div id="settings-modal" class="modal modal-fixed-footer rich-black outerspace-lighten-text" style="width: 85% !important; overflow-y: auto;">
+        <div id="settings-modal-content" class="modal-content" style="overflow: auto;  overflow-x: hidden; background-image: url('assets/settingsBackgroundMerge.png')">
+          <h3><strong>SETTINGS</strong></h3>
+
+          <!-- Default Information -->
+          <div class="row" style="margin-top: 1rem">
+            <span class="flow-text">Default Values<br></span>
+            <form>
+              <div class="input-field col s8">
+                <i class="material-icons prefix">account_circle</i>
+                <input id="summoner_name" type="text">
+                <label for="summoner_name">Default Summoner Name</label>
+              </div>
+
+              <div class="input-field col s3" style="margin-left: 2rem">
+                <i class="material-icons prefix">home</i>
+                <select class="icons" size="2">
+                  <option value="" disabled selected>Default region</option>
+                  <option value="" data-icon="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/275px-Flag_of_Brazil.svg.png" class="circle">BR</option>
+                  <option value="" data-icon="https://www.infoescola.com/wp-content/uploads/2007/08/uniao-europeia.png" class="circle">EUNE</option>
+                  <option value="" data-icon="https://www.infoescola.com/wp-content/uploads/2007/08/uniao-europeia.png" class="circle">EUW</option>
+                  <option value="" data-icon="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Flag_of_Japan.svg/2000px-Flag_of_Japan.svg.png" class="circle">JP</option>
+                  <option value="" data-icon="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/200px-Flag_of_South_Korea.svg.png" class="circle">KR</option>
+                  <option value="" data-icon="" class="circle">LAN</option>
+                  <option value="" data-icon="" class="circle">LAS</option>
+                  <option value="" data-icon="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/2000px-Flag_of_the_United_States.svg.png" class="circle">NA</option>
+                  <option value="" data-icon="" class="circle">OCE</option>
+                  <option value="" data-icon="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Russia.svg/200px-Flag_of_Russia.svg.png" class="circle">RU</option>
+                  <option value="" data-icon="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Flag_of_Turkey.svg/300px-Flag_of_Turkey.svg.png" class="circle">TK</option>
+                </select>
+                <label>Region</label>
+              </div>
+            </form>
+          </div>
+          <div class="row">
+            <div class="class s8">
+              <form>
+                <div class="input-field col s8">
+                  <i class="material-icons prefix">flag</i>
+                  <select class="icons" size="2">
+                    <option value="" disabled selected></option>
+                    <option value="" data-icon="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/275px-Flag_of_Brazil.svg.png" class="circle">BR</option>
+                    <option value="" data-icon="https://www.infoescola.com/wp-content/uploads/2007/08/uniao-europeia.png" class="circle">EUNE</option>
+                    <option value="" data-icon="https://www.infoescola.com/wp-content/uploads/2007/08/uniao-europeia.png" class="circle">EUW</option>
+                    <option value="" data-icon="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Flag_of_Japan.svg/2000px-Flag_of_Japan.svg.png" class="circle">JP</option>
+                    <option value="" data-icon="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/200px-Flag_of_South_Korea.svg.png" class="circle">KR</option>
+                    <option value="" data-icon="" class="circle">LAN</option>
+                    <option value="" data-icon="" class="circle">LAS</option>
+                    <option value="" data-icon="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/2000px-Flag_of_the_United_States.svg.png" class="circle">NA</option>
+                    <option value="" data-icon="" class="circle">OCE</option>
+                    <option value="" data-icon="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Russia.svg/200px-Flag_of_Russia.svg.png" class="circle">RU</option>
+                    <option value="" data-icon="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Flag_of_Turkey.svg/300px-Flag_of_Turkey.svg.png" class="circle">TK</option>
+                  </select>
+                  <label>Default Language</label>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Switches -->
+          <div class="row" style="line-height: 1.6rem !important">
+            <div class="col s6">
+              <span class="flow-text"><br>Finish app at Exit button (Else minimize)<br></span>
+              <div class="switch" style="margin-top: 0.5rem">
+                <label>
+                  Off
+                  <input type="checkbox">
+                  <span class="lever"></span>
+                  On
+                </label>
+              </div>
+            </div>
+            <div class="col s6">
+              <span class="flow-text"><br>Windows Notifications<br></span>
+              <div class="switch" style="margin-top: 0.5rem">
+                <label>
+                  Off
+                  <input type="checkbox">
+                  <span class="lever"></span>
+                  On
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s4">
+              <span class="flow-text"><br>Show tooltips in Runes<br></span>
+              <div class="switch" style="margin-top: 0.5rem">
+                <label>
+                  Off
+                  <input type="checkbox">
+                  <span class="lever"></span>
+                  On
+                </label>
+              </div>
+            </div>
+            <div class="col s4">
+              <span class="flow-text"><br>Show tooltips in Masteries<br></span>
+              <div class="switch" style="margin-top: 0.5rem">
+                <label>
+                  Off
+                  <input type="checkbox">
+                  <span class="lever"></span>
+                  On
+                </label>
+              </div>
+            </div>
+            <div class="col s4">
+              <span class="flow-text"><br>Show tooltips in Elos<br></
+                span>
+              <div class="switch" style="margin-top: 0.5rem">
+                <label>
+                  Off
+                  <input type="checkbox">
+                  <span class="lever"></span>
+                  On
+                </label>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="modal-footer rich-black">
+          <a href="#!" class="modal-action modal-close waves-effect waves-blue outerspace white-text btn">Close</a>
+          <!-- Need to change it dinamically to Apply if anything has changed-->
+        </div>
+
+      </div>
     <ul></ul>
     <!--
          ██ ███████
@@ -596,11 +764,9 @@ $(document).ready(function(){
      dismissible: true,
      opacity: .8
    });
- });
 
- $(document).ready(function() {
-    $('select').material_select();
-  });
+   $('select').material_select();
+ });
 
 //Global Variables
 var listaCampeoes;

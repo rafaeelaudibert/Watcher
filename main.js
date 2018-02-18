@@ -14,7 +14,7 @@ let newWindow;
 
 //Shared object, can be acessed from the console
 global.sharedObj = {
-  apiKey: "RGAPI-422a74c4-d61b-4383-a1ca-8339eae34ddc"
+  apiKey: "RGAPI-7d990bb2-0a79-43b9-9b98-f7b97d9e7fb2"
 };
 
 
@@ -73,7 +73,7 @@ if(process.platform == 'darwin'){
 trayMenu.setContextMenu(trayContextMenu)
 
 
-trayMenu.on('double-click', function(event){
+trayMenu.on('click', function(event){
   event.preventDefault();
   mainWindow.show();
 });
