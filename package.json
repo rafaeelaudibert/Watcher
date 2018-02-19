@@ -1,6 +1,6 @@
 {
   "name": "livetracker",
-  "productName": "LiveTracker for LOL",
+  "productName": "LiveTracker",
   "version": "1.0.0",
   "description": "\"Program to analyze live LOL Matches statistics\"",
   "main": "main.js",
@@ -19,6 +19,7 @@
   "license": "MIT",
   "dependencies": {
     "electron": "^1.7.11",
+    "electron-json-storage": "^4.0.2",
     "jquery": "^3.3.1",
     "kayn": "^0.8.4",
     "material-ui-image": "^2.1.1",
@@ -29,6 +30,7 @@
   },
   "devDependencies": {
     "electron-packager": "^10.1.1",
-    "malihu-custom-scrollbar-plugin": "^3.1.5"
+    "malihu-custom-scrollbar-plugin": "^3.1.5",
+    "standard": "^10.0.3"
   }
 }

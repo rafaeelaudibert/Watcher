@@ -1,12 +1,13 @@
 const electron = require('electron');
 const url = require('url');
 const path = require('path');
+const storage = require('electron-json-storage');
 
 //Descontructors
 const {app, BrowserWindow, Menu, ipcMain, Tray} = electron;
 
 //SET ENV
-//process.env.NODE_ENV = 'production';  //UNCOMMENT QUANDO FOR UTILIZAR
+//process.env.NODE_ENV = 'production';  //DESCOMENTAR QUANDO FOR UTILIZAR
 
 let iconPath = path.join(__dirname, '/assets/icons/win/icon.ico');
 let mainWindow;
@@ -20,6 +21,13 @@ global.sharedObj = {
 
 //Listen for the app to be ready
 app.on('ready', function(){
+
+  //TESTING JSON storage
+  const defaultDataPath = storage.getDefaultDataPath()
+  console.log(defaultDataPath);
+  const dataPath = storage.getDataPath();
+  console.log(dataPath);  
+
   //Create new mainWindow
   const {width, height} = electron.screen.getPrimaryDisplay().workAreaSize
   var widthReal = width - 25;
