@@ -26,41 +26,41 @@ const kayn = Kayn(apiKey)({
   }
 });
 
-// Função que retora as informações de liga de um jogador, retornando como uma array das ligas
-// Dados possíveis: freshBlood, hotStreak, inactive, leagueId, leagueName, leaguePoints, losses, playerOrTeamId, playerOrTeamName, queueType, tier, elo, veteran, wins
-async function ligas(id) {
-  var url =
-    "https://br1.api.riotgames.com/lol/league/v3/positions/by-summoner/" + id +
-    "?api_key=" + apiKey;
-
-  var dadosLigas = await jquery.getJSON(url);
-  return dadosLigas;
-}
-
 //Função construtora de liga
-function Liga(queueType, elo, tier, pdl) {
-  this.queueType = queueType;
-  this.elo = elo;
-  this.tier = tier;
-  this.pdl = pdl;
+class Liga {
+  constructor (queueType, elo, tier, pdl){
+    this.queueType = queueType;
+    this.elo = elo;
+    this.tier = tier;
+    this.pdl = pdl;
+  }
 }
 
 //Função construtora da infoPlayer
-function Player(name, summonerIcon, champion, summonerId) {
-  this.name = name;
-  this.summonerIcon = summonerIcon;
-  this.summonerId = summonerId;
-  this.championId = champion;
-  this.championWins = 0;
-  this.championWR = "First Match";
-  this.matchList = [];
-  this.championMatches = undefined;
-  this.championName = undefined;
-  this.accountId = undefined;
-  this.liga = undefined;
-  this.level = undefined;
+class Player {
+  constructor(name, summonerIcon, champion, summonerId){
+    this.name = name;
+    this.summonerIcon = summonerIcon;
+    this.summonerId = summonerId;
+    this.championId = champion;
+    this.championWins = 0;
+    this.championWR = "First Match";
+    this.matchList = [];
+    this.championMatches = undefined;
+    this.championName = undefined;
+    this.accountId = undefined;
+    this.liga = undefined;
+    this.level = undefined;
+  }
 }
+
 // Função que retorna a maior liga entre uma lista de ligas passadas. Retorna como um objeto do tipo Liga
+/**
+ * maiorLiga - Function who returns the biggest
+ *
+ * @param  {ligasArray} ligas array with all the leagues of a given summoner
+ * @return {Liga}             Returns the bigger league in the ligas array
+ */
 async function maiorLiga(ligas) {
   var maior_liga = new Liga(undefined, undefined, undefined, -1);
   var infoLigas = [];
@@ -732,37 +732,42 @@ async function maiorLiga(ligas) {
   return maior_liga;
 }
 
-//Função que retorna as informações das listas de partidas jogadas com um dado campeão
-//Possíveis valores: endIndex, matches[], startIndex, totalGames(useless)
-//Sendo que temos:
-//matches[x].{champion, gameId, lane, platformId, queue, role, season, timestamp}
-async function retornaPartidas(idChamp, idConta, beginIndex = 0, endIndex = 100) {
-  var url =
-    "https://br1.api.riotgames.com/lol/match/v3/matchlists/by-account/" +
-    idConta +
-    "?season=" + seasonAtual +
-    "&beginIndex=" + beginIndex +
-    "&endIndex=" + endIndex +
-    "&champion=" + idChamp +
-    "&api_key=" + apiKey;
 
-  var dadosPartidas = await jquery.getJSON(url);
-  return dadosPartidas;
-}
 
 //Retorna uma array com os ID's de todas as partidas jogadas por uma conta com um campeão, na seasonAtual
+/**
+ * retornaIdPartidasCampeoes - Returns an array with all the Matches' ID's from a plyer with a champion
+ *
+ * @param  {integer} idChamp        id of the champion
+ * @param  {integer} idConta        if of the account
+ * @param  {integer} beginIndex = 0 start of the index search (used internally)
+ * @param  {integer} endIndex = 100 end of the index search (used internally)
+ * @return {array}                array with all the ID's
+ */
 async function retornaIdPartidasCampeoes(idChamp, idConta, beginIndex = 0, endIndex = 100) {
-  var partidas = retornaPartidas(idChamp, idConta);
-  var listaPartidas = partidas.then(function(data) {
-    listaMatches = [];
-    for (partida in data.matches) {
-      listaMatches.push(data.matches[partida].gameId);
-    }
-    return listaMatches;
-  });
+  var listaPartidas = kayn.Matchlist.by.accountID(idConta)
+    .query({
+        champion: idChamp
+    })
+    .then(data => {
+      listaMatches = [];
+      for (partida in data.matches) {
+        listaMatches.push(data.matches[partida].gameId);
+      }
+      return listaMatches;
+    });
+
   return listaPartidas;
 }
 
+
+/**
+ * checaVitoria - Checks if the person won the game or not
+ *
+ * @param  {partidaObject} partida partidaInfo retriever from kayn.Match.get
+ * @param  {string} name    name of the player
+ * @return {boolean}         Returns if the person won the game or not
+ */
 function checaVitoria(partida, name) {
 
   var winornot = 0;
@@ -788,11 +793,12 @@ function checaVitoria(partida, name) {
 
 
 }
-// Função que retorna um valor entre 0 e 100, dado pelo ratio da divisao entre as vitorias e as partidas jogadas, multiplicado por 100
-function porcentagemVitorias(vitorias, qtdeJogos) {
-  if (qtdeJogos > 0) {
-    return 100 * vitorias / qtdeJogos;
-  } else {
-    return 0;
-  }
-}
+
+/**
+ * porcentagemVitorias - Returns the winrate percentage
+ *
+ * @param  {integer} vitorias  Number of victorys
+ * @param  {integer} qtdeJogos Number of games played
+ * @return {float}           WinRate Percentage
+ */
+function porcentagemVitorias(vitorias, qtdeJogos) { return qtdeJogos > 0 ? 100 * vitorias / qtdeJogos : 0 }

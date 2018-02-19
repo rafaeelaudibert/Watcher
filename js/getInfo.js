@@ -47,8 +47,8 @@ async function getInitialInfo(){
         })
 
         //Gets the higherLeague for the player
-        listaParticipantes.map( async function(participante){
-          ligas(participante.summonerId)
+        listaParticipantes.map(async function(participante){
+          kayn.leaguePositions.by.summonerId(participante.summonerId)
             .then(maiorLiga)
               .then(function(higherLeague){
                 participante.liga = higherLeague;
