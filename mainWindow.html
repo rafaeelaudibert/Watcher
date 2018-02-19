@@ -729,78 +729,29 @@
         </div>
         <div class="modal-footer rich-black">
           <a href="#!" class="modal-action modal-close waves-effect waves-blue outerspace white-text btn">Close</a>
-          <!-- Need to change it dinamically to Apply if anything has changed-->
+          <!-- Need to change it dinamically to Apply if something has changed-->
         </div>
 
       </div>
     <ul></ul>
-    <!--
-         ██ ███████
-         ██ ██
-         ██ ███████
-    ██   ██      ██
-     █████  ███████
-    -->
 
     <script type="text/javascript" src="js/hammer.js"></script>
     <script type="text/javascript" src="node_modules\jquery\dist\jquery.js"></script>
     <script type="text/javascript" src="js\materialize.min.js"></script>
     <script type="text/javascript" src="js\storageHandling.js"></script>
-    <script type="text/javascript" src="js\apiRequests.js"></script>
+    <script type="text/javascript" src="js\getInfo.js"></script>
     <script type="text/javascript" src="js\parseInfo.js"></script>
     <script>
+      // Materialize JS initialization
+      $(document).ready(function(){
+         // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+         $('.modal').modal({
+           dismissible: true,
+           opacity: 0.7
+         });
 
-//Requires and Constants
-const electron = require("electron");
-const { ipcRenderer } = electron;
-const ul = document.querySelector("ul");
-const mainPlayer = "meloso"
-
-// Materialize JS initialization
-$(document).ready(function(){
-   // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-   $('.modal').modal({
-     dismissible: true,
-     opacity: .8
-   });
-
-   $('select').material_select();
- });
-
-//Global Variables
-var listaCampeoes;
-var listaParticipantes = [];
-
-//Add item
-ipcRenderer.on("item:add", function(e, item) {
-  const li = document.createElement("li");
-  const itemText = document.createTextNode(item);
-  li.appendChild(itemText);
-  ul.appendChild(li);
-
-  ul.className = "collection";
-  li.className = "collection-item";
-  li.style = "-webkit-app-region: no-drag"
-});
-
-//Clear items
-ipcRenderer.on("item:clear", function() {
-  ul.innerHTML = "";
-
-  if (ul.children.length == 0) {
-    ul.className = "";
-  }
-});
-
-//Remove individual items
-//ul.addEventListener("dblclick", removeItem);
-function removeItem(e) {
-  e.target.remove();
-  if (ul.children.length == 0) {
-    ul.className = "";
-  }
-}
-</script>
-    <b></b>
+         $('select').material_select();
+       });
+    </script>
   </body>
 </html>
