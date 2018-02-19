@@ -1,31 +1,3 @@
-const jquery = require("jquery");
-const remote = require('electron').remote;
-const apiKey = remote.getGlobal('sharedObj').apiKey;
-const seasonAtual = 11;
-const {
-  Kayn,
-  REGIONS
-} = require("kayn");
-const kayn = Kayn(apiKey)({
-  region: "br",
-  debugOptions: {
-    isEnabled: true,
-    showKey: false,
-    loggers: {} // No need to pass anything here. Read the #Configuration#DebugOptions section.
-  },
-  region: "br",
-  requestOptions: {
-    shouldRetry: true,
-    numberOfRetriesBeforeAbort: 3,
-    delayBeforeRetry: 1000,
-    burst: true
-  },
-  cacheOptions: {
-    cache: null,
-    ttls: {}
-  }
-});
-
 //Função construtora de liga
 class Liga {
   constructor (queueType, elo, tier, pdl){

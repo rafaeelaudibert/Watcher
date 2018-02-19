@@ -1,4 +1,33 @@
-//FUNCTIONS USING KAYN TO SET THE BACK-END OF THE app
+const jquery = require("jquery");
+const remote = require('electron').remote;
+const apiKey = remote.getGlobal('sharedObj').apiKey;
+const seasonAtual = 11;
+const mainPlayer = 'TyG Yeux'
+let listaCampeoes;
+let listaParticipantes = [];
+const {
+  Kayn,
+  REGIONS
+} = require("kayn");
+const kayn = Kayn(apiKey)({
+  region: "br",
+  debugOptions: {
+    isEnabled: true,
+    showKey: false,
+    loggers: {} // No need to pass anything here. Read the #Configuration#DebugOptions section.
+  },
+  region: "br",
+  requestOptions: {
+    shouldRetry: true,
+    numberOfRetriesBeforeAbort: 3,
+    delayBeforeRetry: 1000,
+    burst: true
+  },
+  cacheOptions: {
+    cache: null,
+    ttls: {}
+  }
+});
 
 //Sets the championList
 function setChampionList(){
