@@ -720,7 +720,7 @@ async function retornaIdPartidasCampeoes(idChamp, idConta, beginIndex = 0, endIn
     })
     .then(data => {
       listaMatches = [];
-      for (partida in data.matches) {
+      for (partida in data.matches) {        
         listaMatches.push(data.matches[partida].gameId);
       }
       return listaMatches;
@@ -733,10 +733,10 @@ async function retornaIdPartidasCampeoes(idChamp, idConta, beginIndex = 0, endIn
  * checaVitoria - Checks if the person won the game or not
  *
  * @param  {partidaObject} partida partidaInfo retriever from kayn.Match.get
- * @param  {string} name    name of the player
+ * @param  {string} accountId    accountId of the player
  * @return {boolean}         Returns if the person won the game or not
  */
-function checaVitoria(partida, name) {
+function checaVitoria(partida, accountId) {
 
   var winornot = 0;
   var playerPos;
@@ -744,7 +744,9 @@ function checaVitoria(partida, name) {
   //Finds the position of the player in the match
   for (jogador in partida.participantIdentities) {
     var thisPlayer = partida.participantIdentities[jogador];
-    if (thisPlayer.player.summonerName == name) {
+    console.log(thisPlayer.player.accountId);
+    console.log(accountId);
+    if (thisPlayer.player.accountId == accountId) {
       console.log("Id do participante na partida (dentro do for):" + thisPlayer.participantId);
       playerPos = thisPlayer.participantId;
     }

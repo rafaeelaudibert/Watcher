@@ -35,6 +35,6 @@ storage.get('playerPreferences', function(error, data) {
   else{ //Else, if there was data stored, shows the values to the log
     //Assigns the data to playerPreferences and logs it
     console.log("%c[Player Preferences Data]", "color:purple; font-size: medium", "- Retrieved already stored data for playerPreferences");
-    console.log(playerPreferences = data);
+    playerPreferences = data;    
   }
 });
