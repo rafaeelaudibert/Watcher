@@ -1,6 +1,5 @@
 //FUNCTIONS USING KAYN TO SET THE BACK-END OF THE app
 
-
 //Sets the championList
 function setChampionList(){
   kayn.Static.Champion.list()

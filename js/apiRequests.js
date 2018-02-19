@@ -1,6 +1,5 @@
 const jquery = require("jquery");
 const remote = require('electron').remote;
-const storage = require('electron-json-storage');
 const apiKey = remote.getGlobal('sharedObj').apiKey;
 const seasonAtual = 11;
 const {
@@ -24,45 +23,6 @@ const kayn = Kayn(apiKey)({
   cacheOptions: {
     cache: null,
     ttls: {}
-  }
-});
-
-const defaultPlayerPreferences = {
-  summonerName: "",
-  region: "",
-  language: "",
-  finishAtExit: true,
-  windowsNotifications: true,
-  runesTooltips: true,
-  masteriesTooltips: true,
-  elosTooltips: true
-}
-
-//Stores the playerPreferences
-let playerPreferences;
-
-//Tries to get the playerPreferences
-storage.get('playerPreferences', function(error, data) {
-  if (error) throw error;
-
-  //If there was no data, creates it with the default values
-  if (Object.keys(data).length === 0){
-    storage.set('playerPreferences', defaultPlayerPreferences, function(error) {
-      if (error) throw error;
-
-      storage.get('playerPreferences', function(error, data) {
-        if (error) throw error;
-
-        playerPreferences = data;
-        console.log("%c[Player Preferences Data]", "color:purple; font-size: medium", "- Created default data for playerPreferences");
-        console.log(data);
-      });
-    });
-  }
-  else{ //Else, if there was data stored, shows the values to the log
-    playerPreferences = data;
-    console.log("%c[Player Preferences Data]", "color:purple; font-size: medium", "- Retrieved already stored data for playerPreferences");
-    console.log(data);
   }
 });
 
