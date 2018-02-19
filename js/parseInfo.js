@@ -54,12 +54,12 @@ class Player {
   }
 }
 
-// Função que retorna a maior liga entre uma lista de ligas passadas. Retorna como um objeto do tipo Liga
+
 /**
  * maiorLiga - Function who returns the biggest
  *
- * @param  {ligasArray} ligas array with all the leagues of a given summoner
- * @return {Liga}             Returns the bigger league in the ligas array
+ * @param  {ligasArray} ligas array with all the leagues
+ * @return {Liga}       Returns the bigger league in the ligas array
  */
 async function maiorLiga(ligas) {
   var maior_liga = new Liga(undefined, undefined, undefined, -1);
@@ -732,9 +732,6 @@ async function maiorLiga(ligas) {
   return maior_liga;
 }
 
-
-
-//Retorna uma array com os ID's de todas as partidas jogadas por uma conta com um campeão, na seasonAtual
 /**
  * retornaIdPartidasCampeoes - Returns an array with all the Matches' ID's from a plyer with a champion
  *
@@ -759,7 +756,6 @@ async function retornaIdPartidasCampeoes(idChamp, idConta, beginIndex = 0, endIn
 
   return listaPartidas;
 }
-
 
 /**
  * checaVitoria - Checks if the person won the game or not
