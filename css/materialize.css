@@ -2474,7 +2474,7 @@ td, th {
   text-align: right; }
 
 .center, .center-align {
-  text-align: center; }
+  align-items: center; }
 
 .left {
   float: left !important;

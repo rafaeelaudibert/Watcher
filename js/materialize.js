@@ -1814,9 +1814,9 @@ if (jQuery) {
           setTimeout(function () {
             if (started !== true) {
               tooltipEl.velocity({
-                opacity: 0, translateY: 0, translateX: 0 }, { duration: 225, queue: false });
+                opacity: 0, translateY: 0, translateX: 0 }, { duration: 125, queue: false });
               backdrop.velocity({ opacity: 0, scaleX: 1, scaleY: 1 }, {
-                duration: 225,
+                duration: 125,
                 queue: false,
                 complete: function () {
                   backdrop.css({ visibility: 'hidden' });
@@ -1825,7 +1825,7 @@ if (jQuery) {
                 }
               });
             }
-          }, 225);
+          }, 125);
         }
       });
     });
