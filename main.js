@@ -24,13 +24,7 @@ global.sharedObj = {
 //Listen for the app to be ready
 app.on('ready', function(){
 
-  //TESTING JSON storage
-  const defaultDataPath = storage.getDefaultDataPath()
-  console.log(defaultDataPath);
-  const dataPath = storage.getDataPath();
-  console.log(dataPath);
-
-  //Create new mainWindow
+    //Create new mainWindow
   const {width, height} = electron.screen.getPrimaryDisplay().workAreaSize
   var widthReal = width - 25;
   var heightReal = height - 25;
@@ -49,56 +43,58 @@ app.on('ready', function(){
     slashes: true
   }));
 
-// Tray configuration \\
-var trayMenu = new Tray(iconPath);
-trayMenu.setToolTip("LiveTracker")
 
-//Tray menu
-var trayContextMenu = Menu.buildFromTemplate([
-  {
-    label: 'LiveTracker Super Tray',
-    enabled: false
-  },
-  {
-    type: 'separator',
-    enabled: false
-  },
-  {
-    label: 'Show LiveTracker',
-    click:  function(){
-      mainWindow.show();
+
+
+  // Tray configuration \\
+  var trayMenu = new Tray(iconPath);
+  trayMenu.setToolTip("LiveTracker")
+
+  //Tray menu
+  var trayContextMenu = Menu.buildFromTemplate([
+    {
+      label: 'LiveTracker Super Tray',
+      enabled: false
+    },
+    {
+      type: 'separator',
+      enabled: false
+    },
+    {
+      label: 'Show LiveTracker',
+      click:  function(){
+        mainWindow.show();
+      }
+    },
+    {
+      label: 'Quit',
+      click:  function(){
+        mainWindow.isQuiting = true;
+        mainWindow.close();
+      }
     }
-  },
-  {
-    label: 'Quit',
-    click:  function(){
-      mainWindow.isQuiting = true;
-      mainWindow.close();
+  ]);
+
+
+  trayMenu.setContextMenu(trayContextMenu)
+
+
+  trayMenu.on('click', function(event){
+    event.preventDefault();
+    mainWindow.show();
+  });
+
+  mainWindow.on('minimize',function(event){ //When trying to minimize, hide to tray instead
+    event.preventDefault();
+    mainWindow.hide();
+  });
+
+  mainWindow.on('close', function (event) { //When trying to close, hide to tray instead
+    if(!mainWindow.isQuiting){
+        event.preventDefault();
+        mainWindow.hide();
     }
-  }
-]);
-if(process.platform == 'darwin'){
-  trayContextMenu.unshift({});
-} // If mac, add empty object to Menu
-trayMenu.setContextMenu(trayContextMenu)
-
-
-trayMenu.on('click', function(event){
-  event.preventDefault();
-  mainWindow.show();
-});
-
-mainWindow.on('minimize',function(event){ //When trying to minimize, hide to tray instead
-  event.preventDefault();
-  mainWindow.hide();
-});
-
-mainWindow.on('close', function (event) { //When trying to close, hide to tray instead
-  if(!mainWindow.isQuiting){
-      event.preventDefault();
-      mainWindow.hide();
-  }
-  return false;
-});
+    return false;
+  });
 
 });
