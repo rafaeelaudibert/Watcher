@@ -24,17 +24,10 @@ You can make your own fork of this repository, or cloning it through
 git clone https://github.com/rafaeelaudibert/LiveTracker
 ```
 
-<<<<<<< HEAD
 As this repository doesn't holds the node_modules, you'll also need to install and update all of them
 
 ```
 npm install && npm update
-=======
-As this repository doesn't holds the node_modules, you'll also need to update all of them
-
-```
-npm update
->>>>>>> 685cb87ad9892daa519f4dd95fa82f4039726e58
 ```
 
 To see if everything is working you should write in the console
