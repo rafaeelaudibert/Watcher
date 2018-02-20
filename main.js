@@ -26,7 +26,7 @@ app.on('ready', function(){
   const defaultDataPath = storage.getDefaultDataPath()
   console.log(defaultDataPath);
   const dataPath = storage.getDataPath();
-  console.log(dataPath);  
+  console.log(dataPath);
 
   //Create new mainWindow
   const {width, height} = electron.screen.getPrimaryDisplay().workAreaSize
@@ -89,14 +89,12 @@ trayMenu.on('click', function(event){
 mainWindow.on('minimize',function(event){ //When trying to minimize, hide to tray instead
   event.preventDefault();
   mainWindow.hide();
-  trayMenu.setContextMenu(trayContextMenu);
 });
 
 mainWindow.on('close', function (event) { //When trying to close, hide to tray instead
   if(!mainWindow.isQuiting){
       event.preventDefault();
       mainWindow.hide();
-      trayMenu.setContextMenu(trayContextMenu);
   }
   return false;
 });
