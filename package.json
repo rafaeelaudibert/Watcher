@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "electron-packager": "^10.1.1",
+    "handlebars": "^4.0.11",
     "malihu-custom-scrollbar-plugin": "^3.1.5",
     "standard": "^10.0.3"
   }
