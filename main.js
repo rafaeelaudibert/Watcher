@@ -2,6 +2,7 @@ const electron = require('electron');
 const url = require('url');
 const path = require('path');
 const storage = require('electron-json-storage');
+const secretInfo = require('./secretInfo')
 
 //Descontructors
 const {app, BrowserWindow, Menu, ipcMain, Tray} = electron;
@@ -15,7 +16,8 @@ let newWindow;
 
 //Shared object, can be acessed from the console
 global.sharedObj = {
-  apiKey: "RGAPI-7d990bb2-0a79-43b9-9b98-f7b97d9e7fb2"
+  //You can put your API KEY directly here
+  apiKey: secretInfo.apiKey
 };
 
 
