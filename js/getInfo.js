@@ -13,11 +13,10 @@ const {
  * Configuring Kayn
  */
 const kayn = Kayn(apiKey)({
-  region: "br",
   debugOptions: {
     isEnabled: true,
     showKey: false,
-    loggers: {} // No need to pass anything here. Read the #Configuration#DebugOptions section.
+    loggers: {}
   },
   region: "br",
   requestOptions: {
@@ -95,13 +94,22 @@ async function getInitialInfo(){
       }
     })
 
+    //Gets the championMasteryLevel and championMasteryPoints, for each player in playersList
+    playersList.map(async participante => {
+      kayn.ChampionMastery.get(participante.summonerId)(participante.championId).then(data => {
+        participante.championMasteryLevel = data.championLevel;
+        participante.championMasteryPoints = data.championPoints;
+        console.log("%c[mastery]", "color:purple; font-size: medium", "- Champion Mastery set!")
+      })
+    })
+
     //Gets the higherLeague for the player
     playersList.map(async participante => {
       kayn.LeaguePositions.by.summonerID(participante.summonerId)
         .then(maiorLiga)
           .then(function(higherLeague){
             participante.liga = higherLeague;
-            console.log("%c[higherLeague]", "color:purple; font-size: medium", "- Found the higherLeague!")
+            console.log("%c[higherLeague]", "color:purple; font-size: medium", "- Higher League set!")
           })
     })
 
@@ -135,8 +143,7 @@ async function getBasicInfo(){
 
 //Get matches for each player. After calls the function who sets the champion Win Rate for each player.
 async function getAdvancedInfo(){
-  // FIXME: Verificar pq fica dando um erro 404 quando rodo isso daqui
-  console.time("MatchesID")
+  onsole.time("MatchesID")
   const idMatches = Promise.all(playersList.map(player => retornaIdPartidasCampeoes(player.championId, player.accountId)));
   console.timeEnd("MatchesID")
 
@@ -166,7 +173,6 @@ async function getChampInfo(playerPos){
   //Gets the matches perse
   console.time("Player: " + playerPos);
   const matches = await Promise.all(thisPlayer.matchList.map(kayn.Match.get));
-  console.log(matches);
   console.timeEnd("Player: " + playerPos);
 
   //Check the victory in the matches
