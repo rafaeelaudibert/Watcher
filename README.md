@@ -41,15 +41,16 @@ If it echoes 'LiveTracker working', you are good to go
 
 * [Materialize](http://materializecss.com/) - CSS/JS Framework
 * [Electron](https://electronjs.org/) - Multi-platform builder
+* [Handlebars](http://handlebarsjs.com/) - Mustache-like HTML template, generated with JS
 * [Kayn](https://github.com/cnguy/kayn) - Riot Api Wrapper for JS, built by [cnguy](https://github.com/cnguy)
 
-## Commiting
+## Contributing Guidelines
 
 We use [Gitmoji](https://gitmoji.carloscuesta.me/) in the commits, so we can easily know what was that commit about.
 
 ## Authors
 
-* **Rafael Baldasso Audibert** - *Main worker* - [rbaudibert](https://github.com/rafaeelaudibert)
+* **Rafael Baldasso Audibert** - *Creator* - [rbaudibert](https://github.com/rafaeelaudibert)
 
 ## License
 
@@ -58,3 +59,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Thanks
 
 Special thanks to cnguy for having a great conversation and teaching me about JS and Kayn ApiWrapper, it was really helpfull
+
+## Disclaimer
+
+```LiveTracker``` isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.
