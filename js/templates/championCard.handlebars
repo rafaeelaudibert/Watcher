@@ -1,0 +1,45 @@
+<div class="card col">
+  <div class="card-image waves-effect waves-block waves-light card-ownimage"> <!-- CardImage -->
+    <img class="activator" src="{{championImage}}">
+  </div>
+  <div class="card-content"> <!-- CardContent -->
+    <div class="row"> <!-- CardTitle -->
+      <span class="card-title activator grey-text text-darken-4">
+        <div class="col s8 padding-0"><strong>{{championName}}</strong></div>
+        <div class="col s2 padding-0"><img class="mastery-img" src="assets/champmastery/{{championMasteryImage}}.png"></div>
+      </span>
+    </div>
+    <div class="row"> <!-- PersonIfo -->
+      <div class="col s6 padding-0"><span>{{summonerName}}<br>{{summonerElo}}</span></div>
+      <div class="col s2 offset-s2 padding-0"><img class="elo-img" src="assets/elos/{{eloImage}}.png"></div>
+    </div>
+  </div>
+  <div class="card-reveal overflow-hidden"> <!-- CardReveal -->
+    <div class="row margin-right-0"> <!-- RevealTitle -->
+      <div class="col s11 offset-s1 padding-0"><span class="card-title grey-text text-darken-4">{{championName}}<i class="material-icons right">close</i></span></div>
+    </div>
+    <div class="row margin-right-0"> <!-- RevealContent -->
+       <!-- Runes -->
+      <div class="col s1 padding-0" style="padding-left: 0.3rem !important">
+        <img class="keystone" src="assets/runes/perk/{{runes.keystone}}.png">
+      </div>
+      <div class="col s10 offset-s2 padding-0">
+        <img class="non-keystone" src="assets/runes/perk/{{runes.bigger.[1]}}.png">
+        <img class="non-keystone" src="assets/runes/perk/{{runes.bigger.[2]}}.png">
+        <img class="non-keystone" src="assets/runes/perk/{{runes.bigger.[3]}}.png">
+      </div>
+      <div class="col s6 offset-s3 padding-0" style="padding-left: 0.2rem !important">
+        <img class="non-keystone" src="assets/runes/perk/{{runes.lesser.[1]}}.png">
+        <img class="non-keystone" src="assets/runes/perk/{{runes.lesser.[2]}}.png">
+      </div>
+    </div>
+    <div class="row white-text statistic-row">
+      <div class="col s5 padding-0 outerspace-transparent z-depth-3 statistic-col">
+        <strong style="font-size: 14px !important">{{championWinrate}}</strong> WinRate<br>{{championName}}<br>{{championWinLost}}
+      </div>
+      <div class="col s5 offset-s2 padding-0 outerspace-transparent z-depth-3 statistic-col">
+        <strong style="font-size: 14px !important">{{rankedWinrate}}</strong> WinRate<br>@ Ranked<br>{{rankedWinLost}}
+      </div>
+    </div>
+  </div>
+</div> <!-- End Cartão !-->
