@@ -725,7 +725,7 @@ async function retornaIdPartidasCampeoes(idChamp, idConta, beginIndex = 0, endIn
       listaMatches = [];
       for (partida in data.matches) {
         listaMatches.push(data.matches[partida].gameId);
-      }      
+      }
       return listaMatches;
     });
 
@@ -771,4 +771,4 @@ function checaVitoria(partida, accountId) {
  * @param  {integer} qtdeJogos Number of games played
  * @return {float}           WinRate Percentage
  */
-function porcentagemVitorias(vitorias, qtdeJogos) { return qtdeJogos > 0 ? 100 * vitorias / qtdeJogos : "Never Played" }
+function porcentagemVitorias(vitorias, qtdeJogos) { return qtdeJogos > 0 ? 100 * vitorias / qtdeJogos : "First Match" }

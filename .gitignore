@@ -1,6 +1,6 @@
-
 .idea
 .sass-cache
 \node_modules
 \release-builds
+\sandbox
 secretInfo.js

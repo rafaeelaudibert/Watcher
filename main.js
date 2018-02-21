@@ -4,6 +4,8 @@ const path = require('path');
 const storage = require('electron-json-storage');
 const secretInfo = require('./secretInfo')
 
+// TODO: Create the WindowsNotifications option
+
 //Descontructors
 const {app, BrowserWindow, Menu, ipcMain, Tray} = electron;
 

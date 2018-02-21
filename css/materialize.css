@@ -1980,7 +1980,7 @@ textarea {
 
 /**
  * Don't inherit the `font-weight` (applied by a rule above).
- * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ * NOTEE: the default cannot safely be changed in Chrome and Safari on OS X.
  */
 optgroup {
   font-weight: bold; }
@@ -5590,7 +5590,7 @@ input[type=range]:focus::-ms-fill-upper {
   border-color: #0f9d58; }
 
 /**
- * IMPORTANT NOTE ABOUT CSS ANIMATION PROPERTIES (keanulee):
+ * IMPORTANT NOTEE ABOUT CSS ANIMATION PROPERTIES (keanulee):
  *
  * iOS Safari (tested on iOS 8.1) does not handle animation-delay very well - it doesn't
  * guarantee that the animation will start _exactly_ after that value. So we avoid using
