@@ -3433,6 +3433,7 @@ small {
 
 .card {
   position: relative;
+  width: 19.2%;
   margin: 1.2rem 0.5rem 1rem 0;
   background-color: #fff;
   transition: box-shadow .25s;
@@ -6897,21 +6898,6 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
 
 /*# sourceMappingURL=materialize.css.map */
 
-.card-ownimage {
-  margin: 0 auto !important;
-  max-height: 20rem !important;
-  max-width: 150px !important;
-}
-
-.mastery-image{
-  height: 12px;
-  max-width: auto;
-}
-
-.padding-0{
-  padding: 0px !important;
-}
-
 body {
   /* Non selectable text */
   -webkit-touch-callout: none; /* iOS Safari */
@@ -6924,6 +6910,7 @@ body {
 
   overflow: hidden;
 }
+
 
 /** SCROLL BAR */
 

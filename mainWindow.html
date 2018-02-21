@@ -11,6 +11,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css\materialize.css">
+    <link rel="stylesheet" href="css\main.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>LiveTracker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -27,13 +28,13 @@
 
       <div class="row"> <!-- Top Information !-->
         <div class="col s6">
-          <a class="waves-effect waves-light outerspace btn modal-trigger" style="align-items: center; height: 4rem; margin-top: 1rem; margin-left: 1.5rem; padding-top: 0.9rem; font-size: 1.3rem; border-radius: 3px" href="#search-modal"><i class="material-icons right">edit</i>Search Another Summoner</a>
+          <a class="waves-effect waves-light outerspace btn modal-trigger search-summoner" href="#search-modal"><i class="material-icons right">edit</i>Search Another Summoner</a>
         </div> <!--Modal Trigger !-->
-        <div class="col s5 outerspace z-depth-1" style="margin-top: 1rem; margin-left: 2.5rem; border-radius: 3px"><a class="white-text"><span class="flow-text"><strong>Summoner's Rift</strong></span><br>Ranked 5x5</a></div>
+        <div class="col s5 outerspace z-depth-1 match-info"><a class="white-text"><span class="flow-text"><strong>Summoner's Rift</strong></span><br>Ranked 5x5</a></div>
       </div>
 
       <div id="team-1" class="row"> <!-- Time 1 !-->
-        <div class="card col"  style="width: 19.2%">
+        <div class="card col">
           <div class="card-image waves-effect waves-block waves-light card-ownimage"> <!-- CardImage -->
             <img class="activator" src="http://ddragon.leagueoflegends.com/cdn/8.3.1/img/champion/Aatrox.png">
           </div>
@@ -41,229 +42,227 @@
             <div class="row"> <!-- CardTitle -->
               <span class="card-title activator grey-text text-darken-4">
                 <div class="col s8 padding-0"><strong>Aatrox</strong></div>
-                <div class="col s2 padding-0"><img style="height: 2.6rem" src="assets/champmastery/1.png"></div>
+                <div class="col s2 padding-0"><img class="mastery-img" src="assets/champmastery/1.png"></div>
               </span>
             </div>
             <div class="row"> <!-- PersonIfo -->
               <div class="col s6 padding-0"><span>TyG Masked<br>Bronze V</span></div>
-              <div class="col s2 offset-s2 padding-0"><img style="height: 4rem; margin-left: -0.9rem; margin-top: -0.8rem" src="assets/elos/bronze/1.png"></div>
+              <div class="col s2 offset-s2 padding-0"><img class="elo-img" src="assets/elos/bronze/1.png"></div>
             </div>
           </div>
-          <div class="card-reveal" style="overflow: hidden !important"> <!-- CardReveal -->
-            <div class="row" style="margin-right: 0rem !important"> <!-- RevealTitle -->
+          <div class="card-reveal overflow-hidden"> <!-- CardReveal -->
+            <div class="row margin-right-0"> <!-- RevealTitle -->
               <div class="col s11 offset-s1 padding-0"><span class="card-title grey-text text-darken-4">Aatrox<i class="material-icons right">close</i></span></div>
             </div>
-            <div class="row" style="margin-right: 0rem !important;"> <!-- RevealContent -->
+            <div class="row margin-right-0"> <!-- RevealContent -->
                <!-- Runes -->
               <div class="col s1 padding-0" style="padding-left: 0.3rem !important">
-                <img style="height: 4rem; padding-left: 4rem" src="assets/runes/perk/8005.png">
+                <img class="keystone" src="assets/runes/perk/8005.png">
               </div>
               <div class="col s10 offset-s2 padding-0">
-                <img style="height: 2.6rem" src="assets/runes/perk/8014.png">
-                <img style="height: 2.6rem" src="assets/runes/perk/8017.png">
-                <img style="height: 2.6rem" src="assets/runes/perk/8105.png">
+                <img class="non-keystone" src="assets/runes/perk/8014.png">
+                <img class="non-keystone" src="assets/runes/perk/8017.png">
+                <img class="non-keystone" src="assets/runes/perk/8105.png">
               </div>
               <div class="col s6 offset-s3 padding-0" style="padding-left: 0.2rem !important">
-                <img style="height: 2.6rem" src="assets/runes/perk/8224.png">
-                <img style="height: 2.6rem" src="assets/runes/perk/8236.png">
+                <img class="non-keystone" src="assets/runes/perk/8224.png">
+                <img class="non-keystone" src="assets/runes/perk/8236.png">
               </div>
             </div>
-            <div class="row white-text" style="margin-top: 0.3rem; margin-right: 0rem !important; font-size: 12px !important">
-              <div class="col s5 padding-0 outerspace-transparent z-depth-3" style="padding-left: 0.2rem !important; margin-left: 0.5rem">
+            <div class="row white-text statistic-row">
+              <div class="col s5 padding-0 outerspace-transparent z-depth-3 statistic-col">
                 <strong style="font-size: 14px !important">67%</strong> WinRate<br>Aatrox<br>(2W - 1L)
               </div>
-              <div class="col s5 offset-s2 padding-0 outerspace-transparent z-depth-3" style="padding-left: 0.2rem !important; margin-left: 1rem">
+              <div class="col s5 offset-s2 padding-0 outerspace-transparent z-depth-3 statistic-col">
                 <strong style="font-size: 14px !important">51%</strong> WinRate<br>@ Ranked<br>(51W - 49L)
               </div>
             </div>
           </div>
         </div> <!-- End Cartão !-->
-        <div class="card col"  style="width: 19.2%">
-          <div class="card-image waves-effect waves-block waves-light card-ownimage">
-            <img class="activator" src="http://ddragon.leagueoflegends.com/cdn/8.3.1/img/champion/Fiddlesticks.png">
+        <div class="card col">
+          <div class="card-image waves-effect waves-block waves-light card-ownimage"> <!-- CardImage -->
+            <img class="activator" src="http://ddragon.leagueoflegends.com/cdn/8.3.1/img/champion/Zoe.png">
           </div>
-          <div class="card-content">
+          <div class="card-content"> <!-- CardContent -->
             <div class="row"> <!-- CardTitle -->
               <span class="card-title activator grey-text text-darken-4">
-                <div class="col s8 padding-0"><strong>Fiddlesticks</strong></div>
-                <div class="col s2 padding-0"><img style="height: 2.6rem" src="assets/champmastery/2.png"></div>
+                <div class="col s8 padding-0"><strong>Zoe</strong></div>
+                <div class="col s2 padding-0"><img class="mastery-img" src="assets/champmastery/2.png"></div>
               </span>
             </div>
             <div class="row"> <!-- PersonIfo -->
-              <div class="col s6 padding-0"><span>TyG Masked<br>Silver IV</span></div>
-              <div class="col s2 offset-s2 padding-0"><img style="height: 4rem; margin-left: -0.9rem; margin-top: -0.8rem" src="assets/elos/silver/1.png"></div>
+              <div class="col s6 padding-0"><span>TyG Masked<br>Silver V</span></div>
+              <div class="col s2 offset-s2 padding-0"><img class="elo-img" src="assets/elos/silver/1.png"></div>
             </div>
           </div>
-          <div class="card-reveal" style="overflow: hidden !important"> <!-- CardReveal -->
-            <div class="row" style="margin-right: 0rem !important"> <!-- RevealTitle -->
-              <div class="col s11 offset-s1 padding-0"><span class="card-title grey-text text-darken-4">Fiddlesticks<i class="material-icons right">close</i></span></div>
+          <div class="card-reveal overflow-hidden"> <!-- CardReveal -->
+            <div class="row margin-right-0"> <!-- RevealTitle -->
+              <div class="col s11 offset-s1 padding-0"><span class="card-title grey-text text-darken-4">Zoe<i class="material-icons right">close</i></span></div>
             </div>
-            <div class="row" style="margin-right: 0rem !important;"> <!-- RevealContent -->
+            <div class="row margin-right-0"> <!-- RevealContent -->
                <!-- Runes -->
               <div class="col s1 padding-0" style="padding-left: 0.3rem !important">
-                <img style="height: 4rem; padding-left: 4rem" src="assets/runes/perk/8005.png">
+                <img class="keystone" src="assets/runes/perk/8005.png">
               </div>
               <div class="col s10 offset-s2 padding-0">
-                <img style="height: 2.6rem" src="assets/runes/perk/8014.png">
-                <img style="height: 2.6rem" src="assets/runes/perk/8017.png">
-                <img style="height: 2.6rem" src="assets/runes/perk/8105.png">
+                <img class="non-keystone" src="assets/runes/perk/8014.png">
+                <img class="non-keystone" src="assets/runes/perk/8017.png">
+                <img class="non-keystone" src="assets/runes/perk/8105.png">
               </div>
               <div class="col s6 offset-s3 padding-0" style="padding-left: 0.2rem !important">
-                <img style="height: 2.6rem" src="assets/runes/perk/8224.png">
-                <img style="height: 2.6rem" src="assets/runes/perk/8236.png">
+                <img class="non-keystone" src="assets/runes/perk/8224.png">
+                <img class="non-keystone" src="assets/runes/perk/8236.png">
               </div>
             </div>
-            <div class="row white-text" style="margin-top: 0.3rem; margin-right: 0rem !important; font-size: 12px !important">
-              <div class="col s5 padding-0 outerspace-transparent z-depth-3" style="padding-left: 0.2rem !important; margin-left: 0.5rem">
-                <strong style="font-size: 14px !important">67%</strong> WinRate<br>Fiddlesticks<br>(2W - 1L)
+            <div class="row white-text statistic-row">
+              <div class="col s5 padding-0 outerspace-transparent z-depth-3 statistic-col">
+                <strong style="font-size: 14px !important">67%</strong> WinRate<br>Zoe<br>(2W - 1L)
               </div>
-              <div class="col s5 offset-s2 padding-0 outerspace-transparent z-depth-3" style="padding-left: 0.2rem !important; margin-left: 1rem">
+              <div class="col s5 offset-s2 padding-0 outerspace-transparent z-depth-3 statistic-col">
                 <strong style="font-size: 14px !important">51%</strong> WinRate<br>@ Ranked<br>(51W - 49L)
               </div>
             </div>
           </div>
         </div> <!-- End Cartão !-->
-        <div class="card col"  style="width: 19.2%">
-          <div class="card-image waves-effect waves-block waves-light card-ownimage">
-            <img class="activator" src="http://ddragon.leagueoflegends.com/cdn/8.3.1/img/champion/Heimerdinger.png">
+        <div class="card col">
+          <div class="card-image waves-effect waves-block waves-light card-ownimage"> <!-- CardImage -->
+            <img class="activator" src="http://ddragon.leagueoflegends.com/cdn/8.3.1/img/champion/Orianna.png">
           </div>
-          <div class="card-content">
+          <div class="card-content"> <!-- CardContent -->
             <div class="row"> <!-- CardTitle -->
               <span class="card-title activator grey-text text-darken-4">
-                <div class="col s8 padding-0"><strong>Heimerdinger</strong></div>
-                <div class="col s2 padding-0"><img style="height: 2.6rem" src="assets/champmastery/3.png"></div>
+                <div class="col s8 padding-0"><strong>Orianna</strong></div>
+                <div class="col s2 padding-0"><img class="mastery-img" src="assets/champmastery/3.png"></div>
               </span>
             </div>
             <div class="row"> <!-- PersonIfo -->
-              <div class="col s6 padding-0"><span>TyG Masked<br>Gold II</span></div>
-              <div class="col s2 offset-s2 padding-0"><img style="height: 4rem; margin-left: -0.9rem; margin-top: -0.8rem" src="assets/elos/gold/5.png"></div>
+              <div class="col s6 padding-0"><span>TyG Masked<br>Gold V</span></div>
+              <div class="col s2 offset-s2 padding-0"><img class="elo-img" src="assets/elos/gold/1.png"></div>
             </div>
           </div>
-          <div class="card-reveal" style="overflow: hidden !important"> <!-- CardReveal -->
-            <div class="row" style="margin-right: 0rem !important"> <!-- RevealTitle -->
-              <div class="col s11 offset-s1 padding-0"><span class="card-title grey-text text-darken-4">Heimerdinger<i class="material-icons right">close</i></span></div>
+          <div class="card-reveal overflow-hidden"> <!-- CardReveal -->
+            <div class="row margin-right-0"> <!-- RevealTitle -->
+              <div class="col s11 offset-s1 padding-0"><span class="card-title grey-text text-darken-4">Orianna<i class="material-icons right">close</i></span></div>
             </div>
-            <div class="row" style="margin-right: 0rem !important;"> <!-- RevealContent -->
+            <div class="row margin-right-0"> <!-- RevealContent -->
                <!-- Runes -->
               <div class="col s1 padding-0" style="padding-left: 0.3rem !important">
-                <img style="height: 4rem; padding-left: 4rem" src="assets/runes/perk/8005.png">
+                <img class="keystone" src="assets/runes/perk/8005.png">
               </div>
               <div class="col s10 offset-s2 padding-0">
-                <img style="height: 2.6rem" src="assets/runes/perk/8014.png">
-                <img style="height: 2.6rem" src="assets/runes/perk/8017.png">
-                <img style="height: 2.6rem" src="assets/runes/perk/8105.png">
+                <img class="non-keystone" src="assets/runes/perk/8014.png">
+                <img class="non-keystone" src="assets/runes/perk/8017.png">
+                <img class="non-keystone" src="assets/runes/perk/8105.png">
               </div>
               <div class="col s6 offset-s3 padding-0" style="padding-left: 0.2rem !important">
-                <img style="height: 2.6rem" src="assets/runes/perk/8224.png">
-                <img style="height: 2.6rem" src="assets/runes/perk/8236.png">
+                <img class="non-keystone" src="assets/runes/perk/8224.png">
+                <img class="non-keystone" src="assets/runes/perk/8236.png">
               </div>
             </div>
-            <div class="row white-text" style="margin-top: 0.3rem; margin-right: 0rem !important; font-size: 12px !important">
-              <div class="col s5 padding-0 outerspace-transparent z-depth-3" style="padding-left: 0.2rem !important; margin-left: 0.5rem">
-                <strong style="font-size: 14px !important">67%</strong> WinRate<br>Heimerdinger<br>(2W - 1L)
+            <div class="row white-text statistic-row">
+              <div class="col s5 padding-0 outerspace-transparent z-depth-3 statistic-col">
+                <strong style="font-size: 14px !important">67%</strong> WinRate<br>Orianna<br>(2W - 1L)
               </div>
-              <div class="col s5 offset-s2 padding-0 outerspace-transparent z-depth-3" style="padding-left: 0.2rem !important; margin-left: 1rem">
+              <div class="col s5 offset-s2 padding-0 outerspace-transparent z-depth-3 statistic-col">
                 <strong style="font-size: 14px !important">51%</strong> WinRate<br>@ Ranked<br>(51W - 49L)
               </div>
             </div>
           </div>
         </div> <!-- End Cartão !-->
-        <div class="card col"  style="width: 19.2%">
-          <div class="card-image waves-effect waves-block waves-light card-ownimage">
-            <img class="activator" src="http://ddragon.leagueoflegends.com/cdn/8.3.1/img/champion/MissFortune.png">
-          </div>
-          <div class="card-content">
-            <div class="row"> <!-- CardTitle -->
-              <span class="card-title activator grey-text text-darken-4">
-                <div class="col s8 padding-0"><strong>Miss Fortune</strong></div>
-                <div class="col s2 padding-0"><img style="height: 2.6rem" src="assets/champmastery/4.png"></div>
-              </span>
-            </div>
-            <div class="row"> <!-- PersonIfo -->
-
-              <div class="col s6 padding-0"><span>TyG Masked<br>Platinum III</span></div>
-              <div class="col s2 offset-s2 padding-0"><img style="height: 4rem; margin-left: -0.9rem; margin-top: -0.8rem" src="assets/elos/platinum/1.png"></div>
-            </div>
-          </div>
-          <div class="card-reveal" style="overflow: hidden !important"> <!-- CardReveal -->
-            <div class="row" style="margin-right: 0rem !important"> <!-- RevealTitle -->
-              <div class="col s11 offset-s1 padding-0"><span class="card-title grey-text text-darken-4">Miss Fortune<i class="material-icons right">close</i></span></div>
-            </div>
-            <div class="row" style="margin-right: 0rem !important;"> <!-- RevealContent -->
-               <!-- Runes -->
-              <div class="col s1 padding-0" style="padding-left: 0.3rem !important">
-                <img style="height: 4rem; padding-left: 4rem" src="assets/runes/perk/8005.png">
-              </div>
-              <div class="col s10 offset-s2 padding-0">
-                <img style="height: 2.6rem" src="assets/runes/perk/8014.png">
-                <img style="height: 2.6rem" src="assets/runes/perk/8017.png">
-                <img style="height: 2.6rem" src="assets/runes/perk/8105.png">
-              </div>
-              <div class="col s6 offset-s3 padding-0" style="padding-left: 0.2rem !important">
-                <img style="height: 2.6rem" src="assets/runes/perk/8224.png">
-                <img style="height: 2.6rem" src="assets/runes/perk/8236.png">
-              </div>
-            </div>
-            <div class="row white-text" style="margin-top: 0.3rem; margin-right: 0rem !important; font-size: 12px !important">
-              <div class="col s5 padding-0 outerspace-transparent z-depth-3" style="padding-left: 0.2rem !important; margin-left: 0.5rem">
-                <strong style="font-size: 14px !important">67%</strong> WinRate<br>Miss Fortune<br>(2W - 1L)
-              </div>
-              <div class="col s5 offset-s2 padding-0 outerspace-transparent z-depth-3" style="padding-left: 0.2rem !important; margin-left: 1rem">
-                <strong style="font-size: 14px !important">51%</strong> WinRate<br>@ Ranked<br>(51W - 49L)
-              </div>
-            </div>
-          </div>
-        </div> <!-- End Cartão !-->
-        <div class="card col"  style="width: 19.2%">
-          <div class="card-image waves-effect waves-block waves-light card-ownimage">
+        <div class="card col">
+          <div class="card-image waves-effect waves-block waves-light card-ownimage"> <!-- CardImage -->
             <img class="activator" src="http://ddragon.leagueoflegends.com/cdn/8.3.1/img/champion/TwistedFate.png">
           </div>
-          <div class="card-content">
+          <div class="card-content"> <!-- CardContent -->
             <div class="row"> <!-- CardTitle -->
               <span class="card-title activator grey-text text-darken-4">
-                <div class="col s8 padding-0"><strong>Twisted Fate</strong></div>
-                <div class="col s2 padding-0"><img style="height: 2.6rem" src="assets/champmastery/5.png"></div>
+                <div class="col s8 padding-0"><strong>Twised Fate</strong></div>
+                <div class="col s2 padding-0"><img class="mastery-img" src="assets/champmastery/4.png"></div>
               </span>
             </div>
             <div class="row"> <!-- PersonIfo -->
-              <div class="col s6 padding-0"><span>TyG Masked<br>Diamond II</span></div>
-              <div class="col s2 offset-s2 padding-0"><img style="height: 4rem; margin-left: -0.9rem; margin-top: -0.8rem" src="assets/elos/diamond/5.png"></div>
+              <div class="col s6 padding-0"><span>TyG Masked<br>Platinum V</span></div>
+              <div class="col s2 offset-s2 padding-0"><img class="elo-img" src="assets/elos/platinum/1.png"></div>
             </div>
           </div>
-          <div class="card-reveal" style="overflow: hidden !important"> <!-- CardReveal -->
-            <div class="row" style="margin-right: 0rem !important"> <!-- RevealTitle -->
+          <div class="card-reveal overflow-hidden"> <!-- CardReveal -->
+            <div class="row margin-right-0"> <!-- RevealTitle -->
               <div class="col s11 offset-s1 padding-0"><span class="card-title grey-text text-darken-4">Twisted Fate<i class="material-icons right">close</i></span></div>
             </div>
-            <div class="row" style="margin-right: 0rem !important;"> <!-- RevealContent -->
+            <div class="row margin-right-0"> <!-- RevealContent -->
                <!-- Runes -->
               <div class="col s1 padding-0" style="padding-left: 0.3rem !important">
-                <img style="height: 4rem; padding-left: 4rem" src="assets/runes/perk/8005.png">
+                <img class="keystone" src="assets/runes/perk/8005.png">
               </div>
               <div class="col s10 offset-s2 padding-0">
-                <img style="height: 2.6rem" src="assets/runes/perk/8014.png">
-                <img style="height: 2.6rem" src="assets/runes/perk/8017.png">
-                <img style="height: 2.6rem" src="assets/runes/perk/8105.png">
+                <img class="non-keystone" src="assets/runes/perk/8014.png">
+                <img class="non-keystone" src="assets/runes/perk/8017.png">
+                <img class="non-keystone" src="assets/runes/perk/8105.png">
               </div>
               <div class="col s6 offset-s3 padding-0" style="padding-left: 0.2rem !important">
-                <img style="height: 2.6rem" src="assets/runes/perk/8224.png">
-                <img style="height: 2.6rem" src="assets/runes/perk/8236.png">
+                <img class="non-keystone" src="assets/runes/perk/8224.png">
+                <img class="non-keystone" src="assets/runes/perk/8236.png">
               </div>
             </div>
-            <div class="row white-text" style="margin-top: 0.3rem; margin-right: 0rem !important; font-size: 12px !important">
-              <div class="col s5 padding-0 outerspace-transparent z-depth-3" style="padding-left: 0.2rem !important; margin-left: 0.5rem">
+            <div class="row white-text statistic-row">
+              <div class="col s5 padding-0 outerspace-transparent z-depth-3 statistic-col">
                 <strong style="font-size: 14px !important">67%</strong> WinRate<br>Twisted Fate<br>(2W - 1L)
               </div>
-              <div class="col s5 offset-s2 padding-0 outerspace-transparent z-depth-3" style="padding-left: 0.2rem !important; margin-left: 1rem">
+              <div class="col s5 offset-s2 padding-0 outerspace-transparent z-depth-3 statistic-col">
                 <strong style="font-size: 14px !important">51%</strong> WinRate<br>@ Ranked<br>(51W - 49L)
               </div>
             </div>
           </div>
         </div> <!-- End Cartão !-->
-
-
+        <div class="card col">
+          <div class="card-image waves-effect waves-block waves-light card-ownimage"> <!-- CardImage -->
+            <img class="activator" src="http://ddragon.leagueoflegends.com/cdn/8.3.1/img/champion/Sejuani.png">
+          </div>
+          <div class="card-content"> <!-- CardContent -->
+            <div class="row"> <!-- CardTitle -->
+              <span class="card-title activator grey-text text-darken-4">
+                <div class="col s8 padding-0"><strong>Sejuani</strong></div>
+                <div class="col s2 padding-0"><img class="mastery-img" src="assets/champmastery/5.png"></div>
+              </span>
+            </div>
+            <div class="row"> <!-- PersonIfo -->
+              <div class="col s6 padding-0"><span>TyG Masked<br>Diamond V</span></div>
+              <div class="col s2 offset-s2 padding-0"><img class="elo-img" src="assets/elos/diamond/1.png"></div>
+            </div>
+          </div>
+          <div class="card-reveal overflow-hidden"> <!-- CardReveal -->
+            <div class="row margin-right-0"> <!-- RevealTitle -->
+              <div class="col s11 offset-s1 padding-0"><span class="card-title grey-text text-darken-4">Sejuani<i class="material-icons right">close</i></span></div>
+            </div>
+            <div class="row margin-right-0"> <!-- RevealContent -->
+               <!-- Runes -->
+              <div class="col s1 padding-0" style="padding-left: 0.3rem !important">
+                <img class="keystone" src="assets/runes/perk/8005.png">
+              </div>
+              <div class="col s10 offset-s2 padding-0">
+                <img class="non-keystone" src="assets/runes/perk/8014.png">
+                <img class="non-keystone" src="assets/runes/perk/8017.png">
+                <img class="non-keystone" src="assets/runes/perk/8105.png">
+              </div>
+              <div class="col s6 offset-s3 padding-0" style="padding-left: 0.2rem !important">
+                <img class="non-keystone" src="assets/runes/perk/8224.png">
+                <img class="non-keystone" src="assets/runes/perk/8236.png">
+              </div>
+            </div>
+            <div class="row white-text statistic-row">
+              <div class="col s5 padding-0 outerspace-transparent z-depth-3 statistic-col">
+                <strong style="font-size: 14px !important">67%</strong> WinRate<br>Sejuani<br>(2W - 1L)
+              </div>
+              <div class="col s5 offset-s2 padding-0 outerspace-transparent z-depth-3 statistic-col">
+                <strong style="font-size: 14px !important">51%</strong> WinRate<br>@ Ranked<br>(51W - 49L)
+              </div>
+            </div>
+          </div>
+        </div> <!-- End Cartão !-->
       </div>
+
       <div id="team-2" class="row"> <!-- Time 2 !-->
-        <div class="card col"  style="width: 19.2%; margin-top: 0.5rem">
+        <div class="card col">
           <div class="card-image waves-effect waves-block waves-light card-ownimage"> <!-- CardImage -->
             <img class="activator" src="http://ddragon.leagueoflegends.com/cdn/8.3.1/img/champion/Aatrox.png">
           </div>
@@ -271,227 +270,224 @@
             <div class="row"> <!-- CardTitle -->
               <span class="card-title activator grey-text text-darken-4">
                 <div class="col s8 padding-0"><strong>Aatrox</strong></div>
-                <div class="col s2 padding-0"><img style="height: 2.6rem" src="assets/champmastery/6.png"></div>
+                <div class="col s2 padding-0"><img class="mastery-img" src="assets/champmastery/6.png"></div>
               </span>
             </div>
             <div class="row"> <!-- PersonIfo -->
-              <div class="col s6 padding-0"><span>TyG Masked<br>Master</span></div>
-              <div class="col s2 offset-s2 padding-0"><img style="height: 4rem; margin-left: -0.9rem; margin-top: -0.8rem" src="assets/elos/master.png"></div>
+              <div class="col s6 padding-0"><span>TyG Masked<br>Bronze V</span></div>
+              <div class="col s2 offset-s2 padding-0"><img class="elo-img" src="assets/elos/master.png"></div>
             </div>
           </div>
-          <div class="card-reveal" style="overflow: hidden !important"> <!-- CardReveal -->
-            <div class="row" style="margin-right: 0rem !important"> <!-- RevealTitle -->
+          <div class="card-reveal overflow-hidden"> <!-- CardReveal -->
+            <div class="row margin-right-0"> <!-- RevealTitle -->
               <div class="col s11 offset-s1 padding-0"><span class="card-title grey-text text-darken-4">Aatrox<i class="material-icons right">close</i></span></div>
             </div>
-            <div class="row" style="margin-right: 0rem !important;"> <!-- RevealContent -->
+            <div class="row margin-right-0"> <!-- RevealContent -->
                <!-- Runes -->
               <div class="col s1 padding-0" style="padding-left: 0.3rem !important">
-                <img style="height: 4rem; padding-left: 4rem" src="assets/runes/perk/8005.png">
+                <img class="keystone" src="assets/runes/perk/8005.png">
               </div>
               <div class="col s10 offset-s2 padding-0">
-                <img style="height: 2.6rem" src="assets/runes/perk/8014.png">
-                <img style="height: 2.6rem" src="assets/runes/perk/8017.png">
-                <img style="height: 2.6rem" src="assets/runes/perk/8105.png">
+                <img class="non-keystone" src="assets/runes/perk/8014.png">
+                <img class="non-keystone" src="assets/runes/perk/8017.png">
+                <img class="non-keystone" src="assets/runes/perk/8105.png">
               </div>
               <div class="col s6 offset-s3 padding-0" style="padding-left: 0.2rem !important">
-                <img style="height: 2.6rem" src="assets/runes/perk/8224.png">
-                <img style="height: 2.6rem" src="assets/runes/perk/8236.png">
+                <img class="non-keystone" src="assets/runes/perk/8224.png">
+                <img class="non-keystone" src="assets/runes/perk/8236.png">
               </div>
             </div>
-            <div class="row white-text" style="margin-top: 0.3rem; margin-right: 0rem !important; font-size: 12px !important">
-              <div class="col s5 padding-0 outerspace-transparent z-depth-3" style="padding-left: 0.2rem !important; margin-left: 0.5rem">
+            <div class="row white-text statistic-row">
+              <div class="col s5 padding-0 outerspace-transparent z-depth-3 statistic-col">
                 <strong style="font-size: 14px !important">67%</strong> WinRate<br>Aatrox<br>(2W - 1L)
               </div>
-              <div class="col s5 offset-s2 padding-0 outerspace-transparent z-depth-3" style="padding-left: 0.2rem !important; margin-left: 1rem">
+              <div class="col s5 offset-s2 padding-0 outerspace-transparent z-depth-3 statistic-col">
                 <strong style="font-size: 14px !important">51%</strong> WinRate<br>@ Ranked<br>(51W - 49L)
               </div>
             </div>
           </div>
         </div> <!-- End Cartão !-->
-        <div class="card col"  style="width: 19.2%; margin-top: 0.5rem">
-          <div class="card-image waves-effect waves-block waves-light card-ownimage">
-            <img class="activator" src="http://ddragon.leagueoflegends.com/cdn/8.3.1/img/champion/Fiddlesticks.png">
+        <div class="card col">
+          <div class="card-image waves-effect waves-block waves-light card-ownimage"> <!-- CardImage -->
+            <img class="activator" src="http://ddragon.leagueoflegends.com/cdn/8.3.1/img/champion/Zoe.png">
           </div>
-          <div class="card-content">
+          <div class="card-content"> <!-- CardContent -->
             <div class="row"> <!-- CardTitle -->
               <span class="card-title activator grey-text text-darken-4">
-                <div class="col s8 padding-0"><strong>Fiddlesticks</strong></div>
-                <div class="col s2 padding-0"><img style="height: 2.6rem" src="assets/champmastery/7.png"></div>
+                <div class="col s8 padding-0"><strong>Zoe</strong></div>
+                <div class="col s2 padding-0"><img class="mastery-img" src="assets/champmastery/7.png"></div>
               </span>
             </div>
             <div class="row"> <!-- PersonIfo -->
-              <div class="col s6 padding-0"><span>TyG Masked<br>Challenger</span></div>
-              <div class="col s2 offset-s2 padding-0"><img style="height: 4rem; margin-left: -0.9rem; margin-top: -0.8rem" src="assets/elos/challenger.png"></div>
+              <div class="col s6 padding-0"><span>TyG Masked<br>Silver V</span></div>
+              <div class="col s2 offset-s2 padding-0"><img class="elo-img" src="assets/elos/challenger.png"></div>
             </div>
           </div>
-          <div class="card-reveal" style="overflow: hidden !important"> <!-- CardReveal -->
-            <div class="row" style="margin-right: 0rem !important"> <!-- RevealTitle -->
-              <div class="col s11 offset-s1 padding-0"><span class="card-title grey-text text-darken-4">Fiddlesticks<i class="material-icons right">close</i></span></div>
+          <div class="card-reveal overflow-hidden"> <!-- CardReveal -->
+            <div class="row margin-right-0"> <!-- RevealTitle -->
+              <div class="col s11 offset-s1 padding-0"><span class="card-title grey-text text-darken-4">Zoe<i class="material-icons right">close</i></span></div>
             </div>
-            <div class="row" style="margin-right: 0rem !important;"> <!-- RevealContent -->
+            <div class="row margin-right-0"> <!-- RevealContent -->
                <!-- Runes -->
               <div class="col s1 padding-0" style="padding-left: 0.3rem !important">
-                <img style="height: 4rem; padding-left: 4rem" src="assets/runes/perk/8005.png">
+                <img class="keystone" src="assets/runes/perk/8005.png">
               </div>
               <div class="col s10 offset-s2 padding-0">
-                <img style="height: 2.6rem" src="assets/runes/perk/8014.png">
-                <img style="height: 2.6rem" src="assets/runes/perk/8017.png">
-                <img style="height: 2.6rem" src="assets/runes/perk/8105.png">
+                <img class="non-keystone" src="assets/runes/perk/8014.png">
+                <img class="non-keystone" src="assets/runes/perk/8017.png">
+                <img class="non-keystone" src="assets/runes/perk/8105.png">
               </div>
               <div class="col s6 offset-s3 padding-0" style="padding-left: 0.2rem !important">
-                <img style="height: 2.6rem" src="assets/runes/perk/8224.png">
-                <img style="height: 2.6rem" src="assets/runes/perk/8236.png">
+                <img class="non-keystone" src="assets/runes/perk/8224.png">
+                <img class="non-keystone" src="assets/runes/perk/8236.png">
               </div>
             </div>
-            <div class="row white-text" style="margin-top: 0.3rem; margin-right: 0rem !important; font-size: 12px !important">
-              <div class="col s5 padding-0 outerspace-transparent z-depth-3" style="padding-left: 0.2rem !important; margin-left: 0.5rem">
-                <strong style="font-size: 14px !important">67%</strong> WinRate<br>Fiddlesticks<br>(2W - 1L)
+            <div class="row white-text statistic-row">
+              <div class="col s5 padding-0 outerspace-transparent z-depth-3 statistic-col">
+                <strong style="font-size: 14px !important">67%</strong> WinRate<br>Zoe<br>(2W - 1L)
               </div>
-              <div class="col s5 offset-s2 padding-0 outerspace-transparent z-depth-3" style="padding-left: 0.2rem !important; margin-left: 1rem">
+              <div class="col s5 offset-s2 padding-0 outerspace-transparent z-depth-3 statistic-col">
                 <strong style="font-size: 14px !important">51%</strong> WinRate<br>@ Ranked<br>(51W - 49L)
               </div>
             </div>
           </div>
         </div> <!-- End Cartão !-->
-        <div class="card col"  style="width: 19.2%; margin-top: 0.5rem">
-          <div class="card-image waves-effect waves-block waves-light card-ownimage">
-            <img class="activator" src="http://ddragon.leagueoflegends.com/cdn/8.3.1/img/champion/Heimerdinger.png">
+        <div class="card col">
+          <div class="card-image waves-effect waves-block waves-light card-ownimage"> <!-- CardImage -->
+            <img class="activator" src="http://ddragon.leagueoflegends.com/cdn/8.3.1/img/champion/Orianna.png">
           </div>
-          <div class="card-content">
+          <div class="card-content"> <!-- CardContent -->
             <div class="row"> <!-- CardTitle -->
               <span class="card-title activator grey-text text-darken-4">
-                <div class="col s8 padding-0"><strong>Heimerdinger</strong></div>
-                <div class="col s2 padding-0"><img style="height: 2.6rem" src="assets/champmastery/7.png"></div>
+                <div class="col s8 padding-0"><strong>Orianna</strong></div>
+                <div class="col s2 padding-0"><img class="mastery-img" src="assets/champmastery/6.png"></div>
               </span>
             </div>
             <div class="row"> <!-- PersonIfo -->
-              <div class="col s6 padding-0"><span>TyG Masked<br>Unranked</span></div>
-              <div class="col s2 offset-s2 padding-0"><img style="height: 4rem; margin-left: -0.9rem; margin-top: -0.8rem" src="assets/elos/unranked.png"></div>
+              <div class="col s6 padding-0"><span>TyG Masked<br>Gold V</span></div>
+              <div class="col s2 offset-s2 padding-0"><img class="elo-img" src="assets/elos/unranked.png"></div>
             </div>
           </div>
-          <div class="card-reveal" style="overflow: hidden !important"> <!-- CardReveal -->
-            <div class="row" style="margin-right: 0rem !important"> <!-- RevealTitle -->
-              <div class="col s11 offset-s1 padding-0"><span class="card-title grey-text text-darken-4">Heimerdinger<i class="material-icons right">close</i></span></div>
+          <div class="card-reveal overflow-hidden"> <!-- CardReveal -->
+            <div class="row margin-right-0"> <!-- RevealTitle -->
+              <div class="col s11 offset-s1 padding-0"><span class="card-title grey-text text-darken-4">Orianna<i class="material-icons right">close</i></span></div>
             </div>
-            <div class="row" style="margin-right: 0rem !important;"> <!-- RevealContent -->
+            <div class="row margin-right-0"> <!-- RevealContent -->
                <!-- Runes -->
               <div class="col s1 padding-0" style="padding-left: 0.3rem !important">
-                <img style="height: 4rem; padding-left: 4rem" src="assets/runes/perk/8005.png">
+                <img class="keystone" src="assets/runes/perk/8005.png">
               </div>
               <div class="col s10 offset-s2 padding-0">
-                <img style="height: 2.6rem" src="assets/runes/perk/8014.png">
-                <img style="height: 2.6rem" src="assets/runes/perk/8017.png">
-                <img style="height: 2.6rem" src="assets/runes/perk/8105.png">
+                <img class="non-keystone" src="assets/runes/perk/8014.png">
+                <img class="non-keystone" src="assets/runes/perk/8017.png">
+                <img class="non-keystone" src="assets/runes/perk/8105.png">
               </div>
               <div class="col s6 offset-s3 padding-0" style="padding-left: 0.2rem !important">
-                <img style="height: 2.6rem" src="assets/runes/perk/8224.png">
-                <img style="height: 2.6rem" src="assets/runes/perk/8236.png">
+                <img class="non-keystone" src="assets/runes/perk/8224.png">
+                <img class="non-keystone" src="assets/runes/perk/8236.png">
               </div>
             </div>
-            <div class="row white-text" style="margin-top: 0.3rem; margin-right: 0rem !important; font-size: 12px !important">
-              <div class="col s5 padding-0 outerspace-transparent z-depth-3" style="padding-left: 0.2rem !important; margin-left: 0.5rem">
-                <strong style="font-size: 14px !important">67%</strong> WinRate<br>Heimerdinger<br>(2W - 1L)
+            <div class="row white-text statistic-row">
+              <div class="col s5 padding-0 outerspace-transparent z-depth-3 statistic-col">
+                <strong style="font-size: 14px !important">67%</strong> WinRate<br>Orianna<br>(2W - 1L)
               </div>
-              <div class="col s5 offset-s2 padding-0 outerspace-transparent z-depth-3" style="padding-left: 0.2rem !important; margin-left: 1rem">
+              <div class="col s5 offset-s2 padding-0 outerspace-transparent z-depth-3 statistic-col">
                 <strong style="font-size: 14px !important">51%</strong> WinRate<br>@ Ranked<br>(51W - 49L)
               </div>
             </div>
           </div>
         </div> <!-- End Cartão !-->
-        <div class="card col"  style="width: 19.2%; margin-top: 0.5rem">
-          <div class="card-image waves-effect waves-block waves-light card-ownimage">
-            <img class="activator" src="http://ddragon.leagueoflegends.com/cdn/8.3.1/img/champion/MissFortune.png">
-          </div>
-          <div class="card-content">
-            <div class="row"> <!-- CardTitle -->
-              <span class="card-title activator grey-text text-darken-4">
-                <div class="col s8 padding-0"><strong>Miss Fortune</strong></div>
-                <div class="col s2 padding-0"><img style="height: 2.6rem" src="assets/champmastery/7.png"></div>
-              </span>
-            </div>
-            <div class="row"> <!-- PersonIfo -->
-              <div class="col s6 padding-0"><span>TyG Masked<br></span></div>
-              <div class="col s2 offset-s2 padding-0"><img style="height: 4rem; margin-left: -0.9rem; margin-top: -0.8rem" src="assets/elos/unranked.png"></div>
-            </div>
-          </div>
-          <div class="card-reveal" style="overflow: hidden !important"> <!-- CardReveal -->
-            <div class="row" style="margin-right: 0rem !important"> <!-- RevealTitle -->
-              <div class="col s11 offset-s1 padding-0"><span class="card-title grey-text text-darken-4">Miss Fortune<i class="material-icons right">close</i></span></div>
-            </div>
-            <div class="row" style="margin-right: 0rem !important;"> <!-- RevealContent -->
-               <!-- Runes -->
-              <div class="col s1 padding-0" style="padding-left: 0.3rem !important">
-                <img style="height: 4rem; padding-left: 4rem" src="assets/runes/perk/8005.png">
-              </div>
-              <div class="col s10 offset-s2 padding-0">
-                <img style="height: 2.6rem" src="assets/runes/perk/8014.png">
-                <img style="height: 2.6rem" src="assets/runes/perk/8017.png">
-                <img style="height: 2.6rem" src="assets/runes/perk/8105.png">
-              </div>
-              <div class="col s6 offset-s3 padding-0" style="padding-left: 0.2rem !important">
-                <img style="height: 2.6rem" src="assets/runes/perk/8224.png">
-                <img style="height: 2.6rem" src="assets/runes/perk/8236.png">
-              </div>
-            </div>
-            <div class="row white-text" style="margin-top: 0.3rem; margin-right: 0rem !important; font-size: 12px !important">
-              <div class="col s5 padding-0 outerspace-transparent z-depth-3" style="padding-left: 0.2rem !important; margin-left: 0.5rem">
-                <strong style="font-size: 14px !important">67%</strong> WinRate<br>Miss Fortune<br>(2W - 1L)
-              </div>
-              <div class="col s5 offset-s2 padding-0 outerspace-transparent z-depth-3" style="padding-left: 0.2rem !important; margin-left: 1rem">
-                <strong style="font-size: 14px !important">51%</strong> WinRate<br>@ Ranked<br>(51W - 49L)
-              </div>
-            </div>
-          </div>
-        </div> <!-- End Cartão !-->
-        <div class="card col"  style="width: 19.2%; margin-top: 0.5rem">
-          <div class="card-image waves-effect waves-block waves-light card-ownimage">
+        <div class="card col">
+          <div class="card-image waves-effect waves-block waves-light card-ownimage"> <!-- CardImage -->
             <img class="activator" src="http://ddragon.leagueoflegends.com/cdn/8.3.1/img/champion/TwistedFate.png">
           </div>
-          <div class="card-content">
+          <div class="card-content"> <!-- CardContent -->
             <div class="row"> <!-- CardTitle -->
               <span class="card-title activator grey-text text-darken-4">
-                <div class="col s8 padding-0"><strong>Twisted Fate</strong></div>
-                <div class="col s2 padding-0"><img style="height: 2.6rem" src="assets/champmastery/0.png"></div>
+                <div class="col s8 padding-0"><strong>Twised Fate</strong></div>
+                <div class="col s2 padding-0"><img class="mastery-img" src="assets/champmastery/5.png"></div>
               </span>
             </div>
             <div class="row"> <!-- PersonIfo -->
-              <div class="col s6 padding-0"><span>TyG Masked<br>Gold IV</span></div>
-              <div class="col s2 offset-s2 padding-0"><img style="height: 4rem; margin-left: -0.9rem; margin-top: -0.8rem" src="assets/elos/unranked.png"></div>
+              <div class="col s6 padding-0"><span>TyG Masked<br>Platinum V</span></div>
+              <div class="col s2 offset-s2 padding-0"><img class="elo-img" src="assets/elos/diamond/2.png"></div>
             </div>
           </div>
-          <div class="card-reveal" style="overflow: hidden !important"> <!-- CardReveal -->
-            <div class="row" style="margin-right: 0rem !important"> <!-- RevealTitle -->
+          <div class="card-reveal overflow-hidden"> <!-- CardReveal -->
+            <div class="row margin-right-0"> <!-- RevealTitle -->
               <div class="col s11 offset-s1 padding-0"><span class="card-title grey-text text-darken-4">Twisted Fate<i class="material-icons right">close</i></span></div>
             </div>
-            <div class="row" style="margin-right: 0rem !important;"> <!-- RevealContent -->
+            <div class="row margin-right-0"> <!-- RevealContent -->
                <!-- Runes -->
               <div class="col s1 padding-0" style="padding-left: 0.3rem !important">
-                <img style="height: 4rem; padding-left: 4rem" src="assets/runes/perk/8005.png">
+                <img class="keystone" src="assets/runes/perk/8005.png">
               </div>
               <div class="col s10 offset-s2 padding-0">
-                <img style="height: 2.6rem" src="assets/runes/perk/8014.png">
-                <img style="height: 2.6rem" src="assets/runes/perk/8017.png">
-                <img style="height: 2.6rem" src="assets/runes/perk/8105.png">
+                <img class="non-keystone" src="assets/runes/perk/8014.png">
+                <img class="non-keystone" src="assets/runes/perk/8017.png">
+                <img class="non-keystone" src="assets/runes/perk/8105.png">
               </div>
               <div class="col s6 offset-s3 padding-0" style="padding-left: 0.2rem !important">
-                <img style="height: 2.6rem" src="assets/runes/perk/8224.png">
-                <img style="height: 2.6rem" src="assets/runes/perk/8236.png">
+                <img class="non-keystone" src="assets/runes/perk/8224.png">
+                <img class="non-keystone" src="assets/runes/perk/8236.png">
               </div>
             </div>
-            <div class="row white-text" style="margin-top: 0.3rem; margin-right: 0rem !important; font-size: 12px !important">
-              <div class="col s5 padding-0 outerspace-transparent z-depth-3" style="padding-left: 0.2rem !important; margin-left: 0.5rem">
+            <div class="row white-text statistic-row">
+              <div class="col s5 padding-0 outerspace-transparent z-depth-3 statistic-col">
                 <strong style="font-size: 14px !important">67%</strong> WinRate<br>Twisted Fate<br>(2W - 1L)
               </div>
-              <div class="col s5 offset-s2 padding-0 outerspace-transparent z-depth-3" style="padding-left: 0.2rem !important; margin-left: 1rem">
+              <div class="col s5 offset-s2 padding-0 outerspace-transparent z-depth-3 statistic-col">
+                <strong style="font-size: 14px !important">51%</strong> WinRate<br>@ Ranked<br>(51W - 49L)
+              </div>
+            </div>
+          </div>
+        </div> <!-- End Cartão !-->
+        <div class="card col">
+          <div class="card-image waves-effect waves-block waves-light card-ownimage"> <!-- CardImage -->
+            <img class="activator" src="http://ddragon.leagueoflegends.com/cdn/8.3.1/img/champion/Sejuani.png">
+          </div>
+          <div class="card-content"> <!-- CardContent -->
+            <div class="row"> <!-- CardTitle -->
+              <span class="card-title activator grey-text text-darken-4">
+                <div class="col s8 padding-0"><strong>Sejuani</strong></div>
+                <div class="col s2 padding-0"><img class="mastery-img" src="assets/champmastery/4.png"></div>
+              </span>
+            </div>
+            <div class="row"> <!-- PersonIfo -->
+              <div class="col s6 padding-0"><span>TyG Masked<br>Diamond V</span></div>
+              <div class="col s2 offset-s2 padding-0"><img class="elo-img" src="assets/elos/diamond/3.png"></div>
+            </div>
+          </div>
+          <div class="card-reveal overflow-hidden"> <!-- CardReveal -->
+            <div class="row margin-right-0"> <!-- RevealTitle -->
+              <div class="col s11 offset-s1 padding-0"><span class="card-title grey-text text-darken-4">Sejuani<i class="material-icons right">close</i></span></div>
+            </div>
+            <div class="row margin-right-0"> <!-- RevealContent -->
+               <!-- Runes -->
+              <div class="col s1 padding-0" style="padding-left: 0.3rem !important">
+                <img class="keystone" src="assets/runes/perk/8005.png">
+              </div>
+              <div class="col s10 offset-s2 padding-0">
+                <img class="non-keystone" src="assets/runes/perk/8014.png">
+                <img class="non-keystone" src="assets/runes/perk/8017.png">
+                <img class="non-keystone" src="assets/runes/perk/8105.png">
+              </div>
+              <div class="col s6 offset-s3 padding-0" style="padding-left: 0.2rem !important">
+                <img class="non-keystone" src="assets/runes/perk/8224.png">
+                <img class="non-keystone" src="assets/runes/perk/8236.png">
+              </div>
+            </div>
+            <div class="row white-text statistic-row">
+              <div class="col s5 padding-0 outerspace-transparent z-depth-3 statistic-col">
+                <strong style="font-size: 14px !important">67%</strong> WinRate<br>Sejuani<br>(2W - 1L)
+              </div>
+              <div class="col s5 offset-s2 padding-0 outerspace-transparent z-depth-3 statistic-col">
                 <strong style="font-size: 14px !important">51%</strong> WinRate<br>@ Ranked<br>(51W - 49L)
               </div>
             </div>
           </div>
         </div> <!-- End Cartão !-->
       </div>
-
-
-
 
       <!-- Botão no canto inferior esquerdo !-->
       <!--<div class="fixed-action-btn horizontal">
@@ -506,7 +502,6 @@
         </ul>
       </div>-->
 
-
       <!-- SIDEBAR !-->
       <ul id="slide-out" class="side-nav fixed outerspace white-text">
         <li>
@@ -514,29 +509,28 @@
             <div class="background">
               <img src="assets/splashs/4.png">
             </div>
-            <img class="circle responsive-img left" style="height: 135px; width: 135px; margin-left: 15%" src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/2077.png">
+            <img class="circle responsive-img left perfil-icon" src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/2077.png">
             <br><br><br>
-            <span class="white-text flow-text" style="padding-top: 8rem; font-size: 2.5rem">TyG Yeux</span>
-            <span class="white-text flow-text email" style="font-size: 1.5rem">Level 50</span>
+            <span class="white-text flow-text perfil-name">TyG Yeux</span>
+            <span class="white-text flow-text email perfil-level">Level 50</span>
           </div>
         </li>
-        <li><a class="waves-effect modal-trigger white-text" href="#profile-modal" style="font-size: 1.5rem"><i class="material-icons white-text" style="font-size: 3rem">person</i>Profile</a></li>
-        <li><a class="waves-effect modal-trigger white-text" href="#settings-modal" style="font-size: 1.5rem"><i class="material-icons white-text" style="font-size: 3rem;">settings</i>Settings</a></li>
+        <li><a class="waves-effect modal-trigger white-text sidenav-li" href="#profile-modal"><i class="material-icons white-text sidenav-icon">person</i>Profile</a></li>
+        <li><a class="waves-effect modal-trigger white-text  sidenav-li" href="#settings-modal"><i class="material-icons white-text sidenav-icon">settings</i>Settings</a></li>
         <div class="divider white"></div>
         <div style="margin-top: 20rem">
           <a class="right white-text" href="#!" style="padding-right: 0.4rem">Donate</a><br>
           <a class="right white-text" href="#!" style="padding-right: 0.4rem">About</a>
         </div>
-      </ul> <!-- End Sidebar !-->
-
+      </ul>
 
 
 
       <!-- MODAL STRUCTURES -->
 
       <!-- SearchModal -->
-      <div id="search-modal" class="modal modal-fixed-footer rich-black outerspace-lighten-text" style="width: 85% !important; overflow-y: auto; height: 50%">
-        <div class="modal-content"  style="overflow: auto;  overflow-x: hidden; background-image: url('assets/settingsBackgroundMerge.png')">
+      <div id="search-modal" class="modal modal-fixed-footer rich-black outerspace-lighten-text search-modal">
+        <div class="modal-content modal-owncontent modal-background">
           <h3><strong>NEW SUMMONER SEARCH</strong></h3>
 
           <!-- Search Information -->
@@ -574,46 +568,46 @@
       </div>
 
       <!-- ProfileModal -->
-      <div id="profile-modal" class="modal modal-fixed-footer rich-black outerspace-lighten-text" style="width: 85% !important; overflow-y: hidden;">
-        <div class="modal-content"  style="overflow: auto;  overflow-x: hidden; overflow-y: hidden; background-image: url('assets/settingsBackgroundMerge.png')">
+      <div id="profile-modal" class="modal modal-fixed-footer rich-black outerspace-lighten-text profile-modal">
+        <div class="modal-content profile-modal-content modal-background">
           <h3><strong>PROFILE</strong></h3><br>
 
           <!-- Profile Information -->
           <div class="row" style="margin-top: 0.4rem">
-            <div class="col s12 m3" style="border: 1px solid #ad8033; padding: 1.2rem; height: 27rem; overflow-y: auto;">
-              <img class="circle responsive-img" style="height: 135px; width: 135px; margin-left: 23%" src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/2077.png">
-              <span class="wflow-text center-align" style="padding-top: 4rem; font-size: 2.5rem">TyG Yeux</span><br>
-              <span class="flow-text email" style="font-size: 1.5rem">Level 50</span>
+            <div class="col s12 m3 profile-inner">
+              <img class="circle responsive-img perfil-icon" style="margin-left: 23% !important" src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/2077.png">
+              <span style="padding-top: 4rem; font-size: 2.5rem">TyG Yeux</span><br>
+              <span style="font-size: 1.5rem">Level 50</span>
             </div>
-            <div class="col s12 m3" style="margin-left: 0.5rem; border: 1px solid #ad8033; padding: 3rem; padding-top: 0.5rem; padding-bottom: 0rem; height: 27rem; overflow-y: auto;">
+            <div class="col s12 m3 profile-inner profile-runes">
               <span class="flow-text" style="margin-left: 1.5rem">Solo/Duo 5x5</span><br>
-              <img style="height: 8rem; margin-bottom: -1.2rem; margin-left: 2.1rem; margin-top: -1.2rem" src="assets/elos/diamond/1.png">
+              <img class="profile-runes-images" src="assets/elos/diamond/1.png">
               <br><span class="flow-text" style="margin-left: 3.4rem">Flex 5x5</span><br>
-              <img style="height: 8rem; margin-bottom: -1.2rem; margin-left: 2.1rem; margin-top: -1.2rem" src="assets/elos/diamond/2.png">
+              <img class="profile-runes-images" src="assets/elos/diamond/2.png">
               <br><span class="flow-text" style="margin-left: 3.4rem">Flex 3x3</span><br>
-              <img style="height: 8rem; margin-bottom: -1.2rem; margin-left: 2.1rem; margin-top: -1.2rem" src="assets/elos/diamond/3.png">
+              <img class="profile-runes-images" src="assets/elos/diamond/3.png">
             </div>
-            <div class="col s12 m5" style="margin-left: 3rem; border: 1px solid #ad8033; padding: 2rem; padding-top: 0.5rem; height: 27rem; overflow-y: auto;">
+            <div class="col s12 m5 profile-inner profile-mastery">
               <span class="flow-text">Mastery 7</span><br>
               <img class="circle responsive-img" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/8.3.1/img/champion/TwistedFate.png">
-              <img style="height: 2rem; margin-left: -1.7rem; margin-bottom: 2.5rem" src="assets/champmastery/7.png">
+              <img class="profile-mastery-img" src="assets/champmastery/7.png">
               <img class="circle responsive-img" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/8.3.1/img/champion/TwistedFate.png">
-              <img style="height: 2rem; margin-left: -1.7rem; margin-bottom: 2.5rem" src="assets/champmastery/7.png">
+              <img class="profile-mastery-img" src="assets/champmastery/7.png">
               <img class="circle responsive-img" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/8.3.1/img/champion/TwistedFate.png">
-              <img style="height: 2rem; margin-left: -1.7rem; margin-bottom: 2.5rem" src="assets/champmastery/7.png">
+              <img class="profile-mastery-img" src="assets/champmastery/7.png">
               <br><span class="flow-text">Mastery 6</span><br>
               <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="I am a tooltip" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/8.3.1/img/champion/TwistedFate.png">
-              <img style="height: 2rem; margin-left: -1.7rem; margin-bottom: 2.5rem" src="assets/champmastery/6.png">
+              <img class="profile-mastery-img" src="assets/champmastery/6.png">
               <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="I am a tooltip" data-background-color="red lighten-3" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/8.3.1/img/champion/TwistedFate.png">
-              <img style="height: 2rem; margin-left: -1.7rem; margin-bottom: 2.5rem" src="assets/champmastery/7.png">
+              <img class="profile-mastery-img" src="assets/champmastery/6.png">
               <img class="circle responsive-img" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/8.3.1/img/champion/TwistedFate.png">
-              <img style="height: 2rem; margin-left: -1.7rem; margin-bottom: 2.5rem" src="assets/champmastery/6.png">
+              <img class="profile-mastery-img" src="assets/champmastery/6.png">
               <img class="circle responsive-img" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/8.3.1/img/champion/TwistedFate.png">
-              <img style="height: 2rem; margin-left: -1.7rem; margin-bottom: 2.5rem" src="assets/champmastery/6.png">
+              <img class="profile-mastery-img" src="assets/champmastery/6.png">
               <img class="circle responsive-img" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/8.3.1/img/champion/TwistedFate.png">
-              <img style="height: 2rem; margin-left: -1.7rem; margin-bottom: 2.5rem" src="assets/champmastery/6.png">
+              <img class="profile-mastery-img" src="assets/champmastery/6.png">
               <img class="circle responsive-img" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/8.3.1/img/champion/TwistedFate.png">
-              <img style="height: 2rem; margin-left: -1.7rem; margin-bottom: 2.5rem" src="assets/champmastery/6.png">
+              <img class="profile-mastery-img" src="assets/champmastery/6.png">
               <br><span class="flow-text">Mastery 5</span><br>
               <img class="circle responsive-img" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/8.3.1/img/champion/TwistedFate.png">
               <img class="circle responsive-img" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/8.3.1/img/champion/TwistedFate.png">
@@ -660,8 +654,6 @@
               <img class="circle responsive-img" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/8.3.1/img/champion/TwistedFate.png">
               <img class="circle responsive-img" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/8.3.1/img/champion/TwistedFate.png">
               <img class="circle responsive-img" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/8.3.1/img/champion/TwistedFate.png">
-
-
             </div>
           </div>
         </div>
@@ -672,8 +664,8 @@
       </div>
 
       <!-- SettingsModal -->
-      <div id="settings-modal" class="modal modal-fixed-footer rich-black outerspace-lighten-text" style="width: 85% !important; overflow-y: auto;">
-        <div id="settings-modal-content" class="modal-content" style="overflow: auto;  overflow-x: hidden; background-image: url('assets/settingsBackgroundMerge.png')">
+      <div id="settings-modal" class="modal modal-fixed-footer rich-black outerspace-lighten-text settings-modal">
+        <div id="settings-modal-content" class="modal-content modal-owncontent modal-background">
           <h3><strong>SETTINGS</strong></h3>
 
           <!-- Default Information -->
@@ -735,7 +727,7 @@
           <div class="row" style="line-height: 1.6rem !important">
             <div class="col s6">
               <span class="flow-text"><br>Finish app at Exit button (Else minimize)<br></span>
-              <div class="switch" style="margin-top: 0.5rem">
+              <div class="switch ownswitch">
                 <label>
                   Off
                   <input type="checkbox">
@@ -746,7 +738,7 @@
             </div>
             <div class="col s6">
               <span class="flow-text"><br>Windows Notifications<br></span>
-              <div class="switch" style="margin-top: 0.5rem">
+              <div class="switch ownswitch">
                 <label>
                   Off
                   <input type="checkbox">
@@ -759,7 +751,7 @@
           <div class="row">
             <div class="col s4">
               <span class="flow-text"><br>Show tooltips in Runes<br></span>
-              <div class="switch" style="margin-top: 0.5rem">
+              <div class="switch ownswitch">
                 <label>
                   Off
                   <input type="checkbox">
@@ -770,7 +762,7 @@
             </div>
             <div class="col s4">
               <span class="flow-text"><br>Show tooltips in Masteries<br></span>
-              <div class="switch" style="margin-top: 0.5rem">
+              <div class="switch ownswitch">
                 <label>
                   Off
                   <input type="checkbox">
@@ -782,7 +774,7 @@
             <div class="col s4">
               <span class="flow-text"><br>Show tooltips in Elos<br></
                 span>
-              <div class="switch" style="margin-top: 0.5rem">
+              <div class="switch ownswitch">
                 <label>
                   Off
                   <input type="checkbox">
@@ -809,6 +801,7 @@
     <script type="text/javascript" src="js\storageHandling.js"></script>
     <script type="text/javascript" src="js\getInfo.js"></script>
     <script type="text/javascript" src="js\parseInfo.js"></script>
+    <script type="text/javascript" src="js\handlebars.runtime.js"></script>
     <script>
       // Materialize JS initialization
       $(document).ready(function(){

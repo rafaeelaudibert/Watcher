@@ -1,0 +1,153 @@
+.search-summoner {
+  height: 4rem;
+  margin-top: 1rem;
+  margin-left: 1.5rem;
+  padding-top: 0.9rem;
+  font-size: 1.3rem;
+  border-radius: 3px
+}
+
+.match-info {
+  margin-top: 1rem;
+  margin-left: 2.5rem !important;
+  border-radius: 3px
+}
+
+.card-ownimage {
+  margin: 0 auto !important;
+  max-height: 20rem !important;
+  max-width: 150px !important;
+}
+
+
+.mastery-img{
+  height: 2.6rem !important;
+}
+
+.elo-img {
+  height: 4rem;
+  margin-left: -0.9rem;
+  margin-top: -0.8rem
+}
+
+.keystone {
+  height: 4rem;
+  padding-left: 4rem
+}
+
+.non-keystone {
+  height: 2.6rem
+}
+
+.margin-right-0 {
+  margin-right: 0rem !important;
+}
+
+.overflow-hidden{
+  overflow: hidden !important;
+}
+
+.padding-0{
+  padding: 0rem !important;
+}
+
+.statistic-row {
+  margin-top: 0.3rem;
+  margin-right: 0rem !important;
+  font-size: 12px !important
+}
+
+.statistic-col {
+  padding-left: 0.2rem !important;
+  margin-left: 0.5rem !important
+}
+
+.perfil-icon {
+  height: 135px !important;
+  width: 135px !important;
+  margin-left: 15%
+}
+
+.perfil-name {
+  padding-top: 8rem;
+  font-size: 2.5rem
+}
+
+.perfil-level {
+  font-size: 1.5rem !important
+}
+
+.sidenav-li{
+  font-size: 1.5rem !important;
+}
+
+.sidenav-icon {
+  font-size: 3rem !important;
+}
+
+.search-modal {
+  width: 85% !important;
+  overflow-y: auto;
+  height: 50% !important;
+}
+
+.modal-background {
+  background-image: url('../assets/settingsBackgroundMerge.png')
+}
+
+.modal-owncontent {
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.profile-modal {
+  width: 85% !important;
+  overflow-y: hidden !important;
+}
+
+.profile-modal-content {
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
+}
+
+.profile-inner {
+  border: 1px solid #ad8033;
+  padding: 1.2rem !important;
+  height: 27rem;
+  overflow-y: auto;
+}
+
+.profile-runes {
+  margin-left: 0.5rem !important;
+  padding: 3rem !important;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0rem !important;
+}
+
+.profile-runes-images {
+  height: 8rem;
+  margin-bottom: -1.2rem;
+  margin-left: 2.1rem;
+  margin-top: -1.2rem
+}
+
+.profile-mastery {
+  margin-left: 3rem !important;
+  padding: 2rem !important;
+  padding-top: 0.5rem !important;
+}
+
+.profile-mastery-img {
+  height: 2rem !important;
+  margin-left: -1.7rem !important;
+  margin-bottom: 2.5rem !important
+}
+
+.settings-modal {
+  width: 85% !important;
+  overflow-y: auto !important;
+}
+
+.ownswitch {
+  margin-top: 0.5rem !important;
+}
