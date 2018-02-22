@@ -2,7 +2,7 @@ const jquery = require("jquery");
 const remote = require('electron').remote;
 const apiKey = remote.getGlobal('sharedObj').apiKey;
 const seasonAtual = 11;
-const defaultPlayer = 'meloso'
+const defaultPlayer = 'mcgirino123'
 const {
   Kayn,
   REGIONS
@@ -80,7 +80,7 @@ async function getInitialInfo(){
                                                                   participante.summonerId,
                                                                   participante.perks.perkIds
                                                                 ))
-    )    
+    )
     //Created all the players in playersList
     console.log("%c[playersList]", "color:purple; font-size: medium", "- Filled all the playersList with the match's players");
     console.log("%c[playersList]", "color:purple; font-size: medium", "- Filled with summonerName, profileIcon, championId, summonerId and runes");
