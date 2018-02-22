@@ -26,17 +26,17 @@ templates['championCard'] = template({"compiler":[7,">= 4.0.0"],"main":function(
     + "\"> <!-- CardReveal -->\r\n    <div class=\"row margin-right-0\"> <!-- RevealTitle -->\r\n      <div class=\"col s11 offset-s1 padding-0\"><span class=\"card-title grey-text text-darken-4\">"
     + alias4(((helper = (helper = helpers.championName || (depth0 != null ? depth0.championName : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"championName","hash":{},"data":data}) : helper)))
     + "<i class=\"material-icons right\">close</i></span></div>\r\n    </div>\r\n    <div class=\"row margin-right-0\"> <!-- RevealContent -->\r\n       <!-- Runes -->\r\n      <div class=\"col s1 padding-0\" style=\"padding-left: 0.3rem !important\">\r\n        <img class=\"keystone\" src=\"assets/runes/perk/"
-    + alias4(alias5(((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1.keystone : stack1), depth0))
+    + alias4(alias5(((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1["0"] : stack1), depth0))
     + ".png\">\r\n      </div>\r\n      <div class=\"col s10 offset-s2 padding-0\">\r\n        <img class=\"non-keystone\" src=\"assets/runes/perk/"
-    + alias4(alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1.bigger : stack1)) != null ? stack1["1"] : stack1), depth0))
+    + alias4(alias5(((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1["1"] : stack1), depth0))
     + ".png\">\r\n        <img class=\"non-keystone\" src=\"assets/runes/perk/"
-    + alias4(alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1.bigger : stack1)) != null ? stack1["2"] : stack1), depth0))
+    + alias4(alias5(((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1["2"] : stack1), depth0))
     + ".png\">\r\n        <img class=\"non-keystone\" src=\"assets/runes/perk/"
-    + alias4(alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1.bigger : stack1)) != null ? stack1["3"] : stack1), depth0))
+    + alias4(alias5(((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1["3"] : stack1), depth0))
     + ".png\">\r\n      </div>\r\n      <div class=\"col s6 offset-s3 padding-0\" style=\"padding-left: 0.2rem !important\">\r\n        <img class=\"non-keystone\" src=\"assets/runes/perk/"
-    + alias4(alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1.lesser : stack1)) != null ? stack1["1"] : stack1), depth0))
+    + alias4(alias5(((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1["4"] : stack1), depth0))
     + ".png\">\r\n        <img class=\"non-keystone\" src=\"assets/runes/perk/"
-    + alias4(alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1.lesser : stack1)) != null ? stack1["2"] : stack1), depth0))
+    + alias4(alias5(((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1["5"] : stack1), depth0))
     + ".png\">\r\n      </div>\r\n    </div>\r\n    <div class=\"row white-text statistic-row\">\r\n      <div class=\"col s5 padding-0 outerspace-transparent z-depth-3 statistic-col\">\r\n        <strong style=\"font-size: 14px !important\">"
     + alias4(((helper = (helper = helpers.championWinrate || (depth0 != null ? depth0.championWinrate : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"championWinrate","hash":{},"data":data}) : helper)))
     + "</strong> WinRate<br>"

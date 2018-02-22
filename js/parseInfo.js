@@ -10,8 +10,9 @@ class Liga {
 
 //Função construtora da infoPlayer
 class Player {
-  constructor(name, summonerIcon, champion, summonerId){
+  constructor(name, summonerIcon, champion, summonerId, runes){
     this.name = name;
+    this.runes = runes;
     this.summonerIcon = summonerIcon;
     this.summonerId = summonerId;
     this.championId = champion;

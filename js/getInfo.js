@@ -77,11 +77,13 @@ async function getInitialInfo(){
                                                                   participante.summonerName,
                                                                   participante.profileIconId,
                                                                   participante.championId,
-                                                                  participante.summonerId
+                                                                  participante.summonerId,
+                                                                  participante.perks.perkIds
                                                                 ))
-    )
+    )    
     //Created all the players in playersList
     console.log("%c[playersList]", "color:purple; font-size: medium", "- Filled all the playersList with the match's players");
+    console.log("%c[playersList]", "color:purple; font-size: medium", "- Filled with summonerName, profileIcon, championId, summonerId and runes");
 
     //Gets the champion Name according to the champion Id, for each player in playersList
     playersList.map( async participante => {
