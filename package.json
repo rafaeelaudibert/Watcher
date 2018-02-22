@@ -26,13 +26,10 @@
     "material-ui-image": "^2.1.1",
     "materialize-css": "^0.100.2",
     "node-sass": "^4.7.2",
-    "placeload.js": "^1.0.3",
     "sass": "^1.0.0-beta.4"
   },
   "devDependencies": {
     "electron-packager": "^10.1.1",
     "handlebars": "^4.0.11",
-    "malihu-custom-scrollbar-plugin": "^3.1.5",
-    "standard": "^10.0.3"
   }
 }
