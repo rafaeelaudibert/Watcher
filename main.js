@@ -5,17 +5,13 @@ const storage = require('electron-json-storage');
 const secretInfo = require('./secretInfo')
 
 // TODO: Create the WindowsNotifications option
+// //SET ENV
+//process.env.NODE_ENV = 'production';  //DESCOMENTAR QUANDO FOR UTILIZAR
+
+
 
 //Descontructors
 const {app, BrowserWindow, Menu, ipcMain, Tray} = electron;
-
-//SET ENV
-//process.env.NODE_ENV = 'production';  //DESCOMENTAR QUANDO FOR UTILIZAR
-
-let iconPath = path.join(__dirname, '/assets/icons/win/icon.ico');
-let mainWindow;
-let newWindow;
-let trayMenu = null; //Making so that trayMenu is not collected by the GC
 
 //Shared object, can be acessed from the console
 global.sharedObj = {
@@ -23,14 +19,18 @@ global.sharedObj = {
   apiKey: secretInfo.apiKey
 };
 
+let iconPath = path.join(__dirname, '/assets/icons/png/leagueIcon.png');
+let mainWindow;
+let newWindow;
+let trayMenu = null; //Making so that trayMenu is not collected by the GC
 
 //Listen for the app to be ready
 app.on('ready', function(){
 
     //Create new mainWindow
   const {width, height} = electron.screen.getPrimaryDisplay().workAreaSize
-  var widthReal = width - 25;
-  var heightReal = height - 25;
+  let widthReal = width - 25;
+  let heightReal = height - 25;
   mainWindow = new BrowserWindow({
   width: widthReal,
   height: heightReal,
