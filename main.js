@@ -15,6 +15,7 @@ const {app, BrowserWindow, Menu, ipcMain, Tray} = electron;
 let iconPath = path.join(__dirname, '/assets/icons/win/icon.ico');
 let mainWindow;
 let newWindow;
+let trayMenu = null; //Making so that trayMenu is not collected by the GC
 
 //Shared object, can be acessed from the console
 global.sharedObj = {
@@ -49,7 +50,7 @@ app.on('ready', function(){
 
 
   // Tray configuration \\
-  var trayMenu = new Tray(iconPath);
+  trayMenu = new Tray(iconPath);
   trayMenu.setToolTip("LiveTracker")
 
   //Tray menu
