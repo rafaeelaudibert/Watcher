@@ -1,0 +1,69 @@
+<div id="profile-modal" class="modal modal-fixed-footer rich-black outerspace-lighten-text profile-modal">
+  <div class="modal-content profile-modal-content modal-background">
+    <h3><strong>PROFILE</strong></h3><br>
+
+    <!-- Profile Information -->
+    <div class="row" style="margin-top: 0.4rem">
+      <div class="col s12 m3 profile-inner">
+        <img class="circle responsive-img perfil-icon" style="margin-left: 23% !important" src="http://ddragon.leagueoflegends.com/cdn/{{patch}}/img/profileicon/{{summonerIcon}}.png">
+        <span style="padding-top: 4rem; font-size: 2.5rem">{{summonerName}}</span><br>
+        <span style="font-size: 1.5rem">{{summonerLevel}}</span>
+      </div>
+      <div class="col s12 m3 profile-inner profile-runes">
+        <span class="flow-text" style="margin-left: 1.5rem">Solo/Duo 5x5</span><br>
+        <img class="profile-runes-images" src="assets/elos/{{elo.soloDuo}}.png">
+        <br><span class="flow-text" style="margin-left: 3.4rem">Flex 5x5</span><br>
+        <img class="profile-runes-images" src="assets/elos/{{elo.Flex}}.png">
+        <br><span class="flow-text" style="margin-left: 3.4rem">Flex 3x3</span><br>
+        <img class="profile-runes-images" src="assets/elos/{{elo.tt}}.png">
+      </div>
+      <div class="col s12 m5 profile-inner profile-mastery">
+        <span class="flow-text">Mastery 7</span><br>
+        {{#each mastery.m7}}
+          <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{tooltip}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{patch}}/img/champion/{{championName}}.png">
+          <img class="profile-mastery-img" src="assets/champmastery/7.png">
+        {{/each}}
+
+        <br><span class="flow-text">Mastery 6</span><br>
+        {{#each mastery.m6}}
+          <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{tooltip}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{patch}}/img/champion/{{championName}}.png">
+          <img class="profile-mastery-img" src="assets/champmastery/6.png">
+        {{/each}}
+
+        <br><span class="flow-text">Mastery 5</span><br>
+        {{#each mastery.m6}}
+          <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{tooltip}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{patch}}/img/champion/{{championName}}.png">
+          <img class="profile-mastery-img" src="assets/champmastery/5.png">
+        {{/each}}
+
+        <br><span class="flow-text">Mastery 4</span><br>
+        {{#each mastery.m6}}
+          <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{tooltip}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{patch}}/img/champion/{{championName}}.png">
+          <img class="profile-mastery-img" src="assets/champmastery/4.png">
+        {{/each}}
+
+        <br><span class="flow-text">Mastery 3</span><br>
+        {{#each mastery.m6}}
+          <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{tooltip}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{patch}}/img/champion/{{championName}}.png">
+          <img class="profile-mastery-img" src="assets/champmastery/3.png">
+        {{/each}}
+
+        <br><span class="flow-text">Mastery 2</span><br>
+        {{#each mastery.m6}}
+          <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{tooltip}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{patch}}/img/champion/{{championName}}.png">
+          <img class="profile-mastery-img" src="assets/champmastery/2.png">
+        {{/each}}
+
+        <br><span class="flow-text">Mastery 1</span><br>
+        {{#each mastery.m6}}
+          <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{tooltip}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{patch}}/img/champion/{{championName}}.png">
+          <img class="profile-mastery-img" src="assets/champmastery/1.png">
+        {{/each}}
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer rich-black">
+    <a href="#!" class="modal-action modal-close waves-effect waves-blue outerspace white-text btn">Close</a>
+    <!-- Need to change it dinamically to Apply if something has changed-->
+  </div>
+</div>
