@@ -1,20 +1,20 @@
-<div class="card col">
+<div class="card col {{cardColor}}">
   <div class="card-image waves-effect waves-block waves-light card-ownimage"> <!-- CardImage -->
     <img class="activator" src="{{championImage}}">
   </div>
   <div class="card-content"> <!-- CardContent -->
     <div class="row"> <!-- CardTitle -->
-      <span class="card-title activator grey-text text-darken-4">
+      <span class="card-title grey-text text-darken-4">
         <div class="col s8 padding-0"><strong>{{championName}}</strong></div>
-        <div class="col s2 padding-0"><img class="mastery-img" src="assets/champmastery/{{championMasteryImage}}.png"></div>
+        <div class="col s2 padding-0"><img class="mastery-img tooltipped" src="assets/champmastery/{{championMasteryImage}}.png" data-position="top" data-tooltip="{{championMasteryPoints}} points"></div>
       </span>
     </div>
     <div class="row"> <!-- PersonIfo -->
       <div class="col s6 padding-0"><span>{{summonerName}}<br>{{summonerElo}}</span></div>
-      <div class="col s2 offset-s2 padding-0"><img class="elo-img" src="assets/elos/{{eloImage}}.png"></div>
+      <div class="col s2 offset-s2 padding-0"><img class="elo-img tooltipped" src="assets/elos/{{eloImage}}.png" data-position="bottom" data-tooltip="{{pdl}} LP"></div>
     </div>
   </div>
-  <div class="card-reveal overflow-hidden"> <!-- CardReveal -->
+  <div class="card-reveal overflow-hidden {{cardColor}}"> <!-- CardReveal -->
     <div class="row margin-right-0"> <!-- RevealTitle -->
       <div class="col s11 offset-s1 padding-0"><span class="card-title grey-text text-darken-4">{{championName}}<i class="material-icons right">close</i></span></div>
     </div>
