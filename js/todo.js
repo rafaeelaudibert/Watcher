@@ -2,8 +2,6 @@
  * JAVASCRIPT STUFF TO BE DONE
  */
 
-
-// TODO: Object whose stores all the matchInformation. Wil contain playersList inside it, together with information about the liveMatch
 // TODO: Set Translation Framework
 // TODO: Improve the region searched query parameter to use what is set in the Preferences
 // TODO: Deal with the preferences chosen by the user
