@@ -11,7 +11,8 @@
 <!-- TODO: Create the language selection list (will include Portuguese & English at the moment) -->
 <!-- TODO: Create the page while the player is not in an active match-->
 <!-- TODO: Improve profile menu -->
-<!-- TODO: Create Donate and About page -->
+<!-- TODO: Add minimize and close button (maybe in the little floating button?) -->
+<!-- TODO: Create About page -->
 
 <html>
   <head>
@@ -541,7 +542,7 @@
 
           <!-- Search Information -->
           <div class="row" style="margin-top: 1rem">
-            <form>
+            <form id="searchForm">
               <div class="input-field col s8">
                 <i class="material-icons prefix">account_circle</i>
                 <input id="summoner_name" type="text">
@@ -549,7 +550,7 @@
               </div>
 
               <div class="input-field col s3" style="margin-left: 2rem">
-                <select class="icons" size="2">
+                <select class="icons" size="2" id="server">
                   <option value="" disabled selected>Your region</option>
                   <option value="br" data-icon="assets/servers/brazil.png" class="circle">BR</option>
                   <option value="eune" data-icon="assets/servers/eune.png" class="circle">EUNE</option>
@@ -561,7 +562,7 @@
                   <option value="na" data-icon="assets/servers/na.png" class="circle">NA</option>
                   <option value="oce" data-icon="assets/servers/oceania.png" class="circle">OCE</option>
                   <option value="ru" data-icon="assets/servers/russia.png" class="circle">RU</option>
-                  <option value="tk" data-icon="assets/servers/turkey.png" class="circle">TK</option>
+                  <option value="tr" data-icon="assets/servers/turkey.png" class="circle">TR</option>
                 </select>
                 <label>Region</label>
               </div>
@@ -569,7 +570,8 @@
           </div>
         </div>
         <div class="modal-footer rich-black">
-          <a href="#!" class="modal-action modal-close waves-effect waves-blue outerspace white-text btn">Search</a>
+          <a id = "search-modal-close" href="#!" class="modal-action waves-effect waves-blue outerspace white-text btn">Search</a>
+          <a  href="#!" class="modal-action modal-close waves-effect waves-blue outerspace white-text btn">Close</a>
         </div>
       </div>
 
@@ -758,6 +760,43 @@
     <script type="text/javascript" src="js\handlebars.runtime.js"></script>
     <script src="js\championCard.js" charset="utf-8"></script>
     <script>
+
+    document.getElementById('search-modal-close').addEventListener('click', e => {
+      e.preventDefault();
+      var form = document.getElementById("searchForm");
+      var summonerName = form.elements['summoner_name'].value;
+      var server = form.elements['server'].value;
+      if (summonerName && server){
+        if(mainPlayer.name !== summonerName || mainPlayer.server !== server){
+          kayn.Summoner.by.name(summonerName)
+                          .region(server)
+                          .then(data => {
+                            mainPlayer = data;
+                            mainPlayer.server = server;
+                            console.log("%c[mainPlayer]", "color:purple; font-size: medium", "- Updated MainPlayer Information");
+                            console.log(data);
+                            $('.modal.open').modal('close');
+                            Materialize.Toast.removeAll(); //Dismiss all other toasts
+                            // Materialize.toast(message, displayLength, className, completeCallback);
+                            Materialize.toast('Player found, looking for the match', 4000);
+                            form.elements['summoner_name'].value = ""; //Cleaning person name
+                          })
+                          .catch(err => {
+                            if (err == 404){
+                              Materialize.Toast.removeAll();
+                              Materialize.toast('Player not found<br>Please check the name spelling and/or the region', 6000); //6000 is the Toast durantions in ms
+                            }
+                          });
+        } else {
+          $('.modal.open').modal('close');
+          Materialize.Toast.removeAll();
+          Materialize.toast('This is the actual active player', 3000)
+        }
+      } else {
+        Materialize.Toast.removeAll();
+        Materialize.toast('Please insert the player name and/or the region', 4000)
+      }
+    });
 
       // Materialize JS initialization
       $(document).ready(function(){
