@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../css/materialize.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>LiveTracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+  <body>
+    <script src="../js/handlebars.runtime.js"></script>
+    <script src="../js/templates/templates.js"></script>
+    <script src="../js/championCard.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../js/hammer.js"></script>
+    <script type="text/javascript" src="../node_modules/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="../js/materialize.min.js"></script>
+    <script type="text/javascript">
+
+
+      let person = {
+        patch: "8.4.1",
+        matchMap: "Summoner's Rift",
+        matchQueue: "Ranked 5x5",
+        summonerIcon: 2077,
+        championName: "Aatrox",
+        championMasteryLevel: 7,
+        championMasteryPoints: 217623,
+        summonerName: "TyG Yeux",
+        summonerLevel: 30,
+        elo: {
+          soloDuo: eloImagePath({elo: 'Platinum', tier:'II'}),
+          Flex: eloImagePath({elo: 'Platinum', tier:'II'}),
+          tt: eloImagePath({elo: 'Platinum', tier:'II'}),
+        },
+        liga: {
+          elo: "Gold",
+          tier: "V",
+          pdl: 54
+        },
+        runes: [8005, 8005, 8005, 8005, 8005, 8005],
+        championWR: 54,
+        championWins: 10,
+        championMatches: 12,
+        rankedWR: 54,
+        rankedWins: 10,
+        rankedMatches: 12,
+        mastery: {
+          m7: [{tooltip: 25000, championName: 'Aatrox', patch:"8.4.1"}],
+          m6: [{tooltip: 25000, championName: 'Aatrox', patch:"8.4.1"}, {tooltip: 25020, championName: 'Aatroxx', patch:"8.4.1"}],
+          m5: []
+        }
+      }
+      let cardA = new championCard(person, "blue-munsell lighten", "8.4.1")
+      let cardB = new championCard(person, "deep-orange lighten-4", "8.4.1")
+
+      let context = {
+        topRow: Handlebars.templates['topRow'](person),
+        team1: new Array(5).fill({championCard: Handlebars.templates['championCard'](cardA)}),
+        team2: new Array(5).fill({championCard: Handlebars.templates['championCard'](cardB)}),
+        sidebar: Handlebars.templates['sidebar'](person),
+        searchModal: Handlebars.templates['searchModal'](person),
+        settingsModal: Handlebars.templates['settingsModal'](person),
+        profileModal: template = Handlebars.templates['profileModal'](person)
+      }
+      template = Handlebars.templates['fullFile'];
+      html    = template(context);
+      console.log(html);
+      $(document.body).append(html);
+
+      $('.modal').modal({ //Initializing modals
+        dismissible: true,
+        opacity: 0.7
+      });
+
+      $('select').material_select(); //Initializing select
+
+      $('.tooltipped').tooltip({delay: 200, html: true}).each(function () {
+           var background = $(this).data('background-color');
+           if (background) {
+               $("#" + $(this).data('tooltip-id')).find(".backdrop").addClass(background);
+           }
+       });
+    </script>
+
+  </body>
+</html>

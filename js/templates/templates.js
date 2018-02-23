@@ -49,6 +49,31 @@ templates['championCard'] = template({"compiler":[7,">= 4.0.0"],"main":function(
     + alias4(((helper = (helper = helpers.rankedWinLost || (depth0 != null ? depth0.rankedWinLost : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"rankedWinLost","hash":{},"data":data}) : helper)))
     + "\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div> <!-- End Cartão !-->\r\n";
 },"useData":true});
+templates['fullFile'] = template({"1":function(container,depth0,helpers,partials,data) {
+    var stack1, helper;
+
+  return "    "
+    + ((stack1 = ((helper = (helper = helpers.championCard || (depth0 != null ? depth0.championCard : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"championCard","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+    + "\r\n";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function";
+
+  return "<nav style=\"-webkit-app-region: drag\">\r\n  <div class=\"nav-wrapper rich-black\">\r\n    <a class=\"brand-logo right\" id=\"logo\" style=\"margin-right: 1rem\">LiveTracker App</a>\r\n  </div>\r\n</nav>\r\n\r\n<div class=\"container\">\r\n\r\n  "
+    + ((stack1 = ((helper = (helper = helpers.topRow || (depth0 != null ? depth0.topRow : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"topRow","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+    + "\r\n\r\n  <div id=\"team-1\" class=\"row\"> <!-- Time 1 !-->\r\n"
+    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.team1 : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "  </div>\r\n\r\n  <div id=\"team-2\" class=\"row\"> <!-- Time 1 !-->\r\n"
+    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.team2 : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "  </div>\r\n\r\n  <!-- Botão no canto inferior esquerdo !-->\r\n  <!--<div class=\"fixed-action-btn horizontal\">\r\n    <a class=\"btn-floating btn-large outerspace\">\r\n      <i class=\"large material-icons\">mode_edit</i>\r\n    </a>\r\n    <ul>\r\n      <li><a class=\"btn-floating red\"><i class=\"material-icons\">insert_chart</i></a></li>\r\n      <li><a class=\"btn-floating yellow darken-1\"><i class=\"material-icons\">format_quote</i></a></li>\r\n      <li><a class=\"btn-floating green\"><i class=\"material-icons\">publish</i></a></li>\r\n      <li><a class=\"btn-floating blue\"><i class=\"material-icons\">attach_file</i></a></li>\r\n    </ul>\r\n  </div>-->\r\n\r\n  "
+    + ((stack1 = ((helper = (helper = helpers.sidebar || (depth0 != null ? depth0.sidebar : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"sidebar","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+    + "\r\n\r\n  <!-- MODAL STRUCTURES -->\r\n\r\n  <!-- SearchModal -->\r\n  "
+    + ((stack1 = ((helper = (helper = helpers.searchModal || (depth0 != null ? depth0.searchModal : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"searchModal","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+    + "\r\n\r\n  <!-- ProfileModal -->\r\n  "
+    + ((stack1 = ((helper = (helper = helpers.profileModal || (depth0 != null ? depth0.profileModal : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"profileModal","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+    + "\r\n\r\n  <!-- SettingsModal -->\r\n  "
+    + ((stack1 = ((helper = (helper = helpers.settingsModal || (depth0 != null ? depth0.settingsModal : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"settingsModal","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+    + "\r\n\r\n</div>\r\n";
+},"useData":true});
 templates['profileModal'] = template({"1":function(container,depth0,helpers,partials,data) {
     var stack1;
 
@@ -163,7 +188,7 @@ templates['profileModal'] = template({"1":function(container,depth0,helpers,part
     + alias4(((helper = (helper = helpers.summonerIcon || (depth0 != null ? depth0.summonerIcon : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"summonerIcon","hash":{},"data":data}) : helper)))
     + ".png\">\r\n        <span style=\"padding-top: 4rem; font-size: 2.5rem\">"
     + alias4(((helper = (helper = helpers.summonerName || (depth0 != null ? depth0.summonerName : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"summonerName","hash":{},"data":data}) : helper)))
-    + "</span><br>\r\n        <span style=\"font-size: 1.5rem\">"
+    + "</span><br>\r\n        <span style=\"font-size: 1.5rem\">Level "
     + alias4(((helper = (helper = helpers.summonerLevel || (depth0 != null ? depth0.summonerLevel : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"summonerLevel","hash":{},"data":data}) : helper)))
     + "</span>\r\n      </div>\r\n      <div class=\"col s12 m3 profile-inner profile-runes\">\r\n        <span class=\"flow-text\" style=\"margin-left: 1.5rem\">Solo/Duo 5x5</span><br>\r\n        <img class=\"profile-runes-images\" src=\"assets/elos/"
     + alias4(alias5(((stack1 = (depth0 != null ? depth0.elo : depth0)) != null ? stack1.soloDuo : stack1), depth0))
@@ -185,7 +210,7 @@ templates['profileModal'] = template({"1":function(container,depth0,helpers,part
     + ((stack1 = helpers["if"].call(alias1,((stack1 = (depth0 != null ? depth0.mastery : depth0)) != null ? stack1.m2 : stack1),{"name":"if","hash":{},"fn":container.program(16, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "\r\n"
     + ((stack1 = helpers["if"].call(alias1,((stack1 = (depth0 != null ? depth0.mastery : depth0)) != null ? stack1.m1 : stack1),{"name":"if","hash":{},"fn":container.program(19, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "        \r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"modal-footer rich-black\">\r\n    <a href=\"#!\" class=\"modal-action modal-close waves-effect waves-blue outerspace white-text btn\">Close</a>\r\n    <!-- Need to change it dinamically to Apply if something has changed-->\r\n  </div>\r\n</div>\r\n";
+    + "\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"modal-footer rich-black\">\r\n    <a href=\"#!\" class=\"modal-action modal-close waves-effect waves-blue outerspace white-text btn\">Close</a>\r\n    <!-- Need to change it dinamically to Apply if something has changed-->\r\n  </div>\r\n</div>\r\n";
 },"useData":true});
 templates['searchModal'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<div id=\"search-modal\" class=\"modal modal-fixed-footer rich-black outerspace-lighten-text search-modal\">\r\n  <div class=\"modal-content modal-owncontent modal-background\">\r\n    <h3><strong>NEW SUMMONER SEARCH</strong></h3>\r\n\r\n    <!-- Search Information -->\r\n    <div class=\"row\" style=\"margin-top: 1rem\">\r\n      <form>\r\n        <div class=\"input-field col s8\">\r\n          <i class=\"material-icons prefix\">account_circle</i>\r\n          <input id=\"summoner_name\" type=\"text\">\r\n          <label for=\"summoner_name\">Summoner Name</label>\r\n        </div>\r\n\r\n        <div class=\"input-field col s3\" style=\"margin-left: 2rem\">\r\n          <select class=\"icons\" size=\"2\">\r\n            <option value=\"\" disabled selected>Your region</option>\r\n            <option value=\"br\" data-icon=\"assets/servers/brazil.png\" class=\"circle\">BR</option>\r\n            <option value=\"eune\" data-icon=\"assets/servers/eune.png\" class=\"circle\">EUNE</option>\r\n            <option value=\"euw\" data-icon=\"assets/servers/euw.png\" class=\"circle\">EUW</option>\r\n            <option value=\"jp\" data-icon=\"assets/servers/japan.png\" class=\"circle\">JP</option>\r\n            <option value=\"kr\" data-icon=\"assets/servers/korea.png\" class=\"circle\">KR</option>\r\n            <option value=\"lan\" data-icon=\"assets/servers/lan.png\" class=\"circle\">LAN</option>\r\n            <option value=\"las\" data-icon=\"assets/servers/las.png\" class=\"circle\">LAS</option>\r\n            <option value=\"na\" data-icon=\"assets/servers/na.png\" class=\"circle\">NA</option>\r\n            <option value=\"oce\" data-icon=\"assets/servers/oceania.png\" class=\"circle\">OCE</option>\r\n            <option value=\"ru\" data-icon=\"assets/servers/russia.png\" class=\"circle\">RU</option>\r\n            <option value=\"tk\" data-icon=\"assets/servers/turkey.png\" class=\"circle\">TK</option>\r\n          </select>\r\n          <label>Region</label>\r\n        </div>\r\n      </form>\r\n    </div>\r\n  </div>\r\n  <div class=\"modal-footer rich-black\">\r\n    <a href=\"#!\" class=\"modal-action modal-close waves-effect waves-blue outerspace white-text btn\">Search</a>\r\n  </div>\r\n</div>\r\n";
