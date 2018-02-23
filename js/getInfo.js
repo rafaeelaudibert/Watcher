@@ -4,6 +4,7 @@ const path = require('path');
 const apiKey = remote.getGlobal('sharedObj').apiKey;
 const seasonAtual = 11;
 const defaultPlayer = 'Coto Johnson'
+const defaultServer = 'br'
 const {
   Kayn,
   REGIONS
@@ -12,7 +13,7 @@ const {
 const notifier = require('node-notifier');
 
 // Object
-notifier.notify(
+/*notifier.notify(
   {
     title: 'LiveTracker',
     message: 'The app is running now!',
@@ -24,7 +25,7 @@ notifier.notify(
     console.log(err);
     console.log(response);
   }
-);
+);*/
 
 
 /**
@@ -69,7 +70,7 @@ const kayn = Kayn(apiKey)({
  * List with all the champions
  */
 let championList = kayn.Static.Champion.list()
-                                        .region(REGIONS.BRAZIL)
+                                        .region(defaultServer)
                                         .then( list => {
                                                         championList = list.data
                                                         console.log("%c[setChampionList]", "color:purple; font-size: medium", "- Generated Champion List");
@@ -79,12 +80,16 @@ let championList = kayn.Static.Champion.list()
 /**
  * mainPlayer information
  */
-let mainPlayer = kayn.Summoner.by.name(defaultPlayer)
-                                  .then(data => {
-                                    mainPlayer = data;
-                                    console.log("%c[mainPlayer]", "color:purple; font-size: medium", "- Created MainPlayer Information");
-                                  })
-                                  .catch(console.log);
+let mainPlayer
+kayn.Summoner.by.name(defaultPlayer)
+                .region(defaultServer)
+                .then(data => {
+                  mainPlayer = data;
+                  mainPlayer.server = defaultServer;
+                  console.log("%c[mainPlayer]", "color:purple; font-size: medium", "- Created MainPlayer Information");
+                  console.log(data);
+                })
+                .catch(console.log);
 
 
 /**
@@ -104,14 +109,10 @@ jquery.getJSON('https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-d
         }).catch(console.log);
 
 //Gets the initial info: Info from people playing in the match being played bi the mainPlayer
-async function getInitialInfo(){
-
-  //Using the mainPlayer info to retrieve its match
-  player = mainPlayer;
-  console.log(player);
+async function getInitialInfo(server = mainPlayer.server){
 
   //Gets the mainPlayer's currentGame info
-  const currentGame = kayn.CurrentGame.by.summonerID(player.id)
+  let currentGame = kayn.CurrentGame.by.summonerID(mainPlayer.id).region(server)
   currentGame.then(game => {
     console.log(game);
 
@@ -151,16 +152,19 @@ async function getInitialInfo(){
 
     //Gets the championMasteryLevel and championMasteryPoints, for each player in matchInformation.playersList
     matchInformation.playersList.map(async participante => {
-      kayn.ChampionMastery.get(participante.summonerId)(participante.championId).then(data => {
-        participante.championMasteryLevel = data.championLevel;
-        participante.championMasteryPoints = data.championPoints;
-        console.log("%c[mastery]", "color:purple; font-size: medium", "- Champion Mastery set!")
-      })
+      kayn.ChampionMastery.get(participante.summonerId)(participante.championId)
+                          .region(server)
+                          .then(data => {
+                            participante.championMasteryLevel = data.championLevel;
+                            participante.championMasteryPoints = data.championPoints;
+                            console.log("%c[mastery]", "color:purple; font-size: medium", "- Champion Mastery set!")
+                          })
     })
 
     //Gets the higherLeague for the player
     matchInformation.playersList.map(async participante => {
       kayn.LeaguePositions.by.summonerID(participante.summonerId)
+        .region(server)
         .then(maiorLiga)
           .then(function(higherLeague){
             participante.liga = higherLeague;
@@ -179,9 +183,9 @@ async function getInitialInfo(){
 }
 
 //Get the playerLevel and the playerAccountId
-async function getBasicInfo(){
+async function getBasicInfo(server = mainPlayer.server){
   //Gets info of all the players
-  const players = Promise.all(matchInformation.playersList.map(participante => kayn.Summoner.by.name(participante.name)));
+  const players = Promise.all(matchInformation.playersList.map(participante => kayn.Summoner.by.name(participante.name).region(mainPlayer.server)));
   players.then(async (value) => {
 
     //Sets the info of the players in the matchInformation.playersList array
@@ -197,9 +201,9 @@ async function getBasicInfo(){
 }
 
 //Get matches for each player. After calls the function who sets the champion Win Rate for each player.
-async function getAdvancedInfo(){
+async function getAdvancedInfo(server = mainPlayer.server){
   onsole.time("MatchesID")
-  const idMatches = Promise.all(matchInformation.playersList.map(player => retornaIdPartidasCampeoes(player.championId, player.accountId)));
+  const idMatches = Promise.all(matchInformation.playersList.map(player => retornaIdPartidasCampeoes(server, player.championId, player.accountId)));
   console.timeEnd("MatchesID")
 
   idMatches.then(async function(value){
@@ -212,7 +216,7 @@ async function getAdvancedInfo(){
 
     //Gets the real matches and set the wins/win rate
     for (participante in matchInformation.playersList){
-      getChampInfo(participante)
+      getChampInfo(participante, server)
     }
 
   })
@@ -220,14 +224,14 @@ async function getAdvancedInfo(){
 
 
 //This gets the matches after having the ID of the matches. After sets matches/Win Rate with the champion
-async function getChampInfo(playerPos){
+async function getChampInfo(playerPos, server = mainPlayer.server){
 
   //Alias for matchInformation.playersList[playerPos]
   var thisPlayer = matchInformation.playersList[playerPos]
 
   //Gets the matches perse
   console.time("Player: " + playerPos);
-  const matches = await Promise.all(thisPlayer.matchList.map(kayn.Match.get));
+  const matches = await Promise.all(thisPlayer.matchList.map(data => kayn.Match.get(data).region(server)));
   console.timeEnd("Player: " + playerPos);
 
   //Check the victory in the matches

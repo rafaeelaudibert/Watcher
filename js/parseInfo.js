@@ -716,12 +716,13 @@ async function maiorLiga(ligas) {
  * @param  {integer} endIndex       end of the index search (used internally), changes when recursion
  * @return {array}                  array with all the ID's
  */
-async function retornaIdPartidasCampeoes(idChamp, idConta, beginIndex = 0, endIndex = 100) {
+async function retornaIdPartidasCampeoes(server = mainPlayer.server, idChamp, idConta, beginIndex = 0, endIndex = 100) {
   var listaPartidas = kayn.Matchlist.by.accountID(idConta)
     .query({
         champion: idChamp,
         season: seasonAtual
     })
+    .region(server)
     .then(data => {
       listaMatches = [];
       for (partida in data.matches) {
