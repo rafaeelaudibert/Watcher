@@ -18,47 +18,63 @@
         <img class="profile-runes-images" src="assets/elos/{{elo.tt}}.png">
       </div>
       <div class="col s12 m5 profile-inner profile-mastery">
-        <span class="flow-text">Mastery 7</span><br>
-        {{#each mastery.m7}}
-          <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{tooltip}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{patch}}/img/champion/{{championName}}.png">
-          <img class="profile-mastery-img" src="assets/champmastery/7.png">
-        {{/each}}
 
-        <br><span class="flow-text">Mastery 6</span><br>
-        {{#each mastery.m6}}
-          <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{tooltip}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{patch}}/img/champion/{{championName}}.png">
-          <img class="profile-mastery-img" src="assets/champmastery/6.png">
-        {{/each}}
+        {{#if mastery.m7}}
+          <span class="flow-text">Mastery 7</span><br>
+          {{#each mastery.m7}}
+            <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{tooltip}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{patch}}/img/champion/{{championName}}.png">
+            <img class="profile-mastery-img" src="assets/champmastery/7.png">
+          {{/each}}
+        {{/if}}
 
-        <br><span class="flow-text">Mastery 5</span><br>
-        {{#each mastery.m6}}
-          <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{tooltip}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{patch}}/img/champion/{{championName}}.png">
-          <img class="profile-mastery-img" src="assets/champmastery/5.png">
-        {{/each}}
+        {{#if mastery.m6}}
+          <br><span class="flow-text">Mastery 6</span><br>
+          {{#each mastery.m6}}
+            <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{tooltip}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{patch}}/img/champion/{{championName}}.png">
+            <img class="profile-mastery-img" src="assets/champmastery/6.png">
+          {{/each}}
+        {{/if}}
 
-        <br><span class="flow-text">Mastery 4</span><br>
-        {{#each mastery.m6}}
-          <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{tooltip}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{patch}}/img/champion/{{championName}}.png">
-          <img class="profile-mastery-img" src="assets/champmastery/4.png">
-        {{/each}}
+        {{#if mastery.m5}}
+          <br><span class="flow-text">Mastery 5</span><br>
+          {{#each mastery.m5}}
+            <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{tooltip}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{patch}}/img/champion/{{championName}}.png">
+            <img class="profile-mastery-img" src="assets/champmastery/5.png">
+          {{/each}}
+        {{/if}}
 
-        <br><span class="flow-text">Mastery 3</span><br>
-        {{#each mastery.m6}}
-          <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{tooltip}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{patch}}/img/champion/{{championName}}.png">
-          <img class="profile-mastery-img" src="assets/champmastery/3.png">
-        {{/each}}
+        {{#if mastery.m4}}
+          <br><span class="flow-text">Mastery 4</span><br>
+          {{#each mastery.m4}}
+            <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{tooltip}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{patch}}/img/champion/{{championName}}.png">
+            <img class="profile-mastery-img" src="assets/champmastery/4.png">
+          {{/each}}
+        {{/if}}
 
-        <br><span class="flow-text">Mastery 2</span><br>
-        {{#each mastery.m6}}
-          <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{tooltip}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{patch}}/img/champion/{{championName}}.png">
-          <img class="profile-mastery-img" src="assets/champmastery/2.png">
-        {{/each}}
+        {{#if mastery.m3}}
+          <br><span class="flow-text">Mastery 3</span><br>
+          {{#each mastery.m3}}
+            <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{tooltip}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{patch}}/img/champion/{{championName}}.png">
+            <img class="profile-mastery-img" src="assets/champmastery/3.png">
+          {{/each}}
+        {{/if}}
 
-        <br><span class="flow-text">Mastery 1</span><br>
-        {{#each mastery.m6}}
-          <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{tooltip}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{patch}}/img/champion/{{championName}}.png">
-          <img class="profile-mastery-img" src="assets/champmastery/1.png">
-        {{/each}}
+        {{#if mastery.m2}}
+          <br><span class="flow-text">Mastery 2</span><br>
+          {{#each mastery.m2}}
+            <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{tooltip}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{patch}}/img/champion/{{championName}}.png">
+            <img class="profile-mastery-img" src="assets/champmastery/2.png">
+          {{/each}}
+        {{/if}}
+
+        {{#if mastery.m1}}
+          <br><span class="flow-text">Mastery 1</span><br>
+          {{#each mastery.m1}}
+            <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{tooltip}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{patch}}/img/champion/{{championName}}.png">
+            <img class="profile-mastery-img" src="assets/champmastery/1.png">
+          {{/each}}
+        {{/if}}
+        
       </div>
     </div>
   </div>

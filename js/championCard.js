@@ -1,29 +1,30 @@
 class championCard {
-  constructor(person, color){
+  constructor(person, color, currentPatch){
     this.cardColor = color,
-    this.championImage = "http://ddragon.leagueoflegends.com/cdn/${currentPatch}/img/champion/{person.championName}.png",
+    this.championImage = "http://ddragon.leagueoflegends.com/cdn/" + currentPatch + "/img/champion/" + person.championName + ".png",
     this.championName = person.championName,
     this.championMasteryImage = person.championMasteryLevel,
+    this.championMasteryPoints = person.championMasteryPoints,
     this.summonerName = person.summonerName,
-    this.summonerElo = "${person.liga.elo} ${person.liga.tier}",
+    this.summonerElo = person.liga.elo + " " + person.liga.tier,
     this.pdl = person.liga.pdl,
-    this.eloImage = eloImagePath(person),
+    this.eloImage = eloImagePath(person.liga),
     this.runes = person.runes,
-    this.championWinrate = person.championWR !== 'First Match' ? '${person.championWR}%' :      person.championWR,
-    this.championWinLost = '(${person.championWins}W - ${person.championMatches - person.championWins}L)',
-    this.rankedWinrate =  person.rankedWR !== 'First Match' ? '${person.rankedWR}%' :      person.rankedWR,
-    this.rankedWinLost = '(${person.rankedWins}W - ${person.rankedMatches - person.rankedWins}L)'
+    this.championWinrate = person.championWR !== 'First Match' ? person.championWR + "%" :      person.championWR,
+    this.championWinLost = "(" + person.championWins + "W - " + (person.championMatches - person.championWins) + "L)",
+    this.rankedWinrate =  person.rankedWR !== 'First Match' ? person.rankedWR + '%' :      person.rankedWR,
+    this.rankedWinLost = "(" + person.rankedWins + "W - " + (person.rankedMatches - person.rankedWins) + "L)"
   }
 }
 
-function eloImagePath(person){
-  if (person.liga.elo === "CHALLENGER" || person.liga.elo === "MASTER" || person.liga.elo === "UNRANKED"){
-    return person.liga.elo
+function eloImagePath(liga){
+  if (liga.elo === "CHALLENGER" || liga.elo === "MASTER" || liga.elo === "UNRANKED"){
+    return liga.elo
   }
   else {
 
     let tierTranslation;
-    switch(person.liga.tier){
+    switch(liga.tier){
       case 'I':
         tierTranslation = 1;
         break;
@@ -40,6 +41,6 @@ function eloImagePath(person){
         tierTranslation = 5;
     }
 
-    return person.liga.elo + "/" + tierTranslation;
+    return liga.elo + "/" + tierTranslation;
   }
 }
