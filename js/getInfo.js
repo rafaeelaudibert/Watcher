@@ -1,5 +1,6 @@
 const jquery = require("jquery");
 const remote = require('electron').remote;
+const path = require('path');
 const apiKey = remote.getGlobal('sharedObj').apiKey;
 const seasonAtual = 11;
 const defaultPlayer = 'Coto Johnson'
@@ -7,6 +8,23 @@ const {
   Kayn,
   REGIONS
 } = require("kayn");
+
+const notifier = require('node-notifier');
+
+// Object
+notifier.notify(
+  {
+    title: 'LiveTracker',
+    message: 'The app is running now!',
+    icon: path.join(__dirname, 'assets/icons/png/leagueIcon.png'),
+    timeout: 1
+  },
+  function(err, response) {
+    // Response is response from notification
+    console.log(err);
+    console.log(response);
+  }
+);
 
 
 /**

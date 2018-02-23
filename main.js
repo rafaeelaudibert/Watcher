@@ -4,7 +4,7 @@ const path = require('path');
 const storage = require('electron-json-storage');
 const secretInfo = require('./secretInfo')
 
-// TODO: Create the WindowsNotifications option
+
 // //SET ENV
 //process.env.NODE_ENV = 'production';  //DESCOMENTAR QUANDO FOR UTILIZAR
 
