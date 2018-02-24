@@ -5,16 +5,16 @@
     <!-- Default Information -->
     <div class="row" style="margin-top: 1rem">
       <span class="flow-text">Default Values<br></span>
-      <form>
+      <form id="stg-form1">
         <div class="input-field col s8">
           <i class="material-icons prefix">account_circle</i>
-          <input id="summoner_name" type="text">
-          <label for="summoner_name">Default Summoner Name</label>
+          <input id="settings_summoner_name" type="text">
+          <label for="settings_summoner_name" class="">Default Summoner Name</label>
         </div>
 
         <div class="input-field col s3" style="margin-left: 2rem">
           <i class="material-icons prefix">home</i>
-          <select class="icons" size="2">
+          <select class="icons" size="2" id="settings_server">
             <option value="" disabled selected>Your region</option>
             <option value="br" data-icon="assets/servers/brazil.png" class="circle">BR</option>
             <option value="eune" data-icon="assets/servers/eune.png" class="circle">EUNE</option>
@@ -34,13 +34,13 @@
     </div>
     <div class="row">
       <div class="class s8">
-        <form>
+        <form id="stg-form2">
           <div class="input-field col s8">
             <i class="material-icons prefix">flag</i>
-            <select class="icons" size="2">
+            <select class="icons" size="2" id="settings_language">
               <option value="" disabled selected>Your language</option>
-              <option value="br" data-icon="assets/servers/english.jpg" class="circle">English</option>
-              <option value="eune" data-icon="assets/servers/brazil.png" class="circle">Portuguese (Brazilian)</option>
+              <option value="en" data-icon="assets/servers/english.jpg" class="circle">English</option>
+              <option value="pt" data-icon="assets/servers/brazil.png" class="circle">Portuguese (Brazilian)</option>
             </select>
             <label>Default Language</label>
           </div>
@@ -55,7 +55,7 @@
         <div class="switch ownswitch">
           <label>
             Off
-            <input type="checkbox">
+            <input type="checkbox" id="stg-switch1">
             <span class="lever"></span>
             On
           </label>
@@ -66,7 +66,7 @@
         <div class="switch ownswitch">
           <label>
             Off
-            <input type="checkbox">
+            <input type="checkbox"  id="stg-switch2">
             <span class="lever"></span>
             On
           </label>
@@ -79,7 +79,7 @@
         <div class="switch ownswitch">
           <label>
             Off
-            <input type="checkbox">
+            <input type="checkbox" id="stg-switch3">
             <span class="lever"></span>
             On
           </label>
@@ -90,7 +90,7 @@
         <div class="switch ownswitch">
           <label>
             Off
-            <input type="checkbox">
+            <input type="checkbox" id="stg-switch4">
             <span class="lever"></span>
             On
           </label>
@@ -102,7 +102,7 @@
         <div class="switch ownswitch">
           <label>
             Off
-            <input type="checkbox">
+            <input type="checkbox" id="stg-switch5">
             <span class="lever"></span>
             On
           </label>
@@ -113,8 +113,6 @@
 
   </div>
   <div class="modal-footer rich-black">
-    <a href="#!" class="modal-action modal-close waves-effect waves-blue outerspace white-text btn">Close</a>
-    <!-- Need to change it dinamically to Apply if something has changed-->
+    <a  href="#!" id="settings-modal-close" class="modal-action modal-close waves-effect waves-blue outerspace white-text btn">Close</a>
   </div>
-
 </div>
