@@ -1,10 +1,10 @@
 const storage = require('electron-json-storage');
 
 const defaultPlayerPreferences = {
-  summonerName: "",
-  region: "",
-  language: "",
-  finishAtExit: true,
+  summonerName: "TyG Yeux",
+  region: "br",
+  language: "br",
+  finishAtExit: false,
   windowsNotifications: true,
   runesTooltips: true,
   masteriesTooltips: true,
@@ -33,8 +33,9 @@ storage.get('playerPreferences', function(error, data) {
     });
   }
   else{ //Else, if there was data stored, shows the values to the log
+
     //Assigns the data to playerPreferences and logs it
     console.log("%c[Player Preferences Data]", "color:purple; font-size: medium", "- Retrieved already stored data for playerPreferences");
-    playerPreferences = data;    
+    console.log(playerPreferences = data);
   }
 });

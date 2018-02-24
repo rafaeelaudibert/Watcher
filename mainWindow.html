@@ -523,7 +523,7 @@
           </div>
         </li>
         <li><a class="waves-effect modal-trigger white-text sidenav-li" href="#profile-modal"><i class="material-icons white-text sidenav-icon">person</i>Profile</a></li>
-        <li><a class="waves-effect modal-trigger white-text  sidenav-li" href="#settings-modal"><i class="material-icons white-text sidenav-icon">settings</i>Settings</a></li>
+        <li><a id="settings-modal-trigger" class="waves-effect modal-trigger white-text  sidenav-li" href="#settings-modal"><i class="material-icons white-text sidenav-icon">settings</i>Settings</a></li>
         <div class="divider white"></div>
         <div style="margin-top: 20rem">
           <a class="right white-text" target="_blank" href="https://www.patreon.com/rafaaudibert" style="padding-right: 0.4rem">Donate</a><br>
@@ -545,12 +545,12 @@
             <form id="searchForm">
               <div class="input-field col s8">
                 <i class="material-icons prefix">account_circle</i>
-                <input id="summoner_name" type="text">
-                <label for="summoner_name">Summoner Name</label>
+                <input id="search_summoner_name" type="text">
+                <label for="search_summoner_name">Summoner Name</label>
               </div>
 
               <div class="input-field col s3" style="margin-left: 2rem">
-                <select class="icons" size="2" id="server">
+                <select class="icons" size="2" id="search_server">
                   <option value="" disabled selected>Your region</option>
                   <option value="br" data-icon="assets/servers/brazil.png" class="circle">BR</option>
                   <option value="eune" data-icon="assets/servers/eune.png" class="circle">EUNE</option>
@@ -636,16 +636,16 @@
           <!-- Default Information -->
           <div class="row" style="margin-top: 1rem">
             <span class="flow-text">Default Values<br></span>
-            <form>
+            <form id="stg-form1">
               <div class="input-field col s8">
                 <i class="material-icons prefix">account_circle</i>
-                <input id="summoner_name" type="text">
-                <label for="summoner_name">Default Summoner Name</label>
+                <input id="settings_summoner_name" type="text">
+                <label for="settings_summoner_name" class="">Default Summoner Name</label>
               </div>
 
               <div class="input-field col s3" style="margin-left: 2rem">
                 <i class="material-icons prefix">home</i>
-                <select class="icons" size="2">
+                <select class="icons" size="2" id="settings_server">
                   <option value="" disabled selected>Your region</option>
                   <option value="br" data-icon="assets/servers/brazil.png" class="circle">BR</option>
                   <option value="eune" data-icon="assets/servers/eune.png" class="circle">EUNE</option>
@@ -665,12 +665,12 @@
           </div>
           <div class="row">
             <div class="class s8">
-              <form>
+              <form id="stg-form2">
                 <div class="input-field col s8">
                   <i class="material-icons prefix">flag</i>
-                  <select class="icons" size="2">
+                  <select class="icons" size="2" id="settings_language">
                     <option value="" disabled selected>Your language</option>
-                    <option value="eu" data-icon="assets/servers/english.jpg" class="circle">English</option>
+                    <option value="en" data-icon="assets/servers/english.jpg" class="circle">English</option>
                     <option value="pt" data-icon="assets/servers/brazil.png" class="circle">Portuguese (Brazilian)</option>
                   </select>
                   <label>Default Language</label>
@@ -686,7 +686,7 @@
               <div class="switch ownswitch">
                 <label>
                   Off
-                  <input type="checkbox">
+                  <input type="checkbox" id="stg-switch1">
                   <span class="lever"></span>
                   On
                 </label>
@@ -697,7 +697,7 @@
               <div class="switch ownswitch">
                 <label>
                   Off
-                  <input type="checkbox">
+                  <input type="checkbox"  id="stg-switch2">
                   <span class="lever"></span>
                   On
                 </label>
@@ -710,7 +710,7 @@
               <div class="switch ownswitch">
                 <label>
                   Off
-                  <input type="checkbox">
+                  <input type="checkbox" id="stg-switch3">
                   <span class="lever"></span>
                   On
                 </label>
@@ -721,7 +721,7 @@
               <div class="switch ownswitch">
                 <label>
                   Off
-                  <input type="checkbox">
+                  <input type="checkbox" id="stg-switch4">
                   <span class="lever"></span>
                   On
                 </label>
@@ -733,7 +733,7 @@
               <div class="switch ownswitch">
                 <label>
                   Off
-                  <input type="checkbox">
+                  <input type="checkbox" id="stg-switch5">
                   <span class="lever"></span>
                   On
                 </label>
@@ -744,10 +744,8 @@
 
         </div>
         <div class="modal-footer rich-black">
-          <a href="#!" class="modal-action modal-close waves-effect waves-blue outerspace white-text btn">Close</a>
-          <!-- Need to change it dinamically to Apply if something has changed-->
+          <a  href="#!" id="settings-modal-close" class="modal-action modal-close waves-effect waves-blue outerspace white-text btn">Close</a>
         </div>
-
       </div>
 
 
@@ -761,45 +759,167 @@
     <script src="js\championCard.js" charset="utf-8"></script>
     <script>
 
-    document.getElementById('search-modal-close').addEventListener('click', e => {
-      e.preventDefault();
-      var form = document.getElementById("searchForm");
-      var summonerName = form.elements['summoner_name'].value;
-      var server = form.elements['server'].value;
-      if (summonerName && server){
-        if(mainPlayer.name !== summonerName || mainPlayer.server !== server){
-          kayn.Summoner.by.name(summonerName)
-                          .region(server)
-                          .then(data => {
-                            mainPlayer = data;
-                            mainPlayer.server = server;
-                            console.log("%c[mainPlayer]", "color:purple; font-size: medium", "- Updated MainPlayer Information");
-                            console.log(data);
-                            $('.modal.open').modal('close');
-                            Materialize.Toast.removeAll(); //Dismiss all other toasts
-                            // Materialize.toast(message, displayLength, className, completeCallback);
-                            Materialize.toast('Player found, looking for the match', 4000);
-                            form.elements['summoner_name'].value = ""; //Cleaning person name
-                          })
-                          .catch(err => {
-                            if (err == 404){
-                              Materialize.Toast.removeAll();
-                              Materialize.toast('Player not found<br>Please check the name spelling and/or the region', 6000); //6000 is the Toast durantions in ms
-                            }
-                          });
-        } else {
-          $('.modal.open').modal('close');
-          Materialize.Toast.removeAll();
-          Materialize.toast('This is the actual active player', 3000)
-        }
-      } else {
-        Materialize.Toast.removeAll();
-        Materialize.toast('Please insert the player name and/or the region', 4000)
-      }
-    });
 
-      // Materialize JS initialization
+      //Search modal close event listener
+      (function(){
+        $('#search-modal-close').on('click', () => {
+          var form = document.getElementById("searchForm");
+          var summonerName = form.elements['search_summoner_name'].value;
+          var server = form.elements['search_server'].value;
+          if (summonerName && server){
+            if(mainPlayer.name !== summonerName || mainPlayer.server !== server){
+              kayn.Summoner.by.name(summonerName)
+                              .region(server)
+                              .then(data => {
+                                mainPlayer = data;
+                                mainPlayer.server = server;
+                                console.log("%c[mainPlayer]", "color:purple; font-size: medium", "- Updated MainPlayer Information");
+                                console.log(data);
+                                $('.modal.open').modal('close');
+                                Materialize.Toast.removeAll(); //Dismiss all other toasts
+                                // Materialize.toast(message, displayLength, className, completeCallback);
+                                Materialize.toast('Player found, looking for the match', 4000);
+                                form.elements['search_summoner_name'].value = ""; //Cleaning person name
+                              })
+                              .catch(err => {
+                                if (err == 404){
+                                  Materialize.Toast.removeAll();
+                                  Materialize.toast('Player not found<br>Please check the name spelling and/or the region', 6000); //6000 is the Toast durantions in ms
+                                }
+                              });
+            } else {
+              $('.modal.open').modal('close');
+              Materialize.Toast.removeAll();
+              Materialize.toast('This is the actual active player', 3000)
+            }
+          } else {
+            Materialize.Toast.removeAll();
+            Materialize.toast('Please insert the player name and/or the region', 4000)
+          }
+        });
+      })();
+
+      //Changing values in settings modal, changes the close button value
+      (function(){
+
+        let closeSettingsButton = document.getElementById('settings-modal-close').innerHTML;
+
+        //SummonerName textField
+        $('#settings_summoner_name').on('keydown', () => {
+          if (closeSettingsButton == "Close"){
+            if (document.getElementById('stg-form1').elements.settings_summoner_name.value !== playerPreferences.summonerName){
+              document.getElementById('settings-modal-close').innerHTML = "Apply";
+            }
+          }
+        })
+
+        //Selects
+        $('#settings_server').on('change', () => {
+          if (closeSettingsButton == "Close"){
+            if (document.getElementById('stg-form1').elements.settings_server.value !== playerPreferences.region){
+              document.getElementById('settings-modal-close').innerHTML = "Apply";
+            }
+          }
+        });
+        $('#settings_language').on('change', () => {
+          if (closeSettingsButton == "Close"){
+            if (document.getElementById('stg-form1').elements.settings_server.value !== playerPreferences.region){
+              document.getElementById('settings-modal-close').innerHTML = "Apply";
+            }
+          }
+        })
+
+        //Switches
+        $('#settings-modal').on('click',() =>  {
+          console.log("cliquei");
+          if (closeSettingsButton == "Close"){
+            if (document.getElementById('stg-form1').elements.settings_server.value !== playerPreferences.region){
+              document.getElementById('settings-modal-close').innerHTML = "Apply";
+            }
+          }
+        });
+      })();
+
+
+      //Settings modal close event listener
+      (function(){
+        $('#settings-modal-close').on('click', e => {
+
+          //Retrieving the elements
+          var form1 = document.getElementById('stg-form1');
+          var form2 = document.getElementById('stg-form2');
+          var switches = [
+            document.getElementById('stg-switch1').checked,
+            document.getElementById('stg-switch2').checked,
+            document.getElementById('stg-switch3').checked,
+            document.getElementById('stg-switch4').checked,
+            document.getElementById('stg-switch5').checked
+          ]
+
+          //Setting the player preferences
+          let summonerName = form1.elements['settings_summoner_name'].value;
+          if(summonerName){
+            playerPreferences.summonerName = summonerName;
+          }
+
+          let summonerServer = form1.elements['settings_server'].value;
+          if(summonerServer){
+            playerPreferences.region = summonerServer;
+          }
+
+          let summonerLanguage = form2.elements['settings_language'].value;
+          if(summonerLanguage){
+            playerPreferences.language = summonerLanguage;
+          }
+          playerPreferences.finishAtExit = switches[0];
+          playerPreferences.windowsNotifications = switches[1];
+          playerPreferences.runesTooltips = switches[2];
+          playerPreferences.masteriesTooltips = switches[3];
+          playerPreferences.eloTooltips = switches[4];
+
+          storage.set('playerPreferences', playerPreferences, err => {if(err) throw err})
+
+          console.log("%c[playerPreferences]", "color:purple; font-size: medium", "- playerPreferences updated");
+          console.log(playerPreferences);
+        });
+      })();
+
+      //Sets the setting form elements according to the playerPreferences
+      (function(){
+        $('#settings-modal-trigger').on('click', () => {
+          //Retrieving the elements
+          let form1 = document.getElementById('stg-form1');
+          let form2 = document.getElementById('stg-form2');
+          let switches = [
+            document.getElementById('stg-switch1'),
+            document.getElementById('stg-switch2'),
+            document.getElementById('stg-switch3'),
+            document.getElementById('stg-switch4'),
+            document.getElementById('stg-switch5')
+          ]
+
+          //Setting the value to the elements
+          form1.elements['settings_summoner_name'].value = playerPreferences.summonerName;
+          form1.elements.settings_summoner_name.labels[0].classList.add("active")
+          // form1.elements['settings_server'].value = playerPreferences.region; -> BELOW WORKS
+          // form2.elements['settings_language'].value = playerPreferences.language; -> BELOW WORKS
+          $("select[id$='settings_server'] option[value=" + playerPreferences.region + "]").attr("selected", true);
+          $("select[id$='settings_language'] option[value=" + playerPreferences.language + "]").attr("selected", true);
+          $('select').material_select();
+
+          switches[0].checked = playerPreferences.finishAtExit;
+          switches[1].checked = playerPreferences.windowsNotifications;
+          switches[2].checked = playerPreferences.runesTooltips;
+          switches[3].checked = playerPreferences.masteriesTooltips;
+          switches[4].checked = playerPreferences.eloTooltips;
+        });
+      })();
+
+
+      //When document is ready
       $(document).ready(function(){
+
+        // Materialize JS initialization
          $('.modal').modal({ //Initializing modals
            dismissible: true,
            opacity: 0.7
@@ -815,7 +935,7 @@
           });
          });
 
-      //open links externally by default
+      //Settings to make so that it opens links externally by default
       const shell = require('electron').shell;
       $(document).on('click', 'a[href^="http"]', function(event) {
         event.preventDefault();
