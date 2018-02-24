@@ -2,3 +2,5 @@
 * text=auto
 
 scss/* linguist-vendored
+examples/* linguist-vendored
+fonts/*
