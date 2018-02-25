@@ -46,6 +46,9 @@ app.on('ready', function(){
     slashes: true
   }));
 
+  //Set the color
+  mainWindow.setBackgroundColor("#e8eaf6");
+
 
 
 
