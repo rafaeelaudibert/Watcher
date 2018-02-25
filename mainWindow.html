@@ -25,7 +25,11 @@
   <body class="indigo lighten-5">
     <nav style="-webkit-app-region: drag">
       <div class="nav-wrapper rich-black">
-        <a class="brand-logo right" id="logo" style="margin-right: 1rem">LiveTracker App</a>
+        <a class="brand-logo left" id="logo" style="margin-left: 19%">LiveTracker App</a>
+        <a style="-webkit-app-region: no-drag" href="#!" class="brand-logo right">
+          <i id="close" class="material-icons right">close</i>
+          <i id="minimize" class="material-icons right">remove</i>
+        </a>
       </div>
     </nav>
 
@@ -464,7 +468,7 @@
               <div class="col s2 offset-s2 padding-0"><img class="elo-img tooltipped" src="assets/elos/diamond/3.png"  data-position="bottom" data-tooltip="35 LP"></div>
             </div>
           </div>
-          <div class="card-reveal overflow-hidden deep-orange <lighten-4></lighten-4>"> <!-- CardReveal -->
+          <div class="card-reveal overflow-hidden deep-orange lighten-4"> <!-- CardReveal -->
             <div class="row margin-right-0"> <!-- RevealTitle -->
               <div class="col s11 offset-s1 padding-0"><span class="card-title grey-text text-darken-4">Sejuani<i class="material-icons right">close</i></span></div>
             </div>
@@ -919,6 +923,21 @@
           switches[3].checked = playerPreferences.masteriesTooltips;
           switches[4].checked = playerPreferences.eloTooltips;
         });
+      })();
+
+      //Close and minimize button
+      (function (){
+
+        const remote = require('electron').remote;
+        const myWindow = remote.getCurrentWindow();
+
+        $('#close').on('click', () => {
+          myWindow.close();
+        });
+
+        $('#minimize').on('click', () => {
+          myWindow.minimize();
+        })
       })();
 
 

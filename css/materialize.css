@@ -3133,7 +3133,7 @@ nav {
   nav.nav-extended {
     height: auto; }
     nav.nav-extended .nav-wrapper {
-      min-height: 56px;
+      min-height: 46px;
       height: auto; }
     nav.nav-extended .nav-content {
       position: relative;
@@ -3166,7 +3166,7 @@ nav {
     position: absolute;
     color: #fff;
     display: inline-block;
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     padding: 0; }
     nav .brand-logo.center {
       left: 50%;
@@ -3189,8 +3189,7 @@ nav {
     nav .brand-logo i,
     nav .brand-logo [class^="mdi-"], nav .brand-logo [class*="mdi-"],
     nav .brand-logo i.material-icons {
-      float: left;
-      margin-right: 15px; }
+      float: left; }
   nav .nav-title {
     display: inline-block;
     font-size: 32px;
@@ -3255,8 +3254,8 @@ nav {
     min-height: 64px; }
 
   nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
-    height: 56px;
-    line-height: 56px; }
+    height: 46px;
+    line-height: 46px; }
 
   .navbar-fixed {
     height: 64px; } }
