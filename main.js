@@ -92,12 +92,22 @@ app.on('ready', function(){
     mainWindow.hide();
   });
 
-  mainWindow.on('close', function (event) { //When trying to close, hide to tray instead
-    if(!mainWindow.isQuiting){
-        event.preventDefault();
-        mainWindow.hide();
+  storage.get('playerPreferences', function(error, data) {
+    if (error) throw error;
+
+    if (!data.finishAtExit){ //If the player chose not to close when clicking to exit, sets the minimize
+
+      //When trying to close, hide to tray instead
+      mainWindow.on('close', function (event) {
+        if(!mainWindow.isQuiting){
+            event.preventDefault();
+            mainWindow.hide();
+        }
+        return false;
+      });
     }
-    return false;
   });
+
+
 
 });
