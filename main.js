@@ -4,12 +4,8 @@ const path = require('path');
 const storage = require('electron-json-storage');
 const secretInfo = require('./secretInfo');
 
-
-
 // //SET ENV
 //process.env.NODE_ENV = 'production';  //DESCOMENTAR QUANDO FOR UTILIZAR
-
-
 
 //Descontructors
 const {app, BrowserWindow, Menu, Tray} = electron;
