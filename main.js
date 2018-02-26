@@ -29,12 +29,13 @@ app.on('ready', function(){
   let widthReal = width - 25;
   let heightReal = height - 25;
   mainWindow = new BrowserWindow({
-  width: widthReal,
-  height: heightReal,
-  dragable: true,
-  // transparent: true,
-  frame: false,
-/*resizable: false*/});
+    width: widthReal,
+    height: heightReal,
+    dragable: true,
+    //transparent: true,
+    frame: false,
+    resizable: false
+  });
 
   //Load the HTML file into window
   mainWindow.loadURL(url.format({
@@ -42,6 +43,12 @@ app.on('ready', function(){
     procol: 'file:',
     slashes: true
   }));
+
+  // OVERLAY TESTING
+  /*
+  mainWindow.setAlwaysOnTop(true, "floating");
+  mainWindow.setVisibleOnAllWorkspaces(true);
+  mainWindow.setFullScreenable(false);*/
 
   //Set the color
   mainWindow.setBackgroundColor("#e8eaf6");
