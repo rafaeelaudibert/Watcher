@@ -4,3 +4,5 @@
 scss/* linguist-vendored
 examples/* linguist-vendored
 fonts/*
+css/materialize.css linguist-vendored
+css/materialize.centercorrection.css linguist-vendored
