@@ -9,10 +9,10 @@
 
 <!-- TODO: Create the Welcome Page -->
 <!-- TODO: Create the page while the player is not in an active match-->
-<!-- TODO: Improve profile menu (Use the available assets)-->
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="css\materialize.centercorrection.css">
     <link rel="stylesheet" href="css\materialize.css">
     <link rel="stylesheet" href="css\main.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -525,9 +525,9 @@
         <li><a class="waves-effect modal-trigger white-text sidenav-li" href="#profile-modal"><i class="material-icons white-text sidenav-icon">person</i>Profile</a></li>
         <li><a id="settings-modal-trigger" class="waves-effect modal-trigger white-text  sidenav-li" href="#settings-modal"><i class="material-icons white-text sidenav-icon">settings</i>Settings</a></li>
         <div class="divider white"></div>
-        <div style="margin-top: 20rem">
-          <a class="right white-text" target="_blank" href="https://www.patreon.com/rafaaudibert" style="padding-right: 0.4rem">Donate</a><br>
-          <a id="about" href="#!" class="right white-text" style="padding-right: 0.4rem">About</a>
+        <div style="margin-top: 19rem">
+          <a class="right white-text" target="_blank" href="https://www.patreon.com/rafaaudibert" style="padding-right: 0.3rem !important">Donate</a><br>
+          <a id="about" href="#!" class="right white-text" style="padding-right: 0.3rem !important">About</a>
         </div>
       </ul>
 
@@ -576,27 +576,27 @@
       </div>
 
       <!-- ProfileModal -->
-      <div id="profile-modal" class="modal modal-fixed-footer rich-black outerspace-lighten-text profile-modal">
-        <div class="modal-content profile-modal-content modal-background">
+      <div id="profile-modal" class="modal modal-fixed-footer rich-black outerspace-lighten-text profile-modal center-align">
+        <div class="modal-content profile-modal-content modal-background left-align">
           <h3 style="margin-bottom: 0rem"><strong>PROFILE</strong></h3><br>
 
           <!-- Profile Information -->
           <div class="row">
-            <div class="col s12 m3 profile-inner center-block">
-              <img class="circle responsive-img perfil-icon" style="margin-left: 23% !important" src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/2077.png">
-              <span class="center-align"style="font-size: 2.5rem">TyG Yeux</span>              
+            <div class="col s12 m3 profile-inner center-align">
+              <img class="circle responsive-img perfil-icon" src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/2077.png"><br>
+              <span class="center-align"style="font-size: 2.5rem">TyG Yeux</span>
               <img src="assets/profile/belownick/master.png" style="max-width: 100%" alt="">
               <span style="font-size: 1.5rem">Level 50</span>
             </div>
-            <div class="col s12 m3 profile-inner profile-runes">
-              <span class="flow-text" style="margin-left: 1.5rem">Solo/Duo 5x5</span><br>
+            <div class="col s12 m3 profile-inner profile-runes center-align">
+              <span class="flow-text">Solo/Duo 5x5</span><br>
               <img class="profile-runes-images tooltipped" data-position="right" data-delay="100" data-tooltip="Gold V<br>Mensageiros de Lucian<br>15LP" src="assets/elos/diamond/1.png">
-              <br><span class="flow-text" style="margin-left: 3.4rem">Flex 5x5</span><br>
+              <br><span class="flow-text">Flex 5x5</span><br>
               <img class="profile-runes-images tooltipped" data-position="right" data-delay="100" data-tooltip="Gold V<br>Mensageiros de Lucian<br>15LP" src="assets/elos/diamond/2.png">
-              <br><span class="flow-text" style="margin-left: 3.4rem">Flex 3x3</span><br>
+              <br><span class="flow-text">Flex 3x3</span><br>
               <img class="profile-runes-images tooltipped" data-position="right" data-delay="100" data-tooltip="Gold V<br>Mensageiros de Lucian<br>15LP" src="assets/elos/diamond/3.png">
             </div>
-            <div class="col s12 m5 profile-inner profile-mastery">
+            <div class="col s12 m5 profile-inner profile-mastery left-align">
               <span class="flow-text">Mastery 7</span><br>
               <img class="circle responsive-img" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/8.4.1/img/champion/TwistedFate.png">
               <img class="profile-mastery-img" src="assets/champmastery/7.png">

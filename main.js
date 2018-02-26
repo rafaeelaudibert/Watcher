@@ -34,7 +34,7 @@ app.on('ready', function(){
   dragable: true,
   // transparent: true,
   frame: false,
-  resizable: false});
+/*resizable: false*/});
 
   //Load the HTML file into window
   mainWindow.loadURL(url.format({
@@ -45,9 +45,6 @@ app.on('ready', function(){
 
   //Set the color
   mainWindow.setBackgroundColor("#e8eaf6");
-
-
-
 
   // Tray configuration \\
   trayMenu = new Tray(iconPath);
