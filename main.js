@@ -2,7 +2,8 @@ const electron = require('electron');
 const url = require('url');
 const path = require('path');
 const storage = require('electron-json-storage');
-const secretInfo = require('./secretInfo')
+const secretInfo = require('./secretInfo');
+
 
 
 // //SET ENV
@@ -11,7 +12,7 @@ const secretInfo = require('./secretInfo')
 
 
 //Descontructors
-const {app, BrowserWindow, Menu, ipcMain, Tray} = electron;
+const {app, BrowserWindow, Menu, Tray} = electron;
 
 //Shared object, can be acessed from the console
 global.sharedObj = {
