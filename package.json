@@ -1,8 +1,8 @@
 {
   "name": "livetracker",
   "productName": "LiveTracker",
-  "version": "1.0.0",
-  "description": "\"Program to analyze live LOL Matches statistics\"",
+  "version": "0.1.0",
+  "description": "Program to show live LOL Matches statistics",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
