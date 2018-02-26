@@ -20,11 +20,11 @@
   "author": "Rafael Audibert",
   "license": "MIT",
   "dependencies": {
+    "about-window": "^1.10.0",
     "electron": "^1.8.2",
     "electron-json-storage": "^4.0.2",
     "jquery": "^3.3.1",
     "kayn": "^0.8.8",
-    "material-ui-image": "^2.1.1",
     "materialize-css": "^0.100.2",
     "node-notifier": "^5.2.1",
     "node-sass": "^4.7.2",
