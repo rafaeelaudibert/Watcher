@@ -790,7 +790,7 @@
                                 form.elements['search_summoner_name'].value = ""; //Cleaning person name
                               })
                               .catch(err => {
-                                if (err == 404){
+                                if (err.statusCode == 404){
                                   Materialize.Toast.removeAll();
                                   Materialize.toast('Player not found<br>Please check the name spelling and/or the region', 6000); //6000 is the Toast durantions in ms
                                 }
