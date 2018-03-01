@@ -18,19 +18,18 @@ global.sharedObj = {
 
 let iconPath = path.join(__dirname, '/assets/icons/png/leagueIcon.png');
 let mainWindow;
-let newWindow;
 let trayMenu = null; //Making so that trayMenu is not collected by the GC
 
 //Listen for the app to be ready
 app.on('ready', function(){
 
-    //Create new mainWindow
+  //Create new mainWindow
   const {width, height} = electron.screen.getPrimaryDisplay().workAreaSize
-  let widthReal = width - 25;
-  let heightReal = height - 25;
+  let realWidth = width - 25;
+  let realHeight = height - 25;
   mainWindow = new BrowserWindow({
-    width: widthReal,
-    height: heightReal,
+    width: realWidth,
+    height: realHeight,
     dragable: true,
     //transparent: true,
     frame: false,
@@ -44,14 +43,16 @@ app.on('ready', function(){
     slashes: true
   }));
 
+  //Set the color
+  mainWindow.setBackgroundColor("#e8eaf6");
+
   // OVERLAY TESTING
   /*
   mainWindow.setAlwaysOnTop(true, "floating");
   mainWindow.setVisibleOnAllWorkspaces(true);
   mainWindow.setFullScreenable(false);*/
 
-  //Set the color
-  mainWindow.setBackgroundColor("#e8eaf6");
+
 
   // Tray configuration \\
   trayMenu = new Tray(iconPath);
@@ -85,23 +86,24 @@ app.on('ready', function(){
 
   trayMenu.setContextMenu(trayContextMenu)
 
-
   trayMenu.on('click', function(event){
     event.preventDefault();
     mainWindow.show();
   });
 
-  mainWindow.on('minimize',function(event){ //When trying to minimize, hide to tray instead
+  //When trying to minimize, hide to tray instead
+  mainWindow.on('minimize',function(event){
     event.preventDefault();
     mainWindow.hide();
   });
 
+  //See if we need to close or to minimize when clicking in the exit button
   storage.get('playerPreferences', function(error, data) {
     if (error) throw error;
 
-    if (!data.finishAtExit){ //If the player chose not to close when clicking to exit, sets the minimize
+    //If the player chose not to close when clicking to exit, hide the window
+    if (!data.finishAtExit){
 
-      //When trying to close, hide to tray instead
       mainWindow.on('close', function (event) {
         if(!mainWindow.isQuiting){
             event.preventDefault();
@@ -111,7 +113,5 @@ app.on('ready', function(){
       });
     }
   });
-
-
 
 });

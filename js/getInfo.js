@@ -53,17 +53,22 @@ const kayn = Kayn(apiKey)({
 /**
  * MATCH INFORMATION
  */
- let matchInformation = {
-   runesInfo: undefined,
-   patch: undefined,
-   gameId: undefined,
-   gameMode: undefined,
-   gameType: undefined,
-   gameQueueConfigId: undefined,
-   mapId: undefined,
-   platformId: undefined,
-   playersList: new Array(0) //list which contains all the match's (mainPlayer match) players information
+
+ //Match information constructor
+ class Match {
+   constructor(){
+     this.runesInfo = undefined,
+     this.patch = undefined,
+     this.gameId = undefined,
+     this.gameMode = undefined,
+     this.gameType = undefined,
+     this.gameQueueConfigId = undefined,
+     this.mapId = undefined,
+     this.platformId = undefined,
+     this.playersList = new Array(0) //list which contains all the match's (mainPlayer match) players information
+   }
  }
+let matchInformation = new Match();
 
 
 /**
@@ -123,6 +128,7 @@ async function getInitialInfo(server = mainPlayer.server){
     matchInformation.gameQueueConfigId = game.gameQueueConfigId;
     matchInformation.mapId = game.mapId;
     matchInformation.platformId = game.platformId;
+    matchInformation.playersList = new Array(0);
     console.log("%c[matchInformation]", "color:purple; font-size: medium", "- Retrieved some match Information");
 
     //Creates the players object pushing its information to matchInformation.playersList

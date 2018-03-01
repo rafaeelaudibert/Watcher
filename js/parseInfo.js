@@ -1,4 +1,4 @@
-//Função construtora de liga
+//League constructor
 class Liga {
   constructor (queueType, elo, tier, pdl){
     this.queueType = queueType;
@@ -8,7 +8,7 @@ class Liga {
   }
 }
 
-//Função construtora da infoPlayer
+//player constructor
 class Player {
   constructor(name, summonerIcon, champion, summonerId, runes){
     this.name = name;
@@ -29,9 +29,8 @@ class Player {
   }
 }
 
-
 /**
- * maiorLiga - Function who returns the biggest
+ * maiorLiga - Function who returns the biggest league
  *
  * @param  {ligasArray} ligas array with all the leagues
  * @return {Liga}       Returns the bigger league in the ligas array
