@@ -39,7 +39,7 @@ app.on('ready', function(){
 
   //Load the HTML file into window
   mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'mainWindow.html'),
+    pathname: path.join(__dirname, 'liveMatch.html'),
     procol: 'file:',
     slashes: true
   }));
