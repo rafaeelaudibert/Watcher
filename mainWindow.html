@@ -839,15 +839,17 @@
       (function(){
 
         let closeSettingsButton = document.getElementById("settings-modal-close").innerHTML;
-        console.log(closeSettingsButton)
 
         //SummonerName textField
-        $('#settings_summoner_name').on('keydown', () => {
+        $('#settings_summoner_name').on('keyup', () => {
           if (closeSettingsButton === "Close"){
             if ($('#settings_summoner_name')[0].value !== playerPreferences.summonerName){
               $('#settings-modal-close')[0].innerHTML = "Apply";
+              $('#settings-modal-close')[0].classList.add("button-color")
             }
           }
+          checkSettingsCloseButton();
+
         })
 
         //Selects
@@ -855,15 +857,21 @@
           if (closeSettingsButton === "Close"){
             if (event.target.value !== playerPreferences.region){ //Value changed !== value stored
               $('#settings-modal-close')[0].innerHTML = "Apply";
+              $('#settings-modal-close')[0].classList.add("button-color")
             }
           }
+          checkSettingsCloseButton();
+
         });
         $('#settings_language').on('change', event => {
           if (closeSettingsButton === "Close"){
             if (event.target.value !== playerPreferences.language){
               $('#settings-modal-close')[0].innerHTML = "Apply";
+              $('#settings-modal-close')[0].classList.add("button-color")
             }
           }
+          checkSettingsCloseButton();
+
         })
 
         //Switches
@@ -875,12 +883,31 @@
                 $('#stg-switch4')[0].checked !== playerPreferences.masteriesTooltips ||
                 $('#stg-switch5')[0].checked !== playerPreferences.eloTooltips){
 
-                $('#settings-modal-close')[0].innerHTML = "Apply";
-                $('#settings-modal-close')[0].classList.add("button-color")
+                  $('#settings-modal-close')[0].innerHTML = "Apply";
+                  $('#settings-modal-close')[0].classList.add("button-color")
             }
           }
+          checkSettingsCloseButton();
+
         });
       })();
+
+      //Function responsible for checking if we must change the settings-close-button value back to 'Close'
+      function checkSettingsCloseButton(){
+        if ($('#settings_summoner_name')[0].value == playerPreferences.summonerName &&
+            $('#settings_server')[0].value == playerPreferences.region &&
+            $('#settings_language')[0].value == playerPreferences.language &&
+            $('#stg-switch1')[0].checked == playerPreferences.finishAtExit &&
+            $('#stg-switch2')[0].checked == playerPreferences.windowsNotifications &&
+            $('#stg-switch3')[0].checked == playerPreferences.runesTooltips &&
+            $('#stg-switch4')[0].checked == playerPreferences.masteriesTooltips &&
+            $('#stg-switch5')[0].checked == playerPreferences.eloTooltips){
+
+              //Returns to the default button value
+              $('#settings-modal-close')[0].innerHTML = "Close";
+              $('#settings-modal-close')[0].classList.remove("button-color");
+            }
+      }
 
 
       //Settings modal close event listener
