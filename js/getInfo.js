@@ -108,10 +108,24 @@ kayn.Static.Version.list().then(data => {
 /**
  * Runes information
  */
-jquery.getJSON('https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perks.json').then(data => {
-          matchInformation.runesInfo = data;
-          console.log("%c[runesInfo]", "color:purple; font-size: medium", "- Retrieved Runes Information from CDragon");
-        }).catch(console.log);
+ let runesPath = 'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perks.json'
+jquery.getJSON(runesPath)
+        .then(data => {
+          parseRunes(data)
+            .then(data => matchInformation.runesInfo = data)
+            .catch(console.log);
+        })
+        .catch(console.log);
+
+async function parseRunes(runes){
+  let runesObject = {};
+  runes.forEach(rune => {
+    runeId = rune.id.toString();
+    runesObject[runeId] = rune.shortDesc
+  })
+  console.log("%c[runesInfo]", "color:purple; font-size: medium", "- Retrieved Runes Information from CDragon");
+  return runesObject;
+}
 
 //Gets the initial info: Info from people playing in the match being played bi the mainPlayer
 async function getInitialInfo(server = mainPlayer.server){
