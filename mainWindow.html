@@ -9,6 +9,8 @@
 
 <!-- TODO: Create the Welcome Page -->
 <!-- TODO: Create the page while the player is not in an active match-->
+<!-- TODO: Create floating button function, to work when in smaller screens -->
+
 <html>
   <head>
     <meta charset="utf-8">
@@ -20,6 +22,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
   <body class="indigo lighten-5">
+
+
+    <!-- TopNav -->
     <nav style="-webkit-app-region: drag">
       <div class="nav-wrapper rich-black">
         <a class="brand-logo left" id="logo" style="margin-left: 19%">LiveTracker App</a>
@@ -30,14 +35,18 @@
       </div>
     </nav>
 
-
+    <!-- Container -->
     <div class="container">
 
       <div class="row"> <!-- Top Information !-->
-        <div class="col s6">
+        <div class="col s6">  <!--Modal Trigger !-->
           <a class="waves-effect waves-light outerspace btn modal-trigger search-summoner" href="#search-modal"><i class="material-icons right">edit</i>Search Another Summoner</a>
-        </div> <!--Modal Trigger !-->
-        <div class="col s5 outerspace z-depth-1 match-info"><a class="white-text"><span class="flow-text"><strong>Summoner's Rift</strong></span><br>Ranked 5x5</a></div>
+        </div>
+        <div class="col s5 outerspace z-depth-1 match-info">
+          <a class="white-text">
+            <span class="flow-text"><strong>Summoner's Rift</strong></span><br>Ranked 5x5
+          </a>
+        </div>
       </div>
 
       <div id="team-1" class="row"> <!-- Time 1 !-->
@@ -183,7 +192,7 @@
           <div class="card-content"> <!-- CardContent -->
             <div class="row"> <!-- CardTitle -->
               <span class="card-title activator grey-text text-darken-4">
-                <div class="col s8 padding-0"><strong>Twisted Fate</strong></div>
+                <div class="col s8 padding-0 truncate"><strong>Twisted Fate</strong></div>
                 <div class="col s2 padding-0"><img class="mastery-img tooltipped" src="assets/champmastery/4.png"  data-position="top" data-tooltip="62,656 points"></div>
               </span>
             </div>
@@ -496,8 +505,9 @@
         </div> <!-- End Cartão !-->
       </div>
 
-      <!-- Botão no canto inferior esquerdo !-->
-      <!--<div class="fixed-action-btn horizontal">
+      <!-- Floating Button !-->
+      <!--
+      <div class="fixed-action-btn horizontal">
         <a class="btn-floating btn-large outerspace">
           <i class="large material-icons">mode_edit</i>
         </a>
@@ -522,8 +532,16 @@
             <span class="white-text flow-text email perfil-level">Level 50</span>
           </div>
         </li>
-        <li><a class="waves-effect modal-trigger white-text sidenav-li" href="#profile-modal"><i class="material-icons white-text sidenav-icon">person</i>Profile</a></li>
-        <li><a id="settings-modal-trigger" class="waves-effect modal-trigger white-text  sidenav-li" href="#settings-modal"><i class="material-icons white-text sidenav-icon">settings</i>Settings</a></li>
+        <li>
+          <a class="waves-effect modal-trigger white-text sidenav-li" href="#profile-modal">
+            <i class="material-icons white-text sidenav-icon">person</i>Profile
+          </a>
+        </li>
+        <li>
+          <a id="settings-modal-trigger" class="waves-effect modal-trigger white-text  sidenav-li" href="#settings-modal">
+            <i class="material-icons white-text sidenav-icon">settings</i>Settings
+          </a>
+        </li>
         <div class="divider white"></div>
         <div style="margin-top: 19rem">
           <a class="right white-text" target="_blank" href="https://www.patreon.com/rafaaudibert" style="padding-right: 0.3rem !important">Donate</a><br>
@@ -570,8 +588,8 @@
           </div>
         </div>
         <div class="modal-footer rich-black">
-          <a id = "search-modal-close" href="#!" class="modal-action waves-effect waves-blue outerspace white-text btn">Search</a>
-          <a  href="#!" class="modal-action modal-close waves-effect waves-blue outerspace white-text btn">Close</a>
+          <a id="search-modal-close" href="#!" class="modal-action waves-effect waves-blue outerspace white-text btn">Search</a>
+          <a href="#!" class="modal-action modal-close waves-effect waves-blue outerspace white-text btn">Close</a>
         </div>
       </div>
 
@@ -625,7 +643,6 @@
         </div>
         <div class="modal-footer rich-black">
           <a href="#!" class="modal-action modal-close waves-effect waves-blue outerspace white-text btn">Close</a>
-          <!-- Need to change it dinamically to Apply if something has changed-->
         </div>
       </div>
 
@@ -742,7 +759,6 @@
             </div>
           </div>
 
-
         </div>
         <div class="modal-footer rich-black">
           <a  href="#!" id="settings-modal-close" class="modal-action modal-close waves-effect waves-blue outerspace white-text btn">Close</a>
@@ -767,7 +783,6 @@
     <script src="js\championCard.js" charset="utf-8"></script>
     <script>
 
-
       //Search modal close event listener
       (function(){
         $('#search-modal-close').on('click', () => {
@@ -776,25 +791,38 @@
           var server = form.elements['search_server'].value;
           if (summonerName && server){
             if(mainPlayer.name !== summonerName || mainPlayer.server !== server){
-              kayn.Summoner.by.name(summonerName)
-                              .region(server)
-                              .then(data => {
-                                mainPlayer = data;
-                                mainPlayer.server = server;
-                                console.log("%c[mainPlayer]", "color:purple; font-size: medium", "- Updated MainPlayer Information");
-                                console.log(data);
-                                $('.modal.open').modal('close');
-                                Materialize.Toast.removeAll(); //Dismiss all other toasts
+              kayn.Summoner.by
+                            .name(summonerName)
+                            .region(server)
+                            .then(playerInformation => {
+                              mainPlayer = playerInformation;
+                              mainPlayer.server = server;
+                              console.log("%c[mainPlayer]", "color:purple; font-size: medium", "- Updated MainPlayer Information");
+                              console.log(playerInformation);
+                              $('.modal.open').modal('close'); //Close modal
+                              Materialize.Toast.removeAll(); //Dismiss all other toasts
+                              Materialize.toast('Player found, looking for the match', 4000);
+                              form.elements['search_summoner_name'].value = ""; //Cleaning person name
+                            })
+                            .catch(err => {
+                              if (err.statusCode == 404){
+                                Materialize.Toast.removeAll();
+                                Materialize.toast('Player not found<br>Please check the name spelling and/or the region', 6000); //6000 is the Toast durantions in ms
+                              }
+                              else{
+                                Materialize.Toast.removeAll();
+                                Materialize.toast('An error ocurred, please try again later or contact the app creator', 6000);
                                 // Materialize.toast(message, displayLength, className, completeCallback);
-                                Materialize.toast('Player found, looking for the match', 4000);
-                                form.elements['search_summoner_name'].value = ""; //Cleaning person name
-                              })
-                              .catch(err => {
-                                if (err.statusCode == 404){
-                                  Materialize.Toast.removeAll();
-                                  Materialize.toast('Player not found<br>Please check the name spelling and/or the region', 6000); //6000 is the Toast durantions in ms
-                                }
-                              });
+                                Materialize.toast(
+                                  'Press Ctrl + Shift + I<br>Select "console"<br>Click in the last line where you can see "Object" written<br>Printscreen it<br>Click in the about section in the app left<br>Click in "Report an issue"<br>Send me a detailed description of what you were doing when the error ocurred, as well as the screenshot you took',
+                                  60000,
+                                  '',
+                                  () => Materialize.toast(
+                                    'Remember to click Ctrl+Shift+I to close what you opened<br>It is dangerous to click in it',
+                                    5000));
+                                console.error(err);
+                              }
+                            });
             } else {
               $('.modal.open').modal('close');
               Materialize.Toast.removeAll();
@@ -810,39 +838,45 @@
       //Changing values in settings modal, changes the close button value
       (function(){
 
-        let closeSettingsButton = document.getElementById('settings-modal-close').innerHTML;
+        let closeSettingsButton = document.getElementById("settings-modal-close").innerHTML;
+        console.log(closeSettingsButton)
 
         //SummonerName textField
         $('#settings_summoner_name').on('keydown', () => {
-          if (closeSettingsButton == "Close"){
-            if (document.getElementById('stg-form1').elements.settings_summoner_name.value !== playerPreferences.summonerName){
-              document.getElementById('settings-modal-close').innerHTML = "Apply";
+          if (closeSettingsButton === "Close"){
+            if ($('#settings_summoner_name')[0].value !== playerPreferences.summonerName){
+              $('#settings-modal-close')[0].innerHTML = "Apply";
             }
           }
         })
 
         //Selects
-        $('#settings_server').on('change', () => {
-          if (closeSettingsButton == "Close"){
-            if (document.getElementById('stg-form1').elements.settings_server.value !== playerPreferences.region){
-              document.getElementById('settings-modal-close').innerHTML = "Apply";
+        $('#settings_server').on('change', event => {
+          if (closeSettingsButton === "Close"){
+            if (event.target.value !== playerPreferences.region){ //Value changed !== value stored
+              $('#settings-modal-close')[0].innerHTML = "Apply";
             }
           }
         });
-        $('#settings_language').on('change', () => {
-          if (closeSettingsButton == "Close"){
-            if (document.getElementById('stg-form1').elements.settings_server.value !== playerPreferences.region){
-              document.getElementById('settings-modal-close').innerHTML = "Apply";
+        $('#settings_language').on('change', event => {
+          if (closeSettingsButton === "Close"){
+            if (event.target.value !== playerPreferences.language){
+              $('#settings-modal-close')[0].innerHTML = "Apply";
             }
           }
         })
 
         //Switches
         $('#settings-modal').on('click',() =>  {
-          console.log("cliquei");
-          if (closeSettingsButton == "Close"){
-            if (document.getElementById('stg-form1').elements.settings_server.value !== playerPreferences.region){
-              document.getElementById('settings-modal-close').innerHTML = "Apply";
+          if (closeSettingsButton === "Close"){
+            if ($('#stg-switch1')[0].checked !== playerPreferences.finishAtExit ||
+                $('#stg-switch2')[0].checked !== playerPreferences.windowsNotifications ||
+                $('#stg-switch3')[0].checked !== playerPreferences.runesTooltips ||
+                $('#stg-switch4')[0].checked !== playerPreferences.masteriesTooltips ||
+                $('#stg-switch5')[0].checked !== playerPreferences.eloTooltips){
+
+                $('#settings-modal-close')[0].innerHTML = "Apply";
+                $('#settings-modal-close')[0].classList.add("button-color")
             }
           }
         });
@@ -920,6 +954,10 @@
           switches[2].checked = playerPreferences.runesTooltips;
           switches[3].checked = playerPreferences.masteriesTooltips;
           switches[4].checked = playerPreferences.eloTooltips;
+
+          //Returns to the default button value
+          $('#settings-modal-close')[0].innerHTML = "Close";
+          $('#settings-modal-close')[0].classList.remove("button-color");
         });
       })();
 
@@ -975,7 +1013,7 @@
                   $("#" + $(this).data('tooltip-id')).find(".backdrop").addClass(background);
               }
           });
-         });
+        });
 
       //Settings to make so that it opens links externally by default
       const shell = require('electron').shell;
