@@ -202,7 +202,7 @@ async function getBasicInfo(server = mainPlayer.server){
 
 //Get matches for each player. After calls the function who sets the champion Win Rate for each player.
 async function getAdvancedInfo(server = mainPlayer.server){
-  onsole.time("MatchesID")
+  console.time("MatchesID")
   const idMatches = Promise.all(matchInformation.playersList.map(player => retornaIdPartidasCampeoes(server, player.championId, player.accountId)));
   console.timeEnd("MatchesID")
 
