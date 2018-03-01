@@ -19,6 +19,10 @@
 .outerspace {
   background-color: #454953 !important; }
 
+.outerspace.lighten {
+  background-color: #b6b8bd !important;
+}
+
 .outerspace-transparent {
   background-color: rgba(69, 73, 83, 0.7);
 }

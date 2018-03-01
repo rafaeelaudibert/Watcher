@@ -48,7 +48,7 @@
 
       <!-- Looking for a match -->
       <div class="row center-align valign-wrapper" style="align-items: flex-end !important; height: 250px; margin-bottom: 1rem">
-        <div class="col s4 offset-s4 blue-munsell z-depth-1 match-infocenter-align">
+        <div id="looking-match"class="col s4 offset-s4 blue-munsell z-depth-1 match-infocenter-align">
           <a class="white-text">
             <span class="flow-text"><strong>Looking for a match</strong></span><br>TyG Yeux
           </a>
@@ -353,6 +353,9 @@
           $('#loading-bar')[0].classList.toggle('indeterminate');
           $('#loading-bar')[0].classList.toggle('determinate');
           $('#loading-bar')[0].classList.toggle('filled');
+          $('#looking-match')[0].classList.toggle('blue-munsell');
+          $('#looking-match')[0].classList.toggle('outerspace');
+          $('#looking-match')[0].classList.toggle('lighten');
           html = $('#stop-search')[0].text;
           console.log(html);
           if(html == "Stop Searching"){
