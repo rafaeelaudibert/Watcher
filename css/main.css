@@ -157,3 +157,7 @@
 .filled{
   width: 100%;
 }
+
+.no-display {
+  display: none !important;
+}
