@@ -3,6 +3,7 @@ const url = require('url');
 const path = require('path');
 const storage = require('electron-json-storage');
 const secretInfo = require('./secretInfo');
+const backColor = "#e8eaf6";
 
 // //SET ENV
 //process.env.NODE_ENV = 'production';  //DESCOMENTAR QUANDO FOR UTILIZAR
@@ -18,6 +19,7 @@ global.sharedObj = {
 
 let iconPath = path.join(__dirname, '/assets/icons/png/leagueIcon.png');
 let mainWindow;
+let welcomeWindow;
 let trayMenu = null; //Making so that trayMenu is not collected by the GC
 
 //Listen for the app to be ready
@@ -44,13 +46,34 @@ app.on('ready', function(){
   }));
 
   //Set the color
-  mainWindow.setBackgroundColor("#e8eaf6");
+  mainWindow.setBackgroundColor(backColor);
 
   // OVERLAY TESTING
   /*
   mainWindow.setAlwaysOnTop(true, "floating");
   mainWindow.setVisibleOnAllWorkspaces(true);
   mainWindow.setFullScreenable(false);*/
+
+  //Create the welcome page
+  let welcomeWidth = realWidth / 100 * 80;
+  welcomeWindow = new BrowserWindow({
+    width: welcomeWidth,
+    height: 500,
+    dragable: false,
+    transparent: true,
+    frame: false,
+    resizable: false
+  })
+
+  //Load the HTML file into window
+  welcomeWindow.loadURL(url.format({
+    pathname: path.join(__dirname, 'welcomeWindow.html'),
+    procol: 'file:',
+    slashes: true
+  }));
+
+  //Set the color
+  welcomeWindow.setBackgroundColor(backColor);
 
 
 

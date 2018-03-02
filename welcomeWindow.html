@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Welcome to LiveTracker!</title>
+  <link rel="stylesheet" href="css\materialize.centercorrection.css">
+  <link rel="stylesheet" href="css\materialize.css">
+  <link rel="stylesheet" href="css\main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+  <!-- NOTE: IMAGES NECESSARY: -->
+  <!-- NOTE: 1. Main app image; 2. App image - searching; 3. Search modal image; 4. Main app image; 5. Reveal card image; 6. Tooltips detail; 7. Profile modal -->
+  <div class="carousel carousel-slider center" data-indicators="true">
+    <div class="carousel-fixed-item center">
+      <a id='close-welcome' class="btn waves-effect white grey-text darken-text-2">Got it!</a>
+    </div>
+    <div class="carousel-item red white-text" href="#one!">
+      <h2>LIVETRACKER</h2>
+      <p class="white-text">Your app to find live statistics for League of Legends</p>
+    </div>
+    <div class="carousel-item amber white-text" href="#two!">
+      <h2>AUTOMATIC SEARCH</h2>
+      <p class="white-text">The app is always trying to see if you are in a match</p>
+      <p class="white-text">As soon as you connect to the Justice Fields, our engine starts running<br>This way you can receive the information you need faster</p>
+    </div>
+    <div class="carousel-item green white-text" href="#three!">
+      <h2>SEARCH ANY SUMMONER</h2>
+      <p class="white-text">You can search other summoners than you, clicking at 'Search Another Summoner' at any time you want</p>
+    </div>
+    <div class="carousel-item blue white-text" href="#four!">
+      <h2>WE HAVE GENERAL INFORMATION...</h2>
+      <p class="white-text">When we gathered all the information you need, everything will be shown to you</p>
+    </div>
+    <div class="carousel-item outerspace white-text" href="#five!">
+      <h2>... AND THE SPECIFIC ONE AS WELL</h2>
+      <p class="white-text">Clicking in a champion portrait, you can see more information<br>You can find their runes, and their champion and ranked winrate</p>
+    </div>
+    <div class="carousel-item copper white-text" href="#six!">
+      <h2>GORGEOUS TOOLTIPS</h2>
+      <p class="white-text">Hovering over some stuff, shows you a nice tooltip giving you some aditional information</p>
+    </div>
+    <div class="carousel-item blue-munsell white-text" href="#seven!">
+      <h2>PROFILE</h2>
+      <p class="white-text">You can always see your own information heading over to Profile, in the left</p>
+    </div>
+  </div>
+  <script type="text/javascript" src="js/hammer.js"></script>
+  <script type="text/javascript" src="node_modules\jquery\dist\jquery.js"></script>
+  <script type="text/javascript" src="js\materialize.min.js"></script>
+  <script type="text/javascript">
+
+    function moveNext(){
+      $('.carousel').carousel('next');
+      console.log('Moved')
+    }
+
+    $(document).ready(function(){
+      $('.carousel.carousel-slider').carousel({fullWidth: true});
+      setInterval(moveNext, 9000);
+
+      $('#close-welcome').on('click', () => {
+        const { remote } = require('electron');
+        remote.getCurrentWindow().close();
+      });
+    });
+
+  </script>
+</body>
+</html>
