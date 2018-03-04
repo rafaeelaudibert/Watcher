@@ -161,3 +161,30 @@
 .no-display {
   display: none !important;
 }
+
+/* Action buttons */
+.action-icons {
+  padding: 0 1rem;
+}
+
+/* Close button */
+.action-close {
+  background: #02162a;
+  transition: background 200ms ease-in;
+}
+
+.action-close:hover {
+  background: red;
+  transition: background 200ms ease-out;
+}
+
+/* Minimize button */
+.action-minimize {
+  background: #02162a;
+  transition: background 200ms ease-in;
+}
+
+.action-minimize:hover {
+  background: #133658;
+  transition: background 200ms ease-out;
+}

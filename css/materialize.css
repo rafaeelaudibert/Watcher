@@ -2068,11 +2068,9 @@ blockquote {
 i {
   line-height: inherit; }
   i.left {
-    float: left;
-    margin-right: 10px; }
+    float: left; }
   i.right {
-    float: right;
-    margin-left: 10px; }
+    float: right; }
   i.tiny {
     font-size: 1rem; }
   i.small {
