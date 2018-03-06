@@ -17,7 +17,7 @@ global.sharedObj = {
   apiKey: secretInfo.apiKey
 };
 
-let iconPath = path.join(__dirname, '/assets/icons/png/leagueIcon.png');
+let iconPath = path.join(__dirname, '/assets/icons/png/leagueIconRecording.png');
 let mainWindow;
 let welcomeWindow;
 let trayMenu = null; //Making so that trayMenu is not collected by the GC
