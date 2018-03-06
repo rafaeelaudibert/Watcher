@@ -1,4 +1,5 @@
 # LiveTracker
+![LiveTracker](/assets/icons/png/icon.png)
 
 This is a [WIP] project.
 
