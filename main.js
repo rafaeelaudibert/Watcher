@@ -4,18 +4,24 @@ const path = require('path');
 const storage = require('electron-json-storage');
 const secretInfo = require('./secretInfo');
 const backColor = "#e8eaf6";
+const keytar = require('keytar')
 
-// //SET ENV
+//SET ENV
 //process.env.NODE_ENV = 'production';  //DESCOMENTAR QUANDO FOR UTILIZAR
 
 //Descontructors
 const {app, BrowserWindow, Menu, Tray} = electron;
 
 //Shared object, can be acessed from the console
+const API = secretInfo.apiKey
 global.sharedObj = {
   //You can put your API KEY directly here
   apiKey: secretInfo.apiKey
 };
+keytar.setPassword('LiveTracker', 'LeagueAPI', API).then(() => {
+  keytar.findCredentials('LiveTracker')
+        .then(data => console.log(data[0].password));
+});
 
 let iconPath = path.join(__dirname, '/assets/icons/png/leagueIconRecording.png');
 let mainWindow;
