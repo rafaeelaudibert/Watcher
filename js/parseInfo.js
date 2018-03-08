@@ -18,8 +18,8 @@ class Player {
     this.championId = champion;
     this.championWins = 0;
     this.championWR = "First Match";
-    this.championMasteryLevel = undefined;
-    this.championMasteryPoints = undefined;
+    this.championMasteryLevel = 0;
+    this.championMasteryPoints = 0;
     this.matchList = [];
     this.championMatches = undefined;
     this.championName = undefined;
@@ -711,24 +711,27 @@ async function maiorLiga(ligas) {
  *
  * @param  {integer} idChamp        id of the champion
  * @param  {integer} idConta        if of the account
- * @param  {integer} beginIndex     start of the index search (used internally), changes when recursion
- * @param  {integer} endIndex       end of the index search (used internally), changes when recursion
  * @return {array}                  array with all the ID's
  */
-async function retornaIdPartidasCampeoes(server = mainPlayer.server, idChamp, idConta, beginIndex = 0, endIndex = 100) {
+async function retornaIdPartidasCampeoes(server = mainPlayer.server, idChamp, idConta) {
   var listaPartidas = kayn.Matchlist.by.accountID(idConta)
-    .query({
-        champion: idChamp,
-        season: seasonAtual
-    })
-    .region(server)
-    .then(data => {
-      listaMatches = [];
-      for (partida in data.matches) {
-        listaMatches.push(data.matches[partida].gameId);
-      }
-      return listaMatches;
-    });
+                                      .query({
+                                          champion: idChamp,
+                                          season: seasonAtual
+                                      })
+                                      .region(server)
+                                      .then(data => {
+                                        listaMatches = [];
+                                        for (partida in data.matches) {
+                                          listaMatches.push(data.matches[partida].gameId);
+                                        }
+                                        return listaMatches;
+                                      })
+                                      .catch(err => {
+                                        //If some error ocurred, returns an empty array
+                                        console.log(err);
+                                        return [];
+                                      });
 
   return listaPartidas;
 }
@@ -753,7 +756,6 @@ function checaVitoria(partida, accountId) {
     }
   }
 
-  console.log("Id do Participante na partida: " + playerPos)
   if (playerPos < 5 && partida.teams[0].win == "Win") {
     winornot++;
   } else if (playerPos >= 5 && partida.teams[1].win == "Win") {
@@ -772,4 +774,4 @@ function checaVitoria(partida, accountId) {
  * @param  {integer} qtdeJogos Number of games played
  * @return {float}           WinRate Percentage
  */
-function porcentagemVitorias(vitorias, qtdeJogos) { return qtdeJogos > 0 ? 100 * vitorias / qtdeJogos : "First Match" }
+function porcentagemVitorias(vitorias, qtdeJogos) { return qtdeJogos > 0 ? (100 * vitorias / qtdeJogos).toFixed(2) : "First Match" }

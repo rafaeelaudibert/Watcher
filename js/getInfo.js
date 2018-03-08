@@ -3,7 +3,7 @@ const remote = require('electron').remote;
 const path = require('path');
 const apiKey = remote.getGlobal('sharedObj').apiKey;
 const seasonAtual = 11;
-const defaultPlayer = 'Coto Johnson'
+const defaultPlayer = 'FawZer'
 const defaultServer = 'br'
 const {
   Kayn,
@@ -117,6 +117,38 @@ jquery.getJSON(runesPath)
         })
         .catch(console.log);
 
+/**
+ * Methods availability
+ */
+let statusPath = 'http://querijn.codes/api_status/1.1/';
+let APIStatus = []
+jquery.getJSON(statusPath)
+        .then(data => {
+          for (var key in data) {
+            for (var server in data[key]){
+              console.log()
+              if(data[key][server].state !== 'up'){
+                APIStatus.push(
+                  key + " - "
+                  + server + " - "
+                  + data[key][server].state + " - "
+                  + data[key][server].uptime
+                  );
+              }
+            }
+          }
+          console.log("%c[RiotAPI Status]", "color:purple; font-size: medium", "- Retrieved APIStatus");
+          if(APIStatus.length > 0){
+            console.log("%c[RiotAPI Status]", "color:purple; font-size: medium", "- Some methods have problems");
+            console.log(APIStatus);
+          } else {
+            console.log("%c[RiotAPI Status]", "color:purple; font-size: medium", "- Everything is okay");
+          }
+
+        })
+        .catch(console.log);
+
+
 async function parseRunes(runes){
   let runesObject = {};
   runes.forEach(rune => {
@@ -194,7 +226,7 @@ async function getInitialInfo(server = mainPlayer.server){
 
   })
   .catch(error => {
-    if (error == 404){
+    if (error.statusCode == 404){
       console.log("%c[getMatch]", "color:purple; font-size: medium", "- Player is not in an active match")
     } else {
       console.log(error)}
@@ -206,7 +238,7 @@ async function getInitialInfo(server = mainPlayer.server){
 async function getBasicInfo(server = mainPlayer.server){
   //Gets info of all the players
   const players = Promise.all(matchInformation.playersList.map(participante => kayn.Summoner.by.name(participante.name).region(mainPlayer.server)));
-  players.then(async (value) => {
+  players.then(async value => {
 
     //Sets the info of the players in the matchInformation.playersList array
     for (participante in matchInformation.playersList){
@@ -217,16 +249,15 @@ async function getBasicInfo(server = mainPlayer.server){
     }
     console.log("%c[basicInfo]", "color:purple; font-size: medium", "- Set the basic info")
   })
-  .catch(console.log);
+  .catch(err => console.log(err));
 }
 
 //Get matches for each player. After calls the function who sets the champion Win Rate for each player.
 async function getAdvancedInfo(server = mainPlayer.server){
-  console.time("MatchesID")
+  console.log("Started looking for matchLists")
   const idMatches = Promise.all(matchInformation.playersList.map(player => retornaIdPartidasCampeoes(server, player.championId, player.accountId)));
-  console.timeEnd("MatchesID")
 
-  idMatches.then(async function(value){
+  idMatches.then(async value => {
     //Sets the matchlist
     for (participante in matchInformation.playersList){
       var player = matchInformation.playersList[participante]
