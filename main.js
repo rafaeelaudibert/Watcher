@@ -18,10 +18,6 @@ global.sharedObj = {
   //You can put your API KEY directly here
   apiKey: secretInfo.apiKey
 };
-keytar.setPassword('LiveTracker', 'LeagueAPI', API).then(() => {
-  keytar.findCredentials('LiveTracker')
-        .then(data => console.log(data[0].password));
-});
 
 let iconPath = path.join(__dirname, '/assets/icons/png/leagueIconRecording.png');
 let mainWindow;
