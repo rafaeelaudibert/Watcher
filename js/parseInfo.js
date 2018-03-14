@@ -767,6 +767,44 @@ function checaVitoria(partida, accountId) {
 
 }
 
+
+async function parsePlayerLeague(leagues){
+  const parsedLeagues = {};
+  leagues.map(league => parsedLeagues[league.queueType] = {
+    tier: league.tier,
+    rank: league.rank,
+    lp: league.leaguePoints,
+    leagueName: league.leagueName});
+
+  if (!parsedLeagues['RANKED_FLEX_SR']){
+    parsedLeagues['RANKED_FL EX_SR'] = {
+      tier: 'UNRANKED',
+      rank: '',
+      lp: 0,
+      leagueName: ''
+    }
+  }
+  if (!parsedLeagues['RANKED_SOLO_5x5']){
+    parsedLeagues['RANKED_SOLO_5x5'] = {
+      tier: 'UNRANKED',
+      rank: '',
+      lp: 0,
+      leagueName: ''
+    }
+  }
+  if (!parsedLeagues['RANKED_FLEX_TT']){
+    parsedLeagues['RANKED_FLEX_TT'] = {
+      tier: 'UNRANKED',
+      rank: '',
+      lp: 0,
+      leagueName: ''
+    }
+  }
+
+  //Save the leagues
+  mainPlayer.leagues = parsedLeagues;
+}
+
 /**
  * porcentagemVitorias - Returns the winrate percentage
  *
