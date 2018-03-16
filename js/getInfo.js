@@ -1,18 +1,21 @@
+// Requires
 const jquery = require("jquery");
 const remote = require('electron').remote;
 const path = require('path');
-const apiKey = remote.getGlobal('sharedObj').apiKey;
-const seasonAtual = 11;
-const defaultPlayer = 'CooN';
-const defaultServer = 'kr';
 const {
   Kayn,
   REGIONS
 } = require("kayn");
-
 const notifier = require('node-notifier');
 
-// Object
+//Const information
+const apiKey = remote.getGlobal('sharedObj').apiKey;
+const seasonAtual = 11;
+const defaultPlayer = 'Weberium';
+const defaultServer = 'br';
+
+
+// NOTIFICATION MODEL
 /*notifier.notify(
   {
     title: 'LiveTracker',
@@ -50,6 +53,7 @@ const kayn = Kayn(apiKey)({
   }
 });
 
+
 /**
  * MATCH INFORMATION
  */
@@ -58,14 +62,14 @@ const kayn = Kayn(apiKey)({
 class Match {
   constructor() {
     this.runesInfo = undefined,
-      this.patch = undefined,
-      this.gameId = undefined,
-      this.gameMode = undefined,
-      this.gameType = undefined,
-      this.gameQueueConfigId = undefined,
-      this.mapId = undefined,
-      this.platformId = undefined,
-      this.playersList = new Array(0) //list which contains all the match's (mainPlayer match) players information
+    this.patch = undefined,
+    this.gameId = undefined,
+    this.gameMode = undefined,
+    this.gameType = undefined,
+    this.gameQueueConfigId = undefined,
+    this.mapId = undefined,
+    this.platformId = undefined,
+    this.playersList = new Array(0) //list which contains all the match's (mainPlayer match) players information
   }
 }
 const matchInformation = new Match();
@@ -85,7 +89,7 @@ let championList = kayn.Static.Champion.list()
 /**
  * mainPlayer information
  */
-let mainPlayer
+let mainPlayer;
 kayn.Summoner.by.name(defaultPlayer)
   .region(defaultServer)
   .then(data => {
@@ -123,13 +127,13 @@ jquery.getJSON(runesPath)
 /**
  * Methods availability
  */
-const statusPath = 'http://querijn.codes/api_status/1.1/';
-const APIStatus = []
+const statusPath = 'http://querijn.codes/api_status/1.1/'; //RIOT API page
+const APIStatus = [];
 jquery.getJSON(statusPath)
   .then(data => {
+    //Iterates through the object to find everything which is not up, pushing to APIStatus
     for (let key in data) {
       for (let server in data[key]) {
-        console.log()
         if (data[key][server].state !== 'up') {
           APIStatus.push(
             key + " - " +
@@ -143,9 +147,11 @@ jquery.getJSON(statusPath)
     console.log("%c[RiotAPI Status]", "color:purple; font-size: medium", "- Retrieved APIStatus");
 
     if (APIStatus.length > 0) {
+      //If we have some problem
       console.log("%c[RiotAPI Status]", "color:purple; font-size: medium", "- Some methods have problems");
       console.log(APIStatus);
     } else {
+      //No problem with the Riot API
       console.log("%c[RiotAPI Status]", "color:purple; font-size: medium", "- Everything is okay");
     }
 
@@ -154,7 +160,10 @@ jquery.getJSON(statusPath)
 
 
 async function parseRunes(runes) {
+
+  //Creates a 'better' runes object, with the ID being the key
   const runesObject = {};
+
   runes.forEach(rune => {
     runeId = rune.id.toString();
     runesObject[runeId] = rune.shortDesc
@@ -182,13 +191,13 @@ async function getInitialInfo(server = mainPlayer.server) {
       console.log("%c[matchInformation]", "color:purple; font-size: medium", "- Retrieved some match Information");
 
       //Creates the players object pushing its information to matchInformation.playersList
-      game.participants.map(participante => matchInformation.playersList.push(
+      game.participants.map(player => matchInformation.playersList.push(
         new Player(
-          participante.summonerName,
-          participante.profileIconId,
-          participante.championId,
-          participante.summonerId,
-          participante.perks.perkIds
+          player.summonerName,
+          player.profileIconId,
+          player.championId,
+          player.summonerId,
+          player.perks.perkIds
         )))
 
       //Created all the players in matchInformation.playersList
@@ -196,22 +205,21 @@ async function getInitialInfo(server = mainPlayer.server) {
       console.log("%c[playersList]", "color:purple; font-size: medium", "- Filled with summonerName, profileIcon, championId, summonerId and runes");
 
       //Gets the champion Name according to the champion Id, for each player in matchInformation.playersList
-      matchInformation.playersList.map(async participante => {
-        for (campeao in championList) {
-          if (championList[campeao].id == participante.championId) {
-            //Seto o nome do campeão
-            participante.championName = championList[campeao].name;
+      matchInformation.playersList.map(async player => {
+        for (champion in championList) {
+          if (championList[champion].id == player.championId) {
+            //Set the champion name
+            player.championName = championList[champion].name;
             console.log("%c[championDecoding]", "color:purple; font-size: medium", "- Decoded this champion!");
           }
         }
       })
 
       //Parsing runes description for each champ
-      matchInformation.playersList.map(async participante => {
-        let runesCopy = new Array(6);
-        for (rune in participante.runes) {
-          runeId = participante.runes[rune];
-          participante.runes[rune] = {
+      matchInformation.playersList.map(async player => {
+        for (rune in player.runes) {
+          const runeId = player.runes[rune];
+          player.runes[rune] = {
             runeId: runeId,
             runeDescription: matchInformation.runesInfo[runeId]
           }
@@ -220,24 +228,24 @@ async function getInitialInfo(server = mainPlayer.server) {
       })
 
       //Gets the championMasteryLevel and championMasteryPoints, for each player in matchInformation.playersList
-      matchInformation.playersList.map(async participante => {
-        kayn.ChampionMastery.get(participante.summonerId)(participante.championId)
+      matchInformation.playersList.map(async player => {
+        kayn.ChampionMastery.get(player.summonerId)(player.championId)
           .region(server)
           .then(data => {
-            participante.championMasteryLevel = data.championLevel;
-            participante.championMasteryPoints = data.championPoints;
+            player.championMasteryLevel = data.championLevel;
+            player.championMasteryPoints = data.championPoints;
             console.log("%c[mastery]", "color:purple; font-size: medium", "- Champion Mastery set!")
           })
       })
 
       //Gets the player league in this queue, or the higher league if normal game/aram
-      matchInformation.playersList.map(async participante => {
-        kayn.LeaguePositions.by.summonerID(participante.summonerId)
+      matchInformation.playersList.map(async player => {
+        kayn.LeaguePositions.by.summonerID(player.summonerId)
           .region(server)
           .then(leagues => {
             console.log(leagues);
             let gameMode = matchInformation.gameQueueConfigId;
-            switch(gameMode){
+            switch (gameMode) {
               case 420:
                 gameMode = 'RANKED_SOLO_5x5';
                 break;
@@ -254,9 +262,9 @@ async function getInitialInfo(server = mainPlayer.server) {
 
             //If it is a ranked game, returns the ranked elo, else searches the higher league
             let league = new Liga("NO QUEUE", "UNRANKED", "", 0, "");
-            if (gameMode !== 'NORMAL GAME'){
+            if (gameMode !== 'NORMAL GAME') {
               leagues.forEach(lg => {
-                if (lg.queueType === gameMode){
+                if (lg.queueType === gameMode) {
                   league = new Liga(
                     lg.queueType,
                     lg.tier,
@@ -266,11 +274,11 @@ async function getInitialInfo(server = mainPlayer.server) {
                   );
                 }
               });
-              participante.liga = league;
+              player.liga = league;
               console.log("%c[higherLeague]", "color:purple; font-size: medium", "- Ranked League set!")
             } else {
               higherLeague(leagues).then(higher => {
-                participante.liga = higher;
+                player.liga = higher;
                 console.log("%c[higherLeague]", "color:purple; font-size: medium", "- Higher League set!")
               })
             }
@@ -291,13 +299,13 @@ async function getInitialInfo(server = mainPlayer.server) {
 //Get the playerLevel and the playerAccountId
 async function getBasicInfo(server = mainPlayer.server) {
   //Gets info of all the players
-  const players = Promise.all(matchInformation.playersList.map(participante => kayn.Summoner.by.name(participante.name).region(mainPlayer.server)));
+  const players = Promise.all(matchInformation.playersList.map(player => kayn.Summoner.by.name(player.name).region(mainPlayer.server)));
   players.then(async value => {
 
       //Sets the info of the players in the matchInformation.playersList array
-      for (participante in matchInformation.playersList) {
-        let player = matchInformation.playersList[participante]
-        const infoPlayer = value[participante]
+      for (player in matchInformation.playersList) {
+        let player = matchInformation.playersList[player]
+        const infoPlayer = value[player]
         player.level = infoPlayer.summonerLevel;
         player.accountId = infoPlayer.accountId;
       }
@@ -308,20 +316,20 @@ async function getBasicInfo(server = mainPlayer.server) {
 
 //Get matches for each player. After calls the function who sets the champion Win Rate for each player.
 async function getAdvancedInfo(server = mainPlayer.server) {
-  console.log("Started looking for matchLists")
+
   const idMatches = Promise.all(matchInformation.playersList.map(player => retornaIdPartidasCampeoes(server, player.championId, player.accountId)));
 
   idMatches.then(async value => {
+
     //Sets the matchlist
-    for (participante in matchInformation.playersList) {
-      let player = matchInformation.playersList[participante]
-      const matchIDs = value[participante]
-      player.matchList = matchIDs
+    for (player in matchInformation.playersList) {
+      let player = matchInformation.playersList[player]
+      player.matchList = value[player]
     }
 
     //Gets the real matches and set the wins/win rate
-    for (participante in matchInformation.playersList) {
-      getChampInfo(participante, server);
+    for (player in matchInformation.playersList) {
+      getChampInfo(player, server);
     }
 
   })
@@ -334,10 +342,10 @@ async function getChampInfo(playerPos, server = mainPlayer.server) {
   //Alias for matchInformation.playersList[playerPos]
   let thisPlayer = matchInformation.playersList[playerPos]
 
-  //Gets the matches perse
-  console.time("Player: " + playerPos);
+  //Get the matches
+  console.time("Player " + playerPos + " matches done");
   const matches = await Promise.all(thisPlayer.matchList.map(data => kayn.Match.get(data).region(server)));
-  console.timeEnd("Player: " + playerPos);
+  console.timeEnd("Player " + playerPos + " matches done");
 
   //Check the victory in the matches
   const checkVictory = matches.map(match => checaVitoria(match, thisPlayer.accountId));
