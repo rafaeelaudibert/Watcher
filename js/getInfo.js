@@ -111,7 +111,7 @@ kayn.Static.Version.list().then(data => {
 /**
  * Runes information
  */
-let runesPath = 'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perks.json'
+const runesPath = 'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perks.json'
 jquery.getJSON(runesPath)
   .then(data => {
     parseRunes(data)
@@ -123,12 +123,12 @@ jquery.getJSON(runesPath)
 /**
  * Methods availability
  */
-let statusPath = 'http://querijn.codes/api_status/1.1/';
-let APIStatus = []
+const statusPath = 'http://querijn.codes/api_status/1.1/';
+const APIStatus = []
 jquery.getJSON(statusPath)
   .then(data => {
-    for (var key in data) {
-      for (var server in data[key]) {
+    for (let key in data) {
+      for (let server in data[key]) {
         console.log()
         if (data[key][server].state !== 'up') {
           APIStatus.push(
@@ -141,6 +141,7 @@ jquery.getJSON(statusPath)
       }
     }
     console.log("%c[RiotAPI Status]", "color:purple; font-size: medium", "- Retrieved APIStatus");
+
     if (APIStatus.length > 0) {
       console.log("%c[RiotAPI Status]", "color:purple; font-size: medium", "- Some methods have problems");
       console.log(APIStatus);
@@ -153,7 +154,7 @@ jquery.getJSON(statusPath)
 
 
 async function parseRunes(runes) {
-  let runesObject = {};
+  const runesObject = {};
   runes.forEach(rune => {
     runeId = rune.id.toString();
     runesObject[runeId] = rune.shortDesc
@@ -189,6 +190,7 @@ async function getInitialInfo(server = mainPlayer.server) {
           participante.summonerId,
           participante.perks.perkIds
         )))
+
       //Created all the players in matchInformation.playersList
       console.log("%c[playersList]", "color:purple; font-size: medium", "- Filled all the players list with the match's players");
       console.log("%c[playersList]", "color:purple; font-size: medium", "- Filled with summonerName, profileIcon, championId, summonerId and runes");
@@ -204,6 +206,7 @@ async function getInitialInfo(server = mainPlayer.server) {
         }
       })
 
+      //Parsing runes description for each champ
       matchInformation.playersList.map(async participante => {
         let runesCopy = new Array(6);
         for (rune in participante.runes) {
@@ -249,7 +252,7 @@ async function getInitialInfo(server = mainPlayer.server) {
                 break;
             }
 
-            //If it is a ranked game, returns the ranked elo, elso searches the higher league
+            //If it is a ranked game, returns the ranked elo, else searches the higher league
             let league = new Liga("NO QUEUE", "UNRANKED", "", 0, "");
             if (gameMode !== 'NORMAL GAME'){
               leagues.forEach(lg => {
@@ -279,7 +282,7 @@ async function getInitialInfo(server = mainPlayer.server) {
       if (error.statusCode == 404) {
         console.log("%c[getMatch]", "color:purple; font-size: medium", "- Player is not in an active match")
       } else {
-        console.log(error)
+        console.error(error)
       }
     });
 
@@ -293,8 +296,8 @@ async function getBasicInfo(server = mainPlayer.server) {
 
       //Sets the info of the players in the matchInformation.playersList array
       for (participante in matchInformation.playersList) {
-        var player = matchInformation.playersList[participante]
-        var infoPlayer = value[participante]
+        let player = matchInformation.playersList[participante]
+        const infoPlayer = value[participante]
         player.level = infoPlayer.summonerLevel;
         player.accountId = infoPlayer.accountId;
       }
@@ -311,14 +314,14 @@ async function getAdvancedInfo(server = mainPlayer.server) {
   idMatches.then(async value => {
     //Sets the matchlist
     for (participante in matchInformation.playersList) {
-      var player = matchInformation.playersList[participante]
-      var matchIDs = value[participante]
+      let player = matchInformation.playersList[participante]
+      const matchIDs = value[participante]
       player.matchList = matchIDs
     }
 
     //Gets the real matches and set the wins/win rate
     for (participante in matchInformation.playersList) {
-      getChampInfo(participante, server)
+      getChampInfo(participante, server);
     }
 
   })
@@ -329,7 +332,7 @@ async function getAdvancedInfo(server = mainPlayer.server) {
 async function getChampInfo(playerPos, server = mainPlayer.server) {
 
   //Alias for matchInformation.playersList[playerPos]
-  var thisPlayer = matchInformation.playersList[playerPos]
+  let thisPlayer = matchInformation.playersList[playerPos]
 
   //Gets the matches perse
   console.time("Player: " + playerPos);

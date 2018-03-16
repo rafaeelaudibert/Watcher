@@ -37,11 +37,11 @@ class Player {
  * @return {Liga}       Returns the bigger league in the ligas array
  */
 async function maiorLiga(ligas) {
-  var maior_liga = new Liga(undefined, undefined, undefined, -1, undefined);
-  var infoLigas = [];
+  let maior_liga = new Liga(undefined, undefined, undefined, -1, undefined);
+  const infoLigas = [];
   if (ligas !== undefined) {
     //Push das ligas
-    ligas.forEach(function(liga) {
+    ligas.forEach( liga => {
       if (ligas !== undefined) {
         addLiga = new Liga(
           liga.queueType,
@@ -69,7 +69,7 @@ async function maiorLiga(ligas) {
       );
     } else {
       //Senão itera pelas ligas
-      infoLigas.forEach(function(liga) {
+      infoLigas.forEach( liga => {
         switch (liga.elo) {
           case "CHALLENGER": //DESAFIANTE
             if (maior_liga.pdl <= liga.pdl) {
@@ -769,7 +769,7 @@ async function maiorLiga(ligas) {
  * @return {array}                  array with all the ID's
  */
 async function retornaIdPartidasCampeoes(server = mainPlayer.server, idChamp, idConta) {
-  var listaPartidas = kayn.Matchlist.by.accountID(idConta)
+  let listaPartidas = kayn.Matchlist.by.accountID(idConta)
                                       .query({
                                           champion: idChamp,
                                           season: seasonAtual
@@ -784,7 +784,7 @@ async function retornaIdPartidasCampeoes(server = mainPlayer.server, idChamp, id
                                       })
                                       .catch(err => {
                                         //If some error ocurred, returns an empty array
-                                        console.log(err);
+                                        console.error(err);
                                         return [];
                                       });
 
@@ -800,12 +800,12 @@ async function retornaIdPartidasCampeoes(server = mainPlayer.server, idChamp, id
  */
 function checaVitoria(partida, accountId) {
 
-  var winornot = 0;
-  var playerPos;
+  let winornot = 0;
+  let playerPos;
 
   //Finds the position of the player in the match
   for (jogador in partida.participantIdentities) {
-    var thisPlayer = partida.participantIdentities[jogador];
+    const thisPlayer = partida.participantIdentities[jogador];
     if (thisPlayer.player.currentAccountId == accountId) {
       playerPos = thisPlayer.participantId;
     }
@@ -817,8 +817,7 @@ function checaVitoria(partida, accountId) {
     winornot++;
   }
 
-  return winornot;
-
+  return winornot
 
 }
 
@@ -829,10 +828,11 @@ async function parsePlayerLeague(leagues){
     tier: league.tier,
     rank: league.rank,
     lp: league.leaguePoints,
-    leagueName: league.leagueName});
+    leagueName: league.leagueName
+  });
 
   if (!parsedLeagues['RANKED_FLEX_SR']){
-    parsedLeagues['RANKED_FL EX_SR'] = {
+    parsedLeagues['RANKED_FLEX_SR'] = {
       tier: 'UNRANKED',
       rank: '',
       lp: 0,
@@ -865,6 +865,6 @@ async function parsePlayerLeague(leagues){
  *
  * @param  {integer} vitorias  Number of victorys
  * @param  {integer} qtdeJogos Number of games played
- * @return {float}           WinRate Percentage
+ * @return {float}             WinRate Percentage
  */
 function porcentagemVitorias(vitorias, qtdeJogos) { return qtdeJogos > 0 ? (100 * vitorias / qtdeJogos).toFixed(2) : "First Match" }
