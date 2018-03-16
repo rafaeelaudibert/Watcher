@@ -1,10 +1,11 @@
 //League constructor
 class Liga {
-  constructor (queueType, elo, tier, pdl){
+  constructor (queueType, elo, tier, pdl, leagueName){
     this.queueType = queueType;
     this.elo = elo;
     this.tier = tier;
     this.pdl = pdl;
+    this.leagueName = leagueName;
   }
 }
 
@@ -36,7 +37,7 @@ class Player {
  * @return {Liga}       Returns the bigger league in the ligas array
  */
 async function maiorLiga(ligas) {
-  var maior_liga = new Liga(undefined, undefined, undefined, -1);
+  var maior_liga = new Liga(undefined, undefined, undefined, -1, undefined);
   var infoLigas = [];
   if (ligas !== undefined) {
     //Push das ligas
@@ -46,7 +47,8 @@ async function maiorLiga(ligas) {
           liga.queueType,
           liga.tier,
           liga.rank,
-          liga.leaguePoints
+          liga.leaguePoints,
+          liga.leagueName
         );
         infoLigas.push(addLiga);
       }
@@ -54,15 +56,16 @@ async function maiorLiga(ligas) {
 
     //Check da maior liga
     if (ligas.length == 0) {
-      //Sem ligas, é untiered
-      maior_liga = new Liga("NO QUEUE", "UNRANKED", "", 0);
+      //Sem ligas, é unranked
+      maior_liga = new Liga("NO QUEUE", "UNRANKED", "", 0, "");
     } else if (ligas.length == 1) {
       //Com uma liga, ela é a maior e única
       maior_liga = new Liga(
         infoLigas[0].queueType,
         infoLigas[0].elo,
         infoLigas[0].tier,
-        infoLigas[0].pdl
+        infoLigas[0].pdl,
+        infoLigas[0].leagueName
       );
     } else {
       //Senão itera pelas ligas
@@ -75,7 +78,8 @@ async function maiorLiga(ligas) {
                 liga.queueType,
                 liga.elo,
                 liga.tier,
-                liga.pdl
+                liga.pdl,
+                liga.leagueName
               );
             }
             break;
@@ -86,7 +90,8 @@ async function maiorLiga(ligas) {
                 liga.queueType,
                 liga.elo,
                 liga.tier,
-                liga.pdl
+                liga.pdl,
+                liga.leagueName
               );
             }
             break;
@@ -100,7 +105,8 @@ async function maiorLiga(ligas) {
                 liga.queueType,
                 liga.elo,
                 liga.tier,
-                liga.pdl
+                liga.pdl,
+                liga.leagueName
               );
             } else if (
               maior_liga.elo !== "CHALLENGER" &&
@@ -115,7 +121,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   } else if (maior_liga.pdl < liga.pdl) {
                     //Caso sejamos Diamond I, e a maior tambem, checamos PDL
@@ -123,7 +130,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   }
                   break;
@@ -134,7 +142,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   } else if (
                     maior_liga.tier == "II" &&
@@ -145,7 +154,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   }
                   break;
@@ -159,7 +169,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   } else if (
                     maior_liga.tier == "III" &&
@@ -169,7 +180,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   }
                   break;
@@ -184,7 +196,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   } else if (
                     maior_liga.tier == "IV" &&
@@ -194,7 +207,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   }
                   break;
@@ -204,7 +218,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   }
                   break;
@@ -222,7 +237,8 @@ async function maiorLiga(ligas) {
                 liga.queueType,
                 liga.elo,
                 liga.tier,
-                liga.pdl
+                liga.pdl,
+                liga.leagueName
               );
             } else if (
               maior_liga.elo !== "CHALLENGER" &&
@@ -236,14 +252,16 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   } else if (maior_liga.pdl < liga.pdl) {
                     maior_liga = new Liga(
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   }
                   break;
@@ -253,7 +271,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   } else if (
                     maior_liga.tier == "II" &&
@@ -263,7 +282,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   }
                   break;
@@ -277,7 +297,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   } else if (
                     maior_liga.tier == "III" &&
@@ -287,7 +308,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   }
                   break;
@@ -302,7 +324,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   } else if (
                     maior_liga.tier == "IV" &&
@@ -312,7 +335,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   }
                   break;
@@ -322,7 +346,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   }
                   break;
@@ -341,7 +366,8 @@ async function maiorLiga(ligas) {
                 liga.queueType,
                 liga.elo,
                 liga.tier,
-                liga.pdl
+                liga.pdl,
+                liga.leagueName
               );
             } else if (
               maior_liga.elo !== "CHALLENGER" &&
@@ -356,14 +382,16 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   } else if (maior_liga.pdl < liga.pdl) {
                     maior_liga = new Liga(
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   }
                   break;
@@ -373,7 +401,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   } else if (
                     maior_liga.tier == "II" &&
@@ -383,7 +412,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   }
                   break;
@@ -397,7 +427,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   } else if (
                     maior_liga.tier == "III" &&
@@ -407,7 +438,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   }
                   break;
@@ -422,7 +454,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   } else if (
                     maior_liga.tier == "IV" &&
@@ -432,7 +465,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   }
                   break;
@@ -442,7 +476,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   }
                   break;
@@ -462,7 +497,8 @@ async function maiorLiga(ligas) {
                 liga.queueType,
                 liga.elo,
                 liga.tier,
-                liga.pdl
+                liga.pdl,
+                liga.leagueName
               );
             } else if (
               maior_liga.elo !== "CHALLENGER" &&
@@ -478,14 +514,16 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   } else if (maior_liga.pdl < liga.pdl) {
                     maior_liga = new Liga(
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   }
                   break;
@@ -495,7 +533,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   } else if (
                     maior_liga.tier == "II" &&
@@ -505,7 +544,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   }
                   break;
@@ -519,7 +559,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   } else if (
                     maior_liga.tier == "III" &&
@@ -529,7 +570,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   }
                   break;
@@ -544,7 +586,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   } else if (
                     maior_liga.tier == "IV" &&
@@ -554,7 +597,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   }
                   break;
@@ -564,7 +608,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   }
                   break;
@@ -585,7 +630,8 @@ async function maiorLiga(ligas) {
                 liga.queueType,
                 liga.elo,
                 liga.tier,
-                liga.pdl
+                liga.pdl,
+                liga.leagueName
               );
             } else if (
               maior_liga.elo !== "CHALLENGER" &&
@@ -602,14 +648,16 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   } else if (maior_liga.pdl < liga.pdl) {
                     maior_liga = new Liga(
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   }
                   break;
@@ -619,7 +667,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   } else if (
                     maior_liga.tier == "II" &&
@@ -629,7 +678,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   }
                   break;
@@ -643,7 +693,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   } else if (
                     maior_liga.tier == "III" &&
@@ -653,7 +704,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   }
                   break;
@@ -668,7 +720,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   } else if (
                     maior_liga.tier == "IV" &&
@@ -678,7 +731,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   }
                   break;
@@ -688,7 +742,8 @@ async function maiorLiga(ligas) {
                       liga.queueType,
                       liga.elo,
                       liga.tier,
-                      liga.pdl
+                      liga.pdl,
+                      liga.leagueName
                     );
                   }
                   break;
