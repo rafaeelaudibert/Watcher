@@ -3,8 +3,8 @@ const remote = require('electron').remote;
 const path = require('path');
 const apiKey = remote.getGlobal('sharedObj').apiKey;
 const seasonAtual = 11;
-const defaultPlayer = 'mcgirino123'
-const defaultServer = 'br'
+const defaultPlayer = 'CooN';
+const defaultServer = 'kr';
 const {
   Kayn,
   REGIONS
@@ -227,14 +227,50 @@ async function getInitialInfo(server = mainPlayer.server) {
           })
       })
 
-      //Gets the higherLeague for the player
+      //Gets the player league in this queue, or the higher league if normal game/aram
       matchInformation.playersList.map(async participante => {
         kayn.LeaguePositions.by.summonerID(participante.summonerId)
           .region(server)
-          .then(maiorLiga)
-          .then(function(higherLeague) {
-            participante.liga = higherLeague;
-            console.log("%c[higherLeague]", "color:purple; font-size: medium", "- Higher League set!")
+          .then(leagues => {
+            console.log(leagues);
+            let gameMode = matchInformation.gameQueueConfigId;
+            switch(gameMode){
+              case 420:
+                gameMode = 'RANKED_SOLO_5x5';
+                break;
+              case 440:
+                gameMode = 'RANKED_FLEX_SR';
+                break;
+              case 470:
+                gameMode = 'RANKED_FLEX_TT';
+                break;
+              default:
+                gameMode = 'NORMAL GAME';
+                break;
+            }
+
+            //If it is a ranked game, returns the ranked elo, elso searches the higher league
+            let league = new Liga("NO QUEUE", "UNRANKED", "", 0, "");
+            if (gameMode !== 'NORMAL GAME'){
+              leagues.forEach(lg => {
+                if (lg.queueType === gameMode){
+                  league = new Liga(
+                    lg.queueType,
+                    lg.tier,
+                    lg.rank,
+                    lg.leaguePoints,
+                    lg.leagueName
+                  );
+                }
+              });
+              participante.liga = league;
+              console.log("%c[higherLeague]", "color:purple; font-size: medium", "- Ranked League set!")
+            } else {
+              higherLeague(leagues).then(higher => {
+                participante.liga = higher;
+                console.log("%c[higherLeague]", "color:purple; font-size: medium", "- Higher League set!")
+              })
+            }
           })
       })
 
