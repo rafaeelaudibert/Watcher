@@ -100,7 +100,11 @@ kayn.Summoner.by.name(defaultPlayer)
         .then(data => mainPlayer.championMastery = data)
         .catch(console.log);
     kayn.LeaguePositions.by.summonerID(mainPlayer.id)
+<<<<<<< HEAD
         .then(parsePlayerLeague)
+=======
+        .then(parsePlayerLeague);
+>>>>>>> 3e87560fb349c2e10319aff343fa645c69fb441f
         .catch(console.log);
     console.log(data);
   })
