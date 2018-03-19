@@ -96,8 +96,12 @@ kayn.Summoner.by.name(defaultPlayer)
     mainPlayer = data;
     mainPlayer.server = defaultServer;
     console.log("%c[mainPlayer]", "color:purple; font-size: medium", "- Created MainPlayer Basic Information");
-    kayn.ChampionMastery.list(mainPlayer.id).then(data => mainPlayer.championMastery = data);
-    kayn.LeaguePositions.by.summonerID(mainPlayer.id).then(parsePlayerLeague);
+    kayn.ChampionMastery.list(mainPlayer.id)
+        .then(data => mainPlayer.championMastery = data)
+        .catch(console.log);
+    kayn.LeaguePositions.by.summonerID(mainPlayer.id)
+        .then(parsePlayerLeague)
+        .catch(console.log);
     console.log(data);
   })
   .catch(console.log);
@@ -107,10 +111,12 @@ kayn.Summoner.by.name(defaultPlayer)
 /**
  * Patch information
  */
-kayn.Static.Version.list().then(data => {
+kayn.Static.Version.list()
+    .then(data => {
   matchInformation.patch = data[0];
   console.log("%c[patch]", "color:purple; font-size: medium", "- Retrieved latest Patch");
-})
+    })
+    .catch(console.log);
 
 /**
  * Runes information
@@ -236,6 +242,7 @@ async function getInitialInfo(server = mainPlayer.server) {
             player.championMasteryPoints = data.championPoints;
             console.log("%c[mastery]", "color:purple; font-size: medium", "- Champion Mastery set!")
           })
+          .catch(console.log);
       })
 
       //Gets the player league in this queue, or the higher league if normal game/aram
@@ -284,6 +291,7 @@ async function getInitialInfo(server = mainPlayer.server) {
                 player.liga = higher;
                 console.log("%c[higherLeague]", "color:purple; font-size: medium", "- Higher League set!")
               })
+              .catch(console.log);
 
               //Add all the matches and wins in ranked games
               let matches=0, wins=0;
@@ -296,6 +304,7 @@ async function getInitialInfo(server = mainPlayer.server) {
               player.rankedWR = porcentagemVitorias(wins, matches);
             }
           })
+          .catch(console.log);
       })
 
     })
@@ -346,6 +355,7 @@ async function getAdvancedInfo(server = mainPlayer.server) {
     }
 
   })
+  .catch(console.log);
 }
 
 
