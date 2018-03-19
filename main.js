@@ -4,7 +4,6 @@ const path = require('path');
 const storage = require('electron-json-storage');
 const secretInfo = require('./secretInfo');
 const backColor = "#e8eaf6";
-const keytar = require('keytar')
 
 //SET ENV
 //process.env.NODE_ENV = 'production';  //DESCOMENTAR QUANDO FOR UTILIZAR
@@ -37,7 +36,7 @@ app.on('ready', function(){
     dragable: true,
     //transparent: true,
     frame: false,
-    resizable: false
+    resizable: true
   });
 
   //Load the HTML file into window

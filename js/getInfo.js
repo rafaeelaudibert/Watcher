@@ -11,7 +11,7 @@ const notifier = require('node-notifier');
 //Const information
 const apiKey = remote.getGlobal('sharedObj').apiKey;
 const seasonAtual = 11;
-const defaultPlayer = 'TyGMasked';
+const defaultPlayer = 'ANKR Power';
 const defaultServer = 'br';
 
 
@@ -271,15 +271,29 @@ async function getInitialInfo(server = mainPlayer.server) {
                     lg.leaguePoints,
                     lg.leagueName
                   );
+                  player.rankedMatches = lg.wins + lg.losses;
+                  player.rankedWins = lg.wins;
+                  player.rankedWR = porcentagemVitorias(lg.wins, lg.wins + lg.losses);
                 }
               });
               player.liga = league;
               console.log("%c[higherLeague]", "color:purple; font-size: medium", "- Ranked League set!")
             } else {
+              // Verifies the higher league at all
               higherLeague(leagues).then(higher => {
                 player.liga = higher;
                 console.log("%c[higherLeague]", "color:purple; font-size: medium", "- Higher League set!")
               })
+
+              //Add all the matches and wins in ranked games
+              let matches=0, wins=0;
+              leagues.forEach(lg => {
+                matches += lg.wins + lg.losses;
+                wins += lg.wins;
+              })
+              player.rankedMatches = matches;
+              player.rankedWins = wins;
+              player.rankedWR = porcentagemVitorias(wins, matches);
             }
           })
       })
@@ -308,7 +322,7 @@ async function getBasicInfo(server = mainPlayer.server) {
         playerPos.level = infoPlayer.summonerLevel;
         playerPos.accountId = infoPlayer.accountId;
       }
-      console.log("%c[basicInfo]", "color:purple; font-size: medium", "- Set the basic info")
+      console.log("%c[basicInfo]", "color:purple; font-size: medium", "- Set the basic info");
     })
     .catch(err => console.log(err));
 }

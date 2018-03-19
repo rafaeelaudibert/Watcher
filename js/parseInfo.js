@@ -19,6 +19,9 @@ class Player {
     this.championId = champion;
     this.championWins = 0;
     this.championWR = "First Match";
+    this.rankedWins = 0;
+    this.rankedMatches = 0;
+    this.rankedWR = "First Match";
     this.championMasteryLevel = 0;
     this.championMasteryPoints = 0;
     this.matchList = [];
