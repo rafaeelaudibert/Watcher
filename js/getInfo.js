@@ -11,7 +11,7 @@ const notifier = require('node-notifier');
 //Const information
 const apiKey = remote.getGlobal('sharedObj').apiKey;
 const seasonAtual = 11;
-const defaultPlayer = 'Weberium';
+const defaultPlayer = 'TyGMasked';
 const defaultServer = 'br';
 
 
@@ -243,7 +243,6 @@ async function getInitialInfo(server = mainPlayer.server) {
         kayn.LeaguePositions.by.summonerID(player.summonerId)
           .region(server)
           .then(leagues => {
-            console.log(leagues);
             let gameMode = matchInformation.gameQueueConfigId;
             switch (gameMode) {
               case 420:
@@ -304,10 +303,10 @@ async function getBasicInfo(server = mainPlayer.server) {
 
       //Sets the info of the players in the matchInformation.playersList array
       for (player in matchInformation.playersList) {
-        let player = matchInformation.playersList[player]
+        let playerPos = matchInformation.playersList[player]
         const infoPlayer = value[player]
-        player.level = infoPlayer.summonerLevel;
-        player.accountId = infoPlayer.accountId;
+        playerPos.level = infoPlayer.summonerLevel;
+        playerPos.accountId = infoPlayer.accountId;
       }
       console.log("%c[basicInfo]", "color:purple; font-size: medium", "- Set the basic info")
     })
@@ -323,8 +322,8 @@ async function getAdvancedInfo(server = mainPlayer.server) {
 
     //Sets the matchlist
     for (player in matchInformation.playersList) {
-      let player = matchInformation.playersList[player]
-      player.matchList = value[player]
+      let playerPos = matchInformation.playersList[player]
+      playerPos.matchList = value[player]
     }
 
     //Gets the real matches and set the wins/win rate
