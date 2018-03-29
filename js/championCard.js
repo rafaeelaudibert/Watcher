@@ -1,11 +1,11 @@
 class championCard {
-  constructor(person, color, currentPatch) {
+  constructor(person, color) {
     this.cardColor = color,
-      this.championImage = "http://ddragon.leagueoflegends.com/cdn/" + currentPatch + "/img/champion/" + person.championName + ".png",
+      this.championImage = "http://ddragon.leagueoflegends.com/cdn/" + person.patch + "/img/champion/" + person.championName + ".png",
       this.championName = person.championName,
       this.championMasteryImage = person.championMasteryLevel,
       this.championMasteryPoints = person.championMasteryPoints,
-      this.summonerName = person.summonerName,
+      this.name = person.name,
       this.summonerElo = person.liga.elo + " " + person.liga.tier,
       this.pdl = person.liga.pdl,
       this.eloImage = eloImagePath(person.liga),
