@@ -8,10 +8,10 @@ const {
 } = require("kayn");
 const notifier = require('node-notifier');
 
-//Const information
+//Information constants
 const apiKey = remote.getGlobal('sharedObj').apiKey;
 const seasonAtual = 11;
-const defaultPlayer = 'ANKR Power';
+const defaultPlayer = 'Jack Varlett';
 const defaultServer = 'br';
 
 
@@ -65,26 +65,13 @@ class Match {
     this.patch = undefined,
     this.gameId = undefined,
     this.gameMode = undefined,
-    this.gameType = undefined,
-    this.gameQueueConfigId = undefined,
-    this.mapId = undefined,
+    this.map = undefined,
     this.platformId = undefined,
     this.playersList = new Array(0) //list which contains all the match's (mainPlayer match) players information
   }
 }
 const matchInformation = new Match();
 
-
-/**
- * List with all the champions
- */
-let championList = kayn.Static.Champion.list()
-  .region(defaultServer)
-  .then(list => {
-    championList = list.data
-    console.log("%c[setChampionList]", "color:purple; font-size: medium", "- Generated Champion List");
-  })
-  .catch(console.log);
 
 /**
  * mainPlayer information
@@ -96,27 +83,26 @@ kayn.Summoner.by.name(defaultPlayer)
     mainPlayer = data;
     mainPlayer.server = defaultServer;
     console.log("%c[mainPlayer]", "color:purple; font-size: medium", "- Created MainPlayer Basic Information");
-    kayn.ChampionMastery.list(mainPlayer.id)
-        .then(data => mainPlayer.championMastery = data)
+
+    kayn.ChampionMastery.list(mainPlayer.id) //Champion Mastery list
+        .then(data => parseMastery(data).then(parsedData => mainPlayer.championMastery = parsedData))
         .catch(console.log);
-    kayn.LeaguePositions.by.summonerID(mainPlayer.id)
+
+    kayn.LeaguePositions.by.summonerID(mainPlayer.id) //Leagues information
         .then(parsePlayerLeague)
+        .catch(console.log);
+
+    kayn.Static.Version.list() //Patch information
+        .then(data => {
+          matchInformation.patch = data[0];
+          mainPlayer.patch = data[0];
+          console.log("%c[patch]", "color:purple; font-size: medium", "- Retrieved latest Patch");
+        })
         .catch(console.log);
     console.log(data);
   })
   .catch(console.log);
 
-
-
-/**
- * Patch information
- */
-kayn.Static.Version.list()
-    .then(data => {
-  matchInformation.patch = data[0];
-  console.log("%c[patch]", "color:purple; font-size: medium", "- Retrieved latest Patch");
-    })
-    .catch(console.log);
 
 /**
  * Runes information
@@ -164,7 +150,7 @@ jquery.getJSON(statusPath)
   })
   .catch(console.log);
 
-
+// Parse the runes information
 async function parseRunes(runes) {
 
   //Creates a 'better' runes object, with the ID being the key
@@ -172,16 +158,87 @@ async function parseRunes(runes) {
 
   runes.forEach(rune => {
     runeId = rune.id.toString();
-    runesObject[runeId] = rune.shortDesc
+    runesObject[runeId] = {
+      description: rune.shortDesc.split(".,").join(".<br>"),
+      name: rune.name
+    }
   })
   console.log("%c[runesInfo]", "color:purple; font-size: medium", "- Retrieved Runes Information from CDragon");
   return runesObject;
 }
+/**
+ * List with all the champions - It is handled inside parseMastery
+ */
+let championList;
+
+
+// Parse the championMastery information
+async function parseMastery(mastery){
+
+  //Creates a 'better' mastery object, separated by mastery level
+  const masteryObject = {
+    m7: [],
+    m6: [],
+    m5: [],
+    m4: [],
+    m3: [],
+    m2: [],
+    m1: []
+  }
+
+  kayn.Static.Champion.list()
+    .region(defaultServer)
+    .then(list => {
+      championList = list.data
+      console.log("%c[setChampionList]", "color:purple; font-size: medium", "- Generated Champion List");
+
+      mastery.map(champion => {
+
+        //Champion names
+        for (champ in championList) {
+          if (championList[champ].id == champion.championId) {
+            //Set the champion name
+            champion.championName = championList[champ].name;
+          }
+        }
+
+        switch(champion.championLevel){
+          case 7:
+            masteryObject.m7.push(champion);
+            break;
+          case 6:
+            masteryObject.m6.push(champion);
+            break;
+          case 5:
+            masteryObject.m5.push(champion);
+            break;
+          case 4:
+            masteryObject.m4.push(champion);
+            break;
+          case 3:
+            masteryObject.m3.push(champion);
+            break;
+          case 2:
+            masteryObject.m2.push(champion);
+            break;
+          case 1:
+            masteryObject.m1.push(champion);
+            break;
+        }
+      })
+      console.log("%c[masteryList]", "color:purple; font-size: medium", "- Generated Mastery list");
+    })
+    .catch(console.log);
+
+  return masteryObject;
+}
+
+
 
 //Gets the initial info: Info from people playing in the match being played bi the mainPlayer
 async function getInitialInfo(server = mainPlayer.server) {
 
-  //Gets the mainPlayer's currentGame info
+    //Gets the mainPlayer's currentGame info
   let currentGame = kayn.CurrentGame.by.summonerID(mainPlayer.id).region(server)
   currentGame.then(game => {
       console.log(game);
@@ -189,9 +246,8 @@ async function getInitialInfo(server = mainPlayer.server) {
       //Sets the other information in matchInformation
       matchInformation.gameId = game.gameId;
       matchInformation.gameMode = game.gameMode;
-      matchInformation.gameType = game.gameType;
-      matchInformation.gameQueueConfigId = game.gameQueueConfigId;
-      matchInformation.mapId = game.mapId;
+      matchInformation.gameQueue = gameConstants[game.gameQueueConfigId].name; //Gameconstants are in globalConstants.js
+      matchInformation.map = gameConstants[game.gameQueueConfigId].map;
       matchInformation.platformId = game.platformId;
       matchInformation.playersList = new Array(0);
       console.log("%c[matchInformation]", "color:purple; font-size: medium", "- Retrieved some match Information");
@@ -227,7 +283,8 @@ async function getInitialInfo(server = mainPlayer.server) {
           const runeId = player.runes[rune];
           player.runes[rune] = {
             runeId: runeId,
-            runeDescription: matchInformation.runesInfo[runeId]
+            runeDescription: matchInformation.runesInfo[runeId].description,
+            runeName: matchInformation.runesInfo[runeId].name
           }
         }
         console.log("%c[runeDescription]", "color:purple; font-size: medium", "- Created rune description for this champion!");
@@ -262,13 +319,13 @@ async function getInitialInfo(server = mainPlayer.server) {
                 gameMode = 'RANKED_FLEX_TT';
                 break;
               default:
-                gameMode = 'NORMAL GAME';
+                gameMode = 'NORMAL_GAME';
                 break;
             }
 
             //If it is a ranked game, returns the ranked elo, else searches the higher league
             let league = new Liga("NO QUEUE", "UNRANKED", "", 0, "");
-            if (gameMode !== 'NORMAL GAME') {
+            if (gameMode !== 'NORMAL_GAME') {
               leagues.forEach(lg => {
                 if (lg.queueType === gameMode) {
                   league = new Liga(
@@ -287,7 +344,7 @@ async function getInitialInfo(server = mainPlayer.server) {
               console.log("%c[higherLeague]", "color:purple; font-size: medium", "- Ranked League set!")
             } else {
               // Verifies the higher league at all
-              higherLeague(leagues).then(higher => {
+              maiorLiga(leagues).then(higher => {
                 player.liga = higher;
                 console.log("%c[higherLeague]", "color:purple; font-size: medium", "- Higher League set!")
               })
