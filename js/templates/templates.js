@@ -13,30 +13,54 @@ templates['championCard'] = template({"compiler":[7,">= 4.0.0"],"main":function(
     + alias4(((helper = (helper = helpers.championMasteryImage || (depth0 != null ? depth0.championMasteryImage : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"championMasteryImage","hash":{},"data":data}) : helper)))
     + ".png\" data-position=\"top\" data-tooltip=\""
     + alias4(((helper = (helper = helpers.championMasteryPoints || (depth0 != null ? depth0.championMasteryPoints : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"championMasteryPoints","hash":{},"data":data}) : helper)))
-    + " points\"></div>\r\n      </span>\r\n    </div>\r\n    <div class=\"row\"> <!-- PersonIfo -->\r\n      <div class=\"col s6 padding-0\"><span>"
-    + alias4(((helper = (helper = helpers.summonerName || (depth0 != null ? depth0.summonerName : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"summonerName","hash":{},"data":data}) : helper)))
+    + " points\"></div>\r\n      </span>\r\n    </div>\r\n    <div class=\"row\"> <!-- PersonInfo -->\r\n      <div class=\"col s6 padding-0\"><span>"
+    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
     + "<br>"
     + alias4(((helper = (helper = helpers.summonerElo || (depth0 != null ? depth0.summonerElo : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"summonerElo","hash":{},"data":data}) : helper)))
     + "</span></div>\r\n      <div class=\"col s2 offset-s2 padding-0\"><img class=\"elo-img tooltipped\" src=\"assets/elos/"
-    + alias4(((helper = (helper = helpers.eloImage || (depth0 != null ? depth0.eloImage : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"eloImage","hash":{},"data":data}) : helper)))
+    + alias4((helpers.eloImagePath || (depth0 && depth0.eloImagePath) || alias2).call(alias1,(depth0 != null ? depth0.league : depth0),{"name":"eloImagePath","hash":{},"data":data}))
     + ".png\" data-position=\"bottom\" data-tooltip=\""
     + alias4(((helper = (helper = helpers.pdl || (depth0 != null ? depth0.pdl : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"pdl","hash":{},"data":data}) : helper)))
     + " LP\"></div>\r\n    </div>\r\n  </div>\r\n  <div class=\"card-reveal overflow-hidden "
     + alias4(((helper = (helper = helpers.cardColor || (depth0 != null ? depth0.cardColor : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"cardColor","hash":{},"data":data}) : helper)))
     + "\"> <!-- CardReveal -->\r\n    <div class=\"row margin-right-0\"> <!-- RevealTitle -->\r\n      <div class=\"col s11 offset-s1 padding-0\"><span class=\"card-title grey-text text-darken-4\">"
     + alias4(((helper = (helper = helpers.championName || (depth0 != null ? depth0.championName : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"championName","hash":{},"data":data}) : helper)))
-    + "<i class=\"material-icons right\">close</i></span></div>\r\n    </div>\r\n    <div class=\"row margin-right-0\"> <!-- RevealContent -->\r\n       <!-- Runes -->\r\n      <div class=\"col s1 padding-0\" style=\"padding-left: 0.3rem !important\">\r\n        <img class=\"keystone\" src=\"assets/runes/perk/"
-    + alias4(alias5(((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1["0"] : stack1), depth0))
-    + ".png\">\r\n      </div>\r\n      <div class=\"col s10 offset-s2 padding-0\">\r\n        <img class=\"non-keystone\" src=\"assets/runes/perk/"
-    + alias4(alias5(((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1["1"] : stack1), depth0))
-    + ".png\">\r\n        <img class=\"non-keystone\" src=\"assets/runes/perk/"
-    + alias4(alias5(((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1["2"] : stack1), depth0))
-    + ".png\">\r\n        <img class=\"non-keystone\" src=\"assets/runes/perk/"
-    + alias4(alias5(((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1["3"] : stack1), depth0))
-    + ".png\">\r\n      </div>\r\n      <div class=\"col s6 offset-s3 padding-0\" style=\"padding-left: 0.2rem !important\">\r\n        <img class=\"non-keystone\" src=\"assets/runes/perk/"
-    + alias4(alias5(((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1["4"] : stack1), depth0))
-    + ".png\">\r\n        <img class=\"non-keystone\" src=\"assets/runes/perk/"
-    + alias4(alias5(((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1["5"] : stack1), depth0))
+    + "<i class=\"material-icons right\">close</i></span></div>\r\n    </div>\r\n    <div class=\"row margin-right-0\"> <!-- RevealContent -->\r\n       <!-- Runes -->\r\n      <div class=\"col s1 padding-0\" style=\"padding-left: 0.3rem !important\">\r\n        <img class=\"keystone tooltipped\" src=\"assets/runes/perk/"
+    + alias4(alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1["0"] : stack1)) != null ? stack1.runeId : stack1), depth0))
+    + ".png\" data-position=\"bottom\" data-tooltip=\"<strong>"
+    + ((stack1 = alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1["0"] : stack1)) != null ? stack1.runeName : stack1), depth0)) != null ? stack1 : "")
+    + "</strong><br>"
+    + ((stack1 = alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1["0"] : stack1)) != null ? stack1.runeDescription : stack1), depth0)) != null ? stack1 : "")
+    + "\">\r\n      </div>\r\n      <div class=\"col s10 offset-s2 padding-0\">\r\n        <img class=\"non-keystone tooltipped\" data-position=\"bottom\" data-tooltip=\"<strong>"
+    + ((stack1 = alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1["1"] : stack1)) != null ? stack1.runeName : stack1), depth0)) != null ? stack1 : "")
+    + "</strong><br>"
+    + ((stack1 = alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1["1"] : stack1)) != null ? stack1.runeDescription : stack1), depth0)) != null ? stack1 : "")
+    + "\" src=\"assets/runes/perk/"
+    + alias4(alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1["1"] : stack1)) != null ? stack1.runeId : stack1), depth0))
+    + ".png\">\r\n        <img class=\"non-keystone tooltipped\" data-position=\"bottom\" data-tooltip=\"<strong>"
+    + ((stack1 = alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1["2"] : stack1)) != null ? stack1.runeName : stack1), depth0)) != null ? stack1 : "")
+    + "</strong><br>"
+    + ((stack1 = alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1["2"] : stack1)) != null ? stack1.runeDescription : stack1), depth0)) != null ? stack1 : "")
+    + "\" src=\"assets/runes/perk/"
+    + alias4(alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1["2"] : stack1)) != null ? stack1.runeId : stack1), depth0))
+    + ".png\">\r\n        <img class=\"non-keystone tooltipped\" data-position=\"bottom\" data-tooltip=\"<strong>"
+    + ((stack1 = alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1["3"] : stack1)) != null ? stack1.runeName : stack1), depth0)) != null ? stack1 : "")
+    + "</strong><br>"
+    + ((stack1 = alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1["3"] : stack1)) != null ? stack1.runeDescription : stack1), depth0)) != null ? stack1 : "")
+    + "\" src=\"assets/runes/perk/"
+    + alias4(alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1["3"] : stack1)) != null ? stack1.runeId : stack1), depth0))
+    + ".png\">\r\n      </div>\r\n      <div class=\"col s6 offset-s3 padding-0\" style=\"padding-left: 0.2rem !important\">\r\n        <img class=\"non-keystone tooltipped\" data-position=\"bottom\" data-tooltip=\"<strong>"
+    + ((stack1 = alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1["4"] : stack1)) != null ? stack1.runeName : stack1), depth0)) != null ? stack1 : "")
+    + "</strong><br>"
+    + ((stack1 = alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1["4"] : stack1)) != null ? stack1.runeDescription : stack1), depth0)) != null ? stack1 : "")
+    + "\" src=\"assets/runes/perk/"
+    + alias4(alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1["4"] : stack1)) != null ? stack1.runeId : stack1), depth0))
+    + ".png\">\r\n        <img class=\"non-keystone tooltipped\" data-position=\"bottom\" data-tooltip=\"<strong>"
+    + ((stack1 = alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1["5"] : stack1)) != null ? stack1.runeName : stack1), depth0)) != null ? stack1 : "")
+    + "</strong><br>"
+    + ((stack1 = alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1["5"] : stack1)) != null ? stack1.runeDescription : stack1), depth0)) != null ? stack1 : "")
+    + "\" src=\"assets/runes/perk/"
+    + alias4(alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.runes : depth0)) != null ? stack1["5"] : stack1)) != null ? stack1.runeId : stack1), depth0))
     + ".png\">\r\n      </div>\r\n    </div>\r\n    <div class=\"row white-text statistic-row\">\r\n      <div class=\"col s5 padding-0 outerspace-transparent z-depth-3 statistic-col\">\r\n        <strong style=\"font-size: 14px !important\">"
     + alias4(((helper = (helper = helpers.championWinrate || (depth0 != null ? depth0.championWinrate : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"championWinrate","hash":{},"data":data}) : helper)))
     + "</strong> WinRate<br>"
@@ -78,14 +102,14 @@ templates['profileModal'] = template({"1":function(container,depth0,helpers,part
     var stack1;
 
   return "          <span class=\"flow-text\">Mastery 7</span><br>\r\n"
-    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),((stack1 = (depth0 != null ? depth0.mastery : depth0)) != null ? stack1.m7 : stack1),{"name":"each","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
+    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),((stack1 = (depth0 != null ? depth0.championMastery : depth0)) != null ? stack1.m7 : stack1),{"name":"each","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
 },"2":function(container,depth0,helpers,partials,data) {
-    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
   return "            <img class=\"circle responsive-img tooltipped\" data-position=\"bottom\" data-delay=\"0\" data-tooltip=\""
-    + alias4(((helper = (helper = helpers.tooltip || (depth0 != null ? depth0.tooltip : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"tooltip","hash":{},"data":data}) : helper)))
+    + alias4(((helper = (helper = helpers.championPoints || (depth0 != null ? depth0.championPoints : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"championPoints","hash":{},"data":data}) : helper)))
     + "\" style=\"max-height: 4rem\" src=\"http://ddragon.leagueoflegends.com/cdn/"
-    + alias4(((helper = (helper = helpers.patch || (depth0 != null ? depth0.patch : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"patch","hash":{},"data":data}) : helper)))
+    + alias4(container.lambda(((stack1 = (data && data.root)) && stack1.patch), depth0))
     + "/img/champion/"
     + alias4(((helper = (helper = helpers.championName || (depth0 != null ? depth0.championName : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"championName","hash":{},"data":data}) : helper)))
     + ".png\">\r\n            <img class=\"profile-mastery-img\" src=\"assets/champmastery/7.png\">\r\n";
@@ -93,14 +117,14 @@ templates['profileModal'] = template({"1":function(container,depth0,helpers,part
     var stack1;
 
   return "          <br><span class=\"flow-text\">Mastery 6</span><br>\r\n"
-    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),((stack1 = (depth0 != null ? depth0.mastery : depth0)) != null ? stack1.m6 : stack1),{"name":"each","hash":{},"fn":container.program(5, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
+    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),((stack1 = (depth0 != null ? depth0.championMastery : depth0)) != null ? stack1.m6 : stack1),{"name":"each","hash":{},"fn":container.program(5, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
 },"5":function(container,depth0,helpers,partials,data) {
-    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
   return "            <img class=\"circle responsive-img tooltipped\" data-position=\"bottom\" data-delay=\"0\" data-tooltip=\""
-    + alias4(((helper = (helper = helpers.tooltip || (depth0 != null ? depth0.tooltip : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"tooltip","hash":{},"data":data}) : helper)))
+    + alias4(((helper = (helper = helpers.championPoints || (depth0 != null ? depth0.championPoints : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"championPoints","hash":{},"data":data}) : helper)))
     + "\" style=\"max-height: 4rem\" src=\"http://ddragon.leagueoflegends.com/cdn/"
-    + alias4(((helper = (helper = helpers.patch || (depth0 != null ? depth0.patch : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"patch","hash":{},"data":data}) : helper)))
+    + alias4(container.lambda(((stack1 = (data && data.root)) && stack1.patch), depth0))
     + "/img/champion/"
     + alias4(((helper = (helper = helpers.championName || (depth0 != null ? depth0.championName : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"championName","hash":{},"data":data}) : helper)))
     + ".png\">\r\n            <img class=\"profile-mastery-img\" src=\"assets/champmastery/6.png\">\r\n";
@@ -108,14 +132,14 @@ templates['profileModal'] = template({"1":function(container,depth0,helpers,part
     var stack1;
 
   return "          <br><span class=\"flow-text\">Mastery 5</span><br>\r\n"
-    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),((stack1 = (depth0 != null ? depth0.mastery : depth0)) != null ? stack1.m5 : stack1),{"name":"each","hash":{},"fn":container.program(8, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
+    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),((stack1 = (depth0 != null ? depth0.championMastery : depth0)) != null ? stack1.m5 : stack1),{"name":"each","hash":{},"fn":container.program(8, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
 },"8":function(container,depth0,helpers,partials,data) {
-    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
   return "            <img class=\"circle responsive-img tooltipped\" data-position=\"bottom\" data-delay=\"0\" data-tooltip=\""
-    + alias4(((helper = (helper = helpers.tooltip || (depth0 != null ? depth0.tooltip : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"tooltip","hash":{},"data":data}) : helper)))
+    + alias4(((helper = (helper = helpers.championPoints || (depth0 != null ? depth0.championPoints : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"championPoints","hash":{},"data":data}) : helper)))
     + "\" style=\"max-height: 4rem\" src=\"http://ddragon.leagueoflegends.com/cdn/"
-    + alias4(((helper = (helper = helpers.patch || (depth0 != null ? depth0.patch : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"patch","hash":{},"data":data}) : helper)))
+    + alias4(container.lambda(((stack1 = (data && data.root)) && stack1.patch), depth0))
     + "/img/champion/"
     + alias4(((helper = (helper = helpers.championName || (depth0 != null ? depth0.championName : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"championName","hash":{},"data":data}) : helper)))
     + ".png\">\r\n            <img class=\"profile-mastery-img\" src=\"assets/champmastery/5.png\">\r\n";
@@ -123,14 +147,14 @@ templates['profileModal'] = template({"1":function(container,depth0,helpers,part
     var stack1;
 
   return "          <br><span class=\"flow-text\">Mastery 4</span><br>\r\n"
-    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),((stack1 = (depth0 != null ? depth0.mastery : depth0)) != null ? stack1.m4 : stack1),{"name":"each","hash":{},"fn":container.program(11, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
+    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),((stack1 = (depth0 != null ? depth0.championMastery : depth0)) != null ? stack1.m4 : stack1),{"name":"each","hash":{},"fn":container.program(11, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
 },"11":function(container,depth0,helpers,partials,data) {
-    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
   return "            <img class=\"circle responsive-img tooltipped\" data-position=\"bottom\" data-delay=\"0\" data-tooltip=\""
-    + alias4(((helper = (helper = helpers.tooltip || (depth0 != null ? depth0.tooltip : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"tooltip","hash":{},"data":data}) : helper)))
+    + alias4(((helper = (helper = helpers.championPoints || (depth0 != null ? depth0.championPoints : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"championPoints","hash":{},"data":data}) : helper)))
     + "\" style=\"max-height: 4rem\" src=\"http://ddragon.leagueoflegends.com/cdn/"
-    + alias4(((helper = (helper = helpers.patch || (depth0 != null ? depth0.patch : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"patch","hash":{},"data":data}) : helper)))
+    + alias4(container.lambda(((stack1 = (data && data.root)) && stack1.patch), depth0))
     + "/img/champion/"
     + alias4(((helper = (helper = helpers.championName || (depth0 != null ? depth0.championName : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"championName","hash":{},"data":data}) : helper)))
     + ".png\">\r\n            <img class=\"profile-mastery-img\" src=\"assets/champmastery/4.png\">\r\n";
@@ -138,14 +162,14 @@ templates['profileModal'] = template({"1":function(container,depth0,helpers,part
     var stack1;
 
   return "          <br><span class=\"flow-text\">Mastery 3</span><br>\r\n"
-    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),((stack1 = (depth0 != null ? depth0.mastery : depth0)) != null ? stack1.m3 : stack1),{"name":"each","hash":{},"fn":container.program(14, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
+    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),((stack1 = (depth0 != null ? depth0.championMastery : depth0)) != null ? stack1.m3 : stack1),{"name":"each","hash":{},"fn":container.program(14, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
 },"14":function(container,depth0,helpers,partials,data) {
-    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
   return "            <img class=\"circle responsive-img tooltipped\" data-position=\"bottom\" data-delay=\"0\" data-tooltip=\""
-    + alias4(((helper = (helper = helpers.tooltip || (depth0 != null ? depth0.tooltip : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"tooltip","hash":{},"data":data}) : helper)))
+    + alias4(((helper = (helper = helpers.championPoints || (depth0 != null ? depth0.championPoints : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"championPoints","hash":{},"data":data}) : helper)))
     + "\" style=\"max-height: 4rem\" src=\"http://ddragon.leagueoflegends.com/cdn/"
-    + alias4(((helper = (helper = helpers.patch || (depth0 != null ? depth0.patch : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"patch","hash":{},"data":data}) : helper)))
+    + alias4(container.lambda(((stack1 = (data && data.root)) && stack1.patch), depth0))
     + "/img/champion/"
     + alias4(((helper = (helper = helpers.championName || (depth0 != null ? depth0.championName : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"championName","hash":{},"data":data}) : helper)))
     + ".png\">\r\n            <img class=\"profile-mastery-img\" src=\"assets/champmastery/3.png\">\r\n";
@@ -153,14 +177,14 @@ templates['profileModal'] = template({"1":function(container,depth0,helpers,part
     var stack1;
 
   return "          <br><span class=\"flow-text\">Mastery 2</span><br>\r\n"
-    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),((stack1 = (depth0 != null ? depth0.mastery : depth0)) != null ? stack1.m2 : stack1),{"name":"each","hash":{},"fn":container.program(17, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
+    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),((stack1 = (depth0 != null ? depth0.championMastery : depth0)) != null ? stack1.m2 : stack1),{"name":"each","hash":{},"fn":container.program(17, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
 },"17":function(container,depth0,helpers,partials,data) {
-    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
   return "            <img class=\"circle responsive-img tooltipped\" data-position=\"bottom\" data-delay=\"0\" data-tooltip=\""
-    + alias4(((helper = (helper = helpers.tooltip || (depth0 != null ? depth0.tooltip : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"tooltip","hash":{},"data":data}) : helper)))
+    + alias4(((helper = (helper = helpers.championPoints || (depth0 != null ? depth0.championPoints : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"championPoints","hash":{},"data":data}) : helper)))
     + "\" style=\"max-height: 4rem\" src=\"http://ddragon.leagueoflegends.com/cdn/"
-    + alias4(((helper = (helper = helpers.patch || (depth0 != null ? depth0.patch : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"patch","hash":{},"data":data}) : helper)))
+    + alias4(container.lambda(((stack1 = (data && data.root)) && stack1.patch), depth0))
     + "/img/champion/"
     + alias4(((helper = (helper = helpers.championName || (depth0 != null ? depth0.championName : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"championName","hash":{},"data":data}) : helper)))
     + ".png\">\r\n            <img class=\"profile-mastery-img\" src=\"assets/champmastery/2.png\">\r\n";
@@ -168,68 +192,68 @@ templates['profileModal'] = template({"1":function(container,depth0,helpers,part
     var stack1;
 
   return "          <br><span class=\"flow-text\">Mastery 1</span><br>\r\n"
-    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),((stack1 = (depth0 != null ? depth0.mastery : depth0)) != null ? stack1.m1 : stack1),{"name":"each","hash":{},"fn":container.program(20, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
+    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),((stack1 = (depth0 != null ? depth0.championMastery : depth0)) != null ? stack1.m1 : stack1),{"name":"each","hash":{},"fn":container.program(20, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
 },"20":function(container,depth0,helpers,partials,data) {
-    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
   return "            <img class=\"circle responsive-img tooltipped\" data-position=\"bottom\" data-delay=\"0\" data-tooltip=\""
-    + alias4(((helper = (helper = helpers.tooltip || (depth0 != null ? depth0.tooltip : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"tooltip","hash":{},"data":data}) : helper)))
+    + alias4(((helper = (helper = helpers.championPoints || (depth0 != null ? depth0.championPoints : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"championPoints","hash":{},"data":data}) : helper)))
     + "\" style=\"max-height: 4rem\" src=\"http://ddragon.leagueoflegends.com/cdn/"
-    + alias4(((helper = (helper = helpers.patch || (depth0 != null ? depth0.patch : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"patch","hash":{},"data":data}) : helper)))
+    + alias4(container.lambda(((stack1 = (data && data.root)) && stack1.patch), depth0))
     + "/img/champion/"
     + alias4(((helper = (helper = helpers.championName || (depth0 != null ? depth0.championName : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"championName","hash":{},"data":data}) : helper)))
     + ".png\">\r\n            <img class=\"profile-mastery-img\" src=\"assets/champmastery/1.png\">\r\n";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression, alias5=container.lambda;
 
-  return "<div id=\"profile-modal\" class=\"modal modal-fixed-footer rich-black outerspace-lighten-text profile-modal center-align\">\r\n  <div class=\"modal-content profile-modal-content modal-background left-align\">\r\n    <h3 style=\"margin-bottom: 0rem\"><strong>PROFILE</strong></h3><br>\r\n\r\n    <!-- Profile Information -->\r\n    <div class=\"row\">\r\n      <div class=\"col s12 m3 profile-inner center-align\">\r\n        <img class=\"circle responsive-img perfil-icon\" src=\"http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/2077.png\"><br>\r\n        <span class=\"center-align\"style=\"font-size: 2.5rem\">TyG Yeux</span>\r\n        <img src=\"assets/profile/belownick/master.png\" style=\"max-width: 100%\" alt=\"\">\r\n        <span style=\"font-size: 1.5rem\">Level 50</span>\r\n      </div>\r\n      <div class=\"col s12 m3 profile-inner profile-runes center-align\">\r\n        <span class=\"flow-text\">Solo/Duo 5x5</span><br>\r\n        <img class=\"profile-runes-images tooltipped\" data-position=\"right\" data-delay=\"100\" data-tooltip=\"Gold V<br>Mensageiros de Lucian<br>15LP\" src=\"assets/elos/diamond/1.png\">\r\n        <br><span class=\"flow-text\">Flex 5x5</span><br>\r\n        <img class=\"profile-runes-images tooltipped\" data-position=\"right\" data-delay=\"100\" data-tooltip=\"Gold V<br>Mensageiros de Lucian<br>15LP\" src=\"assets/elos/diamond/2.png\">\r\n        <br><span class=\"flow-text\">Flex 3x3</span><br>\r\n        <img class=\"profile-runes-images tooltipped\" data-position=\"right\" data-delay=\"100\" data-tooltip=\"Gold V<br>Mensageiros de Lucian<br>15LP\" src=\"assets/elos/diamond/3.png\">\r\n      </div>\r\n      <div class=\"col s12 m5 profile-inner profile-mastery left-align\">\r\n        <span class=\"flow-text\">Mastery 7</span><br>\r\n        <img class=\"circle responsive-img\" style=\"max-height: 4rem\" src=\"http://ddragon.leagueoflegends.com/cdn/8.4.1/img/champion/TwistedFate.png\">\r\n        <img class=\"profile-mastery-img\" src=\"assets/champmastery/7.png\">\r\n        <img class=\"circle responsive-img\" style=\"max-height: 4rem\" src=\"http://ddragon.leagueoflegends.com/cdn/8.4.1/img/champion/TwistedFate.png\">\r\n        <img class=\"profile-mastery-img\" src=\"assets/champmastery/7.png\">\r\n        <img class=\"circle responsive-img\" style=\"max-height: 4rem\" src=\"http://ddragon.leagueoflegends.com/cdn/8.4.1/img/champion/TwistedFate.png\">\r\n        <img class=\"profile-mastery-img\" src=\"assets/champmastery/7.png\">\r\n        <br><span class=\"flow-text\">Mastery 6</span><br>\r\n        <img class=\"circle responsive-img tooltipped\" data-position=\"bottom\" data-delay=\"0\" data-tooltip=\"I am a tooltip\" style=\"max-height: 4rem\" src=\"http://ddragon.leagueoflegends.com/cdn/8.4.1/img/champion/TwistedFate.png\">\r\n        <img class=\"profile-mastery-img\" src=\"assets/champmastery/6.png\">\r\n        <img class=\"circle responsive-img tooltipped\" data-position=\"bottom\" data-delay=\"0\" data-tooltip=\"I am a tooltip\" data-background-color=\"red lighten-3\" style=\"max-height: 4rem\" src=\"http://ddragon.leagueoflegends.com/cdn/8.4.1/img/champion/TwistedFate.png\">\r\n        <img class=\"profile-mastery-img\" src=\"assets/champmastery/6.png\">\r\n        <img class=\"circle responsive-img\" style=\"max-height: 4rem\" src=\"http://ddragon.leagueoflegends.com/cdn/8.4.1/img/champion/TwistedFate.png\">\r\n        <img class=\"profile-mastery-img\" src=\"assets/champmastery/6.png\">\r\n        <img class=\"circle responsive-img\" style=\"max-height: 4rem\" src=\"http://ddragon.leagueoflegends.com/cdn/8.4.1/img/champion/TwistedFate.png\">\r\n        <img class=\"profile-mastery-img\" src=\"assets/champmastery/6.png\">\r\n        <img class=\"circle responsive-img\" style=\"max-height: 4rem\" src=\"http://ddragon.leagueoflegends.com/cdn/8.4.1/img/champion/TwistedFate.png\">\r\n        <img class=\"profile-mastery-img\" src=\"assets/champmastery/6.png\">\r\n        <img class=\"circle responsive-img\" style=\"max-height: 4rem\" src=\"http://ddragon.leagueoflegends.com/cdn/8.4.1/img/champion/TwistedFate.png\">\r\n        <img class=\"profile-mastery-img\" src=\"assets/champmastery/6.png\">\r\n        <br><span class=\"flow-text\">Mastery 5</span><br>\r\n        <img class=\"circle responsive-img\" style=\"max-height: 4rem\" src=\"http://ddragon.leagueoflegends.com/cdn/8.4.1/img/champion/TwistedFate.png\">\r\n        <img class=\"circle responsive-img\" style=\"max-height: 4rem\" src=\"http://ddragon.leagueoflegends.com/cdn/8.4.1/img/champion/TwistedFate.png\">\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"modal-footer rich-black\">\r\n    <a href=\"#!\" class=\"modal-action modal-close waves-effect waves-blue outerspace white-text btn\">Close</a>\r\n    <!-- Need to change it dinamically to Apply if something has changed-->\r\n  </div>\r\n</div>\r\n\r\n<div id=\"profile-modal\" class=\"modal modal-fixed-footer rich-black outerspace-lighten-text profile-modal center-align\">\r\n  <div class=\"modal-content profile-modal-content modal-background left-align\">\r\n    <h3 style=\"margin-bottom: 0rem\"><strong>PROFILE</strong></h3><br>\r\n\r\n    <!-- Profile Information -->\r\n    <div class=\"row\" style=\"margin-top: 0.4rem\">\r\n      <div class=\"col s12 m3 profile-inner center-align\">\r\n        <img class=\"circle responsive-img perfil-icon\" src=\"http://ddragon.leagueoflegends.com/cdn/"
+  return "<div id=\"profile-modal\" class=\"modal modal-fixed-footer rich-black outerspace-lighten-text profile-modal center-align\">\r\n  <div class=\"modal-content profile-modal-content modal-background left-align\">\r\n    <h3 style=\"margin-bottom: 0rem\"><strong>PROFILE</strong></h3><br>\r\n\r\n    <!-- Profile Information -->\r\n    <div class=\"row\" style=\"margin-top: 0.4rem\">\r\n      <div class=\"col s12 m3 profile-inner center-align\">\r\n        <img class=\"circle responsive-img perfil-icon\" src=\"http://ddragon.leagueoflegends.com/cdn/"
     + alias4(((helper = (helper = helpers.patch || (depth0 != null ? depth0.patch : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"patch","hash":{},"data":data}) : helper)))
     + "/img/profileicon/"
-    + alias4(((helper = (helper = helpers.summonerIcon || (depth0 != null ? depth0.summonerIcon : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"summonerIcon","hash":{},"data":data}) : helper)))
+    + alias4(((helper = (helper = helpers.profileIconId || (depth0 != null ? depth0.profileIconId : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"profileIconId","hash":{},"data":data}) : helper)))
     + ".png\">\r\n        <span class=\"center-align\" style=\"font-size: 2.5rem\">"
-    + alias4(((helper = (helper = helpers.summonerName || (depth0 != null ? depth0.summonerName : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"summonerName","hash":{},"data":data}) : helper)))
+    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
     + "</span><br>\r\n        <img src=\"assets/profile/belownick/"
-    + alias4(((helper = (helper = helpers.higherElo || (depth0 != null ? depth0.higherElo : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"higherElo","hash":{},"data":data}) : helper)))
+    + alias4(alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.leagues : depth0)) != null ? stack1.HIGHER_QUEUE : stack1)) != null ? stack1.elo : stack1), depth0))
     + ".png\" style=\"max-width: 100%\" alt=\"\">\r\n        <span style=\"font-size: 1.5rem\">Level "
     + alias4(((helper = (helper = helpers.summonerLevel || (depth0 != null ? depth0.summonerLevel : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"summonerLevel","hash":{},"data":data}) : helper)))
     + "</span>\r\n      </div>\r\n      <div class=\"col s12 m3 profile-inner profile-runes center-align\">\r\n        <span class=\"flow-text\">Solo/Duo 5x5</span><br>\r\n        <img class=\"profile-runes-images tooltipped\" data-position=\"right\" data-delay=\"100\" data-tooltip=\""
-    + alias4(alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.eloRaw : depth0)) != null ? stack1.soloDuo : stack1)) != null ? stack1.elo : stack1), depth0))
+    + alias4((helpers.eloJoin || (depth0 && depth0.eloJoin) || alias2).call(alias1,((stack1 = (depth0 != null ? depth0.leagues : depth0)) != null ? stack1.RANKED_SOLO_5x5 : stack1),{"name":"eloJoin","hash":{},"data":data}))
     + "<br>"
-    + alias4(alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.eloRaw : depth0)) != null ? stack1.soloDuo : stack1)) != null ? stack1.league : stack1), depth0))
-    + "<br>"
-    + alias4(alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.eloRaw : depth0)) != null ? stack1.soloDuo : stack1)) != null ? stack1.pdl : stack1), depth0))
-    + "LP\" src=\"assets/elos/"
-    + alias4(alias5(((stack1 = (depth0 != null ? depth0.elo : depth0)) != null ? stack1.soloDuo : stack1), depth0))
+    + alias4(alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.leagues : depth0)) != null ? stack1.RANKED_SOLO_5x5 : stack1)) != null ? stack1.leagueName : stack1), depth0))
+    + "<br> "
+    + alias4(alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.leagues : depth0)) != null ? stack1.RANKED_SOLO_5x5 : stack1)) != null ? stack1.lp : stack1), depth0))
+    + " LP\" src=\"assets/elos/"
+    + alias4((helpers.eloImagePath || (depth0 && depth0.eloImagePath) || alias2).call(alias1,((stack1 = (depth0 != null ? depth0.leagues : depth0)) != null ? stack1.RANKED_SOLO_5x5 : stack1),{"name":"eloImagePath","hash":{},"data":data}))
     + ".png\">\r\n        <br><span class=\"flow-text\">Flex 5x5</span><br>\r\n        <img class=\"profile-runes-images tooltipped\" data-position=\"right\" data-delay=\"100\" data-tooltip=\""
-    + alias4(alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.eloRaw : depth0)) != null ? stack1.flex : stack1)) != null ? stack1.elo : stack1), depth0))
+    + alias4((helpers.eloJoin || (depth0 && depth0.eloJoin) || alias2).call(alias1,((stack1 = (depth0 != null ? depth0.leagues : depth0)) != null ? stack1.RANKED_FLEX_SR : stack1),{"name":"eloJoin","hash":{},"data":data}))
     + "<br>"
-    + alias4(alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.eloRaw : depth0)) != null ? stack1.flex : stack1)) != null ? stack1.league : stack1), depth0))
+    + alias4(alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.leagues : depth0)) != null ? stack1.RANKED_FLEX_SR : stack1)) != null ? stack1.leagueName : stack1), depth0))
     + "<br>"
-    + alias4(alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.eloRaw : depth0)) != null ? stack1.flex : stack1)) != null ? stack1.pdl : stack1), depth0))
-    + "LP\" src=\"assets/elos/"
-    + alias4(alias5(((stack1 = (depth0 != null ? depth0.elo : depth0)) != null ? stack1.Flex : stack1), depth0))
+    + alias4(alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.leagues : depth0)) != null ? stack1.RANKED_FLEX_SR : stack1)) != null ? stack1.lp : stack1), depth0))
+    + " LP\" src=\"assets/elos/"
+    + alias4((helpers.eloImagePath || (depth0 && depth0.eloImagePath) || alias2).call(alias1,((stack1 = (depth0 != null ? depth0.leagues : depth0)) != null ? stack1.RANKED_FLEX_SR : stack1),{"name":"eloImagePath","hash":{},"data":data}))
     + ".png\">\r\n        <br><span class=\"flow-text\">Flex 3x3</span><br>\r\n        <img class=\"profile-runes-images tooltipped\" data-position=\"right\" data-delay=\"100\" data-tooltip=\""
-    + alias4(alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.eloRaw : depth0)) != null ? stack1.tt : stack1)) != null ? stack1.elo : stack1), depth0))
+    + alias4((helpers.eloJoin || (depth0 && depth0.eloJoin) || alias2).call(alias1,((stack1 = (depth0 != null ? depth0.leagues : depth0)) != null ? stack1.RANKED_FLEX_TT : stack1),{"name":"eloJoin","hash":{},"data":data}))
     + "<br>"
-    + alias4(alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.eloRaw : depth0)) != null ? stack1.tt : stack1)) != null ? stack1.league : stack1), depth0))
+    + alias4(alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.leagues : depth0)) != null ? stack1.RANKED_FLEX_TT : stack1)) != null ? stack1.leagueName : stack1), depth0))
     + "<br>"
-    + alias4(alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.eloRaw : depth0)) != null ? stack1.tt : stack1)) != null ? stack1.pdl : stack1), depth0))
-    + "LP\" src=\"assets/elos/"
-    + alias4(alias5(((stack1 = (depth0 != null ? depth0.elo : depth0)) != null ? stack1.tt : stack1), depth0))
+    + alias4(alias5(((stack1 = ((stack1 = (depth0 != null ? depth0.leagues : depth0)) != null ? stack1.RANKED_FLEX_TT : stack1)) != null ? stack1.lp : stack1), depth0))
+    + " LP\" src=\"assets/elos/"
+    + alias4((helpers.eloImagePath || (depth0 && depth0.eloImagePath) || alias2).call(alias1,((stack1 = (depth0 != null ? depth0.leagues : depth0)) != null ? stack1.RANKED_FLEX_TT : stack1),{"name":"eloImagePath","hash":{},"data":data}))
     + ".png\">\r\n      </div>\r\n      <div class=\"col s12 m5 profile-inner profile-mastery left-align\">\r\n\r\n"
-    + ((stack1 = helpers["if"].call(alias1,((stack1 = (depth0 != null ? depth0.mastery : depth0)) != null ? stack1.m7 : stack1),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers["if"].call(alias1,((stack1 = (depth0 != null ? depth0.championMastery : depth0)) != null ? stack1.m7 : stack1),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "\r\n"
-    + ((stack1 = helpers["if"].call(alias1,((stack1 = (depth0 != null ? depth0.mastery : depth0)) != null ? stack1.m6 : stack1),{"name":"if","hash":{},"fn":container.program(4, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers["if"].call(alias1,((stack1 = (depth0 != null ? depth0.championMastery : depth0)) != null ? stack1.m6 : stack1),{"name":"if","hash":{},"fn":container.program(4, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "\r\n"
-    + ((stack1 = helpers["if"].call(alias1,((stack1 = (depth0 != null ? depth0.mastery : depth0)) != null ? stack1.m5 : stack1),{"name":"if","hash":{},"fn":container.program(7, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers["if"].call(alias1,((stack1 = (depth0 != null ? depth0.championMastery : depth0)) != null ? stack1.m5 : stack1),{"name":"if","hash":{},"fn":container.program(7, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "\r\n"
-    + ((stack1 = helpers["if"].call(alias1,((stack1 = (depth0 != null ? depth0.mastery : depth0)) != null ? stack1.m4 : stack1),{"name":"if","hash":{},"fn":container.program(10, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers["if"].call(alias1,((stack1 = (depth0 != null ? depth0.championMastery : depth0)) != null ? stack1.m4 : stack1),{"name":"if","hash":{},"fn":container.program(10, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "\r\n"
-    + ((stack1 = helpers["if"].call(alias1,((stack1 = (depth0 != null ? depth0.mastery : depth0)) != null ? stack1.m3 : stack1),{"name":"if","hash":{},"fn":container.program(13, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers["if"].call(alias1,((stack1 = (depth0 != null ? depth0.championMastery : depth0)) != null ? stack1.m3 : stack1),{"name":"if","hash":{},"fn":container.program(13, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "\r\n"
-    + ((stack1 = helpers["if"].call(alias1,((stack1 = (depth0 != null ? depth0.mastery : depth0)) != null ? stack1.m2 : stack1),{"name":"if","hash":{},"fn":container.program(16, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers["if"].call(alias1,((stack1 = (depth0 != null ? depth0.championMastery : depth0)) != null ? stack1.m2 : stack1),{"name":"if","hash":{},"fn":container.program(16, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "\r\n"
-    + ((stack1 = helpers["if"].call(alias1,((stack1 = (depth0 != null ? depth0.mastery : depth0)) != null ? stack1.m1 : stack1),{"name":"if","hash":{},"fn":container.program(19, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers["if"].call(alias1,((stack1 = (depth0 != null ? depth0.championMastery : depth0)) != null ? stack1.m1 : stack1),{"name":"if","hash":{},"fn":container.program(19, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"modal-footer rich-black\">\r\n    <a href=\"#!\" class=\"modal-action modal-close waves-effect waves-blue outerspace white-text btn\">Close</a>\r\n    <!-- Need to change it dinamically to Apply if something has changed-->\r\n  </div>\r\n</div>\r\n";
 },"useData":true});
 templates['searchModal'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
@@ -244,9 +268,9 @@ templates['sidebar'] = template({"compiler":[7,">= 4.0.0"],"main":function(conta
   return "<ul id=\"slide-out\" class=\"side-nav fixed outerspace white-text\">\r\n  <li>\r\n    <div class=\"user-view\">\r\n      <div class=\"background\">\r\n        <img src=\"assets/splashs/4.png\">\r\n      </div>\r\n      <img class=\"circle responsive-img left perfil-icon\" src=\"http://ddragon.leagueoflegends.com/cdn/"
     + alias4(((helper = (helper = helpers.patch || (depth0 != null ? depth0.patch : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"patch","hash":{},"data":data}) : helper)))
     + "/img/profileicon/"
-    + alias4(((helper = (helper = helpers.summonerIcon || (depth0 != null ? depth0.summonerIcon : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"summonerIcon","hash":{},"data":data}) : helper)))
+    + alias4(((helper = (helper = helpers.profileIconId || (depth0 != null ? depth0.profileIconId : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"profileIconId","hash":{},"data":data}) : helper)))
     + ".png\">\r\n      <br><br><br>\r\n      <span class=\"white-text flow-text perfil-name\">"
-    + alias4(((helper = (helper = helpers.summonerName || (depth0 != null ? depth0.summonerName : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"summonerName","hash":{},"data":data}) : helper)))
+    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
     + "</span>\r\n      <span class=\"white-text flow-text email perfil-level\">Level "
     + alias4(((helper = (helper = helpers.summonerLevel || (depth0 != null ? depth0.summonerLevel : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"summonerLevel","hash":{},"data":data}) : helper)))
     + "</span>\r\n    </div>\r\n  </li>\r\n  <li><a class=\"waves-effect modal-trigger white-text sidenav-li\" href=\"#profile-modal\"><i class=\"material-icons white-text sidenav-icon\">person</i>Profile</a></li>\r\n  <li><a class=\"waves-effect modal-trigger white-text  sidenav-li\" href=\"#settings-modal\"><i class=\"material-icons white-text sidenav-icon\">settings</i>Settings</a></li>\r\n  <div class=\"divider white\"></div>\r\n  <div style=\"margin-top: 20rem\">\r\n    <a class=\"right white-text\" href=\"#!\" style=\"padding-right: 0.4rem\">Donate</a><br>\r\n    <a class=\"right white-text\" href=\"#!\" style=\"padding-right: 0.4rem\">About</a>\r\n  </div>\r\n</ul>\r\n";
@@ -255,9 +279,9 @@ templates['topRow'] = template({"compiler":[7,">= 4.0.0"],"main":function(contai
     var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
   return "<div class=\"row\"> <!-- Top Information !-->\r\n  <div class=\"col s6\">\r\n    <a class=\"waves-effect waves-light outerspace btn modal-trigger search-summoner\" href=\"#search-modal\"><i class=\"material-icons right\">edit</i>Search Another Summoner</a>\r\n  </div> <!--Modal Trigger !-->\r\n  <div class=\"col s5 outerspace z-depth-1 match-info\"><a class=\"white-text\"><span class=\"flow-text\"><strong>"
-    + alias4(((helper = (helper = helpers.matchMap || (depth0 != null ? depth0.matchMap : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"matchMap","hash":{},"data":data}) : helper)))
+    + alias4(((helper = (helper = helpers.map || (depth0 != null ? depth0.map : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"map","hash":{},"data":data}) : helper)))
     + "</strong></span><br>"
-    + alias4(((helper = (helper = helpers.matchQueue || (depth0 != null ? depth0.matchQueue : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"matchQueue","hash":{},"data":data}) : helper)))
+    + alias4(((helper = (helper = helpers.gameQueue || (depth0 != null ? depth0.gameQueue : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"gameQueue","hash":{},"data":data}) : helper)))
     + "</a></div>\r\n</div>\r\n";
 },"useData":true});
 })();

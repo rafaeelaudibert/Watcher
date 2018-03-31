@@ -3,128 +3,75 @@
     <h3 style="margin-bottom: 0rem"><strong>PROFILE</strong></h3><br>
 
     <!-- Profile Information -->
-    <div class="row">
-      <div class="col s12 m3 profile-inner center-align">
-        <img class="circle responsive-img perfil-icon" src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/2077.png"><br>
-        <span class="center-align"style="font-size: 2.5rem">TyG Yeux</span>
-        <img src="assets/profile/belownick/master.png" style="max-width: 100%" alt="">
-        <span style="font-size: 1.5rem">Level 50</span>
-      </div>
-      <div class="col s12 m3 profile-inner profile-runes center-align">
-        <span class="flow-text">Solo/Duo 5x5</span><br>
-        <img class="profile-runes-images tooltipped" data-position="right" data-delay="100" data-tooltip="Gold V<br>Mensageiros de Lucian<br>15LP" src="assets/elos/diamond/1.png">
-        <br><span class="flow-text">Flex 5x5</span><br>
-        <img class="profile-runes-images tooltipped" data-position="right" data-delay="100" data-tooltip="Gold V<br>Mensageiros de Lucian<br>15LP" src="assets/elos/diamond/2.png">
-        <br><span class="flow-text">Flex 3x3</span><br>
-        <img class="profile-runes-images tooltipped" data-position="right" data-delay="100" data-tooltip="Gold V<br>Mensageiros de Lucian<br>15LP" src="assets/elos/diamond/3.png">
-      </div>
-      <div class="col s12 m5 profile-inner profile-mastery left-align">
-        <span class="flow-text">Mastery 7</span><br>
-        <img class="circle responsive-img" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/8.4.1/img/champion/TwistedFate.png">
-        <img class="profile-mastery-img" src="assets/champmastery/7.png">
-        <img class="circle responsive-img" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/8.4.1/img/champion/TwistedFate.png">
-        <img class="profile-mastery-img" src="assets/champmastery/7.png">
-        <img class="circle responsive-img" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/8.4.1/img/champion/TwistedFate.png">
-        <img class="profile-mastery-img" src="assets/champmastery/7.png">
-        <br><span class="flow-text">Mastery 6</span><br>
-        <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="I am a tooltip" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/8.4.1/img/champion/TwistedFate.png">
-        <img class="profile-mastery-img" src="assets/champmastery/6.png">
-        <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="I am a tooltip" data-background-color="red lighten-3" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/8.4.1/img/champion/TwistedFate.png">
-        <img class="profile-mastery-img" src="assets/champmastery/6.png">
-        <img class="circle responsive-img" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/8.4.1/img/champion/TwistedFate.png">
-        <img class="profile-mastery-img" src="assets/champmastery/6.png">
-        <img class="circle responsive-img" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/8.4.1/img/champion/TwistedFate.png">
-        <img class="profile-mastery-img" src="assets/champmastery/6.png">
-        <img class="circle responsive-img" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/8.4.1/img/champion/TwistedFate.png">
-        <img class="profile-mastery-img" src="assets/champmastery/6.png">
-        <img class="circle responsive-img" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/8.4.1/img/champion/TwistedFate.png">
-        <img class="profile-mastery-img" src="assets/champmastery/6.png">
-        <br><span class="flow-text">Mastery 5</span><br>
-        <img class="circle responsive-img" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/8.4.1/img/champion/TwistedFate.png">
-        <img class="circle responsive-img" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/8.4.1/img/champion/TwistedFate.png">
-      </div>
-    </div>
-  </div>
-  <div class="modal-footer rich-black">
-    <a href="#!" class="modal-action modal-close waves-effect waves-blue outerspace white-text btn">Close</a>
-    <!-- Need to change it dinamically to Apply if something has changed-->
-  </div>
-</div>
-
-<div id="profile-modal" class="modal modal-fixed-footer rich-black outerspace-lighten-text profile-modal center-align">
-  <div class="modal-content profile-modal-content modal-background left-align">
-    <h3 style="margin-bottom: 0rem"><strong>PROFILE</strong></h3><br>
-
-    <!-- Profile Information -->
     <div class="row" style="margin-top: 0.4rem">
       <div class="col s12 m3 profile-inner center-align">
-        <img class="circle responsive-img perfil-icon" src="http://ddragon.leagueoflegends.com/cdn/{{patch}}/img/profileicon/{{summonerIcon}}.png">
-        <span class="center-align" style="font-size: 2.5rem">{{summonerName}}</span><br>
-        <img src="assets/profile/belownick/{{higherElo}}.png" style="max-width: 100%" alt="">
+        <img class="circle responsive-img perfil-icon" src="http://ddragon.leagueoflegends.com/cdn/{{patch}}/img/profileicon/{{profileIconId}}.png">
+        <span class="center-align" style="font-size: 2.5rem">{{name}}</span><br>
+        <img src="assets/profile/belownick/{{leagues.HIGHER_QUEUE.elo}}.png" style="max-width: 100%" alt="">
         <span style="font-size: 1.5rem">Level {{summonerLevel}}</span>
       </div>
       <div class="col s12 m3 profile-inner profile-runes center-align">
         <span class="flow-text">Solo/Duo 5x5</span><br>
-        <img class="profile-runes-images tooltipped" data-position="right" data-delay="100" data-tooltip="{{eloRaw.soloDuo.elo}}<br>{{eloRaw.soloDuo.league}}<br>{{eloRaw.soloDuo.pdl}}LP" src="assets/elos/{{elo.soloDuo}}.png">
+        <img class="profile-runes-images tooltipped" data-position="right" data-delay="100" data-tooltip="{{eloJoin leagues.RANKED_SOLO_5x5}}<br>{{leagues.RANKED_SOLO_5x5.leagueName}}<br> {{leagues.RANKED_SOLO_5x5.lp}} LP" src="assets/elos/{{eloImagePath leagues.RANKED_SOLO_5x5}}.png">
         <br><span class="flow-text">Flex 5x5</span><br>
-        <img class="profile-runes-images tooltipped" data-position="right" data-delay="100" data-tooltip="{{eloRaw.flex.elo}}<br>{{eloRaw.flex.league}}<br>{{eloRaw.flex.pdl}}LP" src="assets/elos/{{elo.Flex}}.png">
+        <img class="profile-runes-images tooltipped" data-position="right" data-delay="100" data-tooltip="{{eloJoin leagues.RANKED_FLEX_SR}}<br>{{leagues.RANKED_FLEX_SR.leagueName}}<br>{{leagues.RANKED_FLEX_SR.lp}} LP" src="assets/elos/{{eloImagePath leagues.RANKED_FLEX_SR}}.png">
         <br><span class="flow-text">Flex 3x3</span><br>
-        <img class="profile-runes-images tooltipped" data-position="right" data-delay="100" data-tooltip="{{eloRaw.tt.elo}}<br>{{eloRaw.tt.league}}<br>{{eloRaw.tt.pdl}}LP" src="assets/elos/{{elo.tt}}.png">
+        <img class="profile-runes-images tooltipped" data-position="right" data-delay="100" data-tooltip="{{eloJoin leagues.RANKED_FLEX_TT}}<br>{{leagues.RANKED_FLEX_TT.leagueName}}<br>{{leagues.RANKED_FLEX_TT.lp}} LP" src="assets/elos/{{eloImagePath leagues.RANKED_FLEX_TT}}.png">
       </div>
       <div class="col s12 m5 profile-inner profile-mastery left-align">
 
-        {{#if mastery.m7}}
+        {{#if championMastery.m7}}
           <span class="flow-text">Mastery 7</span><br>
-          {{#each mastery.m7}}
-            <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{tooltip}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{patch}}/img/champion/{{championName}}.png">
+          {{#each championMastery.m7}}
+            <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{championPoints}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{@root.patch}}/img/champion/{{championName}}.png">
             <img class="profile-mastery-img" src="assets/champmastery/7.png">
           {{/each}}
         {{/if}}
 
-        {{#if mastery.m6}}
+        {{#if championMastery.m6}}
           <br><span class="flow-text">Mastery 6</span><br>
-          {{#each mastery.m6}}
-            <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{tooltip}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{patch}}/img/champion/{{championName}}.png">
+          {{#each championMastery.m6}}
+            <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{championPoints}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{@root.patch}}/img/champion/{{championName}}.png">
             <img class="profile-mastery-img" src="assets/champmastery/6.png">
           {{/each}}
         {{/if}}
 
-        {{#if mastery.m5}}
+        {{#if championMastery.m5}}
           <br><span class="flow-text">Mastery 5</span><br>
-          {{#each mastery.m5}}
-            <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{tooltip}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{patch}}/img/champion/{{championName}}.png">
+          {{#each championMastery.m5}}
+            <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{championPoints}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{@root.patch}}/img/champion/{{championName}}.png">
             <img class="profile-mastery-img" src="assets/champmastery/5.png">
           {{/each}}
         {{/if}}
 
-        {{#if mastery.m4}}
+        {{#if championMastery.m4}}
           <br><span class="flow-text">Mastery 4</span><br>
-          {{#each mastery.m4}}
-            <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{tooltip}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{patch}}/img/champion/{{championName}}.png">
+          {{#each championMastery.m4}}
+            <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{championPoints}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{@root.patch}}/img/champion/{{championName}}.png">
             <img class="profile-mastery-img" src="assets/champmastery/4.png">
           {{/each}}
         {{/if}}
 
-        {{#if mastery.m3}}
+        {{#if championMastery.m3}}
           <br><span class="flow-text">Mastery 3</span><br>
-          {{#each mastery.m3}}
-            <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{tooltip}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{patch}}/img/champion/{{championName}}.png">
+          {{#each championMastery.m3}}
+            <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{championPoints}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{@root.patch}}/img/champion/{{championName}}.png">
             <img class="profile-mastery-img" src="assets/champmastery/3.png">
           {{/each}}
         {{/if}}
 
-        {{#if mastery.m2}}
+        {{#if championMastery.m2}}
           <br><span class="flow-text">Mastery 2</span><br>
-          {{#each mastery.m2}}
-            <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{tooltip}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{patch}}/img/champion/{{championName}}.png">
+          {{#each championMastery.m2}}
+            <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{championPoints}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{@root.patch}}/img/champion/{{championName}}.png">
             <img class="profile-mastery-img" src="assets/champmastery/2.png">
           {{/each}}
         {{/if}}
 
-        {{#if mastery.m1}}
+        {{#if championMastery.m1}}
           <br><span class="flow-text">Mastery 1</span><br>
-          {{#each mastery.m1}}
-            <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{tooltip}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{patch}}/img/champion/{{championName}}.png">
+          {{#each championMastery.m1}}
+            <img class="circle responsive-img tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{championPoints}}" style="max-height: 4rem" src="http://ddragon.leagueoflegends.com/cdn/{{@root.patch}}/img/champion/{{championName}}.png">
             <img class="profile-mastery-img" src="assets/champmastery/1.png">
           {{/each}}
         {{/if}}

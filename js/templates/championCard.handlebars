@@ -9,9 +9,9 @@
         <div class="col s2 padding-0"><img class="mastery-img tooltipped" src="assets/champmastery/{{championMasteryImage}}.png" data-position="top" data-tooltip="{{championMasteryPoints}} points"></div>
       </span>
     </div>
-    <div class="row"> <!-- PersonIfo -->
-      <div class="col s6 padding-0"><span>{{summonerName}}<br>{{summonerElo}}</span></div>
-      <div class="col s2 offset-s2 padding-0"><img class="elo-img tooltipped" src="assets/elos/{{eloImage}}.png" data-position="bottom" data-tooltip="{{pdl}} LP"></div>
+    <div class="row"> <!-- PersonInfo -->
+      <div class="col s6 padding-0"><span>{{name}}<br>{{summonerElo}}</span></div>
+      <div class="col s2 offset-s2 padding-0"><img class="elo-img tooltipped" src="assets/elos/{{eloImagePath league}}.png" data-position="bottom" data-tooltip="{{pdl}} LP"></div>
     </div>
   </div>
   <div class="card-reveal overflow-hidden {{cardColor}}"> <!-- CardReveal -->
@@ -21,16 +21,16 @@
     <div class="row margin-right-0"> <!-- RevealContent -->
        <!-- Runes -->
       <div class="col s1 padding-0" style="padding-left: 0.3rem !important">
-        <img class="keystone" src="assets/runes/perk/{{runes.[0]}}.png">
+        <img class="keystone tooltipped" src="assets/runes/perk/{{runes.[0].runeId}}.png" data-position="bottom" data-tooltip="<strong>{{{runes.[0].runeName}}}</strong><br>{{{runes.[0].runeDescription}}}">
       </div>
       <div class="col s10 offset-s2 padding-0">
-        <img class="non-keystone" src="assets/runes/perk/{{runes.[1]}}.png">
-        <img class="non-keystone" src="assets/runes/perk/{{runes.[2]}}.png">
-        <img class="non-keystone" src="assets/runes/perk/{{runes.[3]}}.png">
+        <img class="non-keystone tooltipped" data-position="bottom" data-tooltip="<strong>{{{runes.[1].runeName}}}</strong><br>{{{runes.[1].runeDescription}}}" src="assets/runes/perk/{{runes.[1].runeId}}.png">
+        <img class="non-keystone tooltipped" data-position="bottom" data-tooltip="<strong>{{{runes.[2].runeName}}}</strong><br>{{{runes.[2].runeDescription}}}" src="assets/runes/perk/{{runes.[2].runeId}}.png">
+        <img class="non-keystone tooltipped" data-position="bottom" data-tooltip="<strong>{{{runes.[3].runeName}}}</strong><br>{{{runes.[3].runeDescription}}}" src="assets/runes/perk/{{runes.[3].runeId}}.png">
       </div>
       <div class="col s6 offset-s3 padding-0" style="padding-left: 0.2rem !important">
-        <img class="non-keystone" src="assets/runes/perk/{{runes.[4]}}.png">
-        <img class="non-keystone" src="assets/runes/perk/{{runes.[5]}}.png">
+        <img class="non-keystone tooltipped" data-position="bottom" data-tooltip="<strong>{{{runes.[4].runeName}}}</strong><br>{{{runes.[4].runeDescription}}}" src="assets/runes/perk/{{runes.[4].runeId}}.png">
+        <img class="non-keystone tooltipped" data-position="bottom" data-tooltip="<strong>{{{runes.[5].runeName}}}</strong><br>{{{runes.[5].runeDescription}}}" src="assets/runes/perk/{{runes.[5].runeId}}.png">
       </div>
     </div>
     <div class="row white-text statistic-row">
