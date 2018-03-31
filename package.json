@@ -6,6 +6,8 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
+    "build": "flow-remove-types ./ -d lib/",
+    "flow": "flow",
     "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
     "package-win": "electron-packager . LiveTracker --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"LiveTracker\"",
     "package-linux": "electron-packager . LiveTracker --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/icon.png --prune=true --out=release-builds",
@@ -20,7 +22,7 @@
   "author": "Rafael Audibert",
   "license": "MIT",
   "dependencies": {
-    "about-window": "^1.10.0",
+    "about-window": "^1.11.0",
     "electron": "^1.8.4",
     "electron-json-storage": "^4.0.2",
     "electron-rebuild": "^1.7.3",
@@ -29,10 +31,12 @@
     "materialize-css": "^0.100.2",
     "node-notifier": "^5.2.1",
     "node-sass": "^4.8.3",
-    "sass": "^1.0.0-rc.1"
+    "sass": "^1.1.1"
   },
   "devDependencies": {
     "electron-packager": "^10.1.2",
+    "flow-bin": "^0.69.0",
+    "flow-remove-types": "^1.2.3",
     "handlebars": "^4.0.11"
   }
 }
