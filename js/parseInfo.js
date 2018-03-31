@@ -833,6 +833,12 @@ async function parsePlayerLeague(leagues){
     lp: league.leaguePoints,
     leagueName: league.leagueName
   });
+  maiorLiga(leagues).then(higher => parsedLeagues['HIGHER_LEAGUE'] = {
+      tier: higher.elo,
+      rank: higher.tier,
+      leagueName: higher.leagueName,
+      lp: higher.pdl
+    });
 
   if (!parsedLeagues['RANKED_FLEX_SR']){
     parsedLeagues['RANKED_FLEX_SR'] = {
