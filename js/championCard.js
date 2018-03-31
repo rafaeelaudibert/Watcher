@@ -1,14 +1,14 @@
 class championCard {
-  constructor(person, color) {
-    this.cardColor = color,
-      this.championImage = "http://ddragon.leagueoflegends.com/cdn/" + person.patch + "/img/champion/" + person.championName + ".png",
+  constructor(person, match, color) {
+      this.cardColor = color,
       this.championName = person.championName,
+      this.championImage = "http://ddragon.leagueoflegends.com/cdn/" + match.patch + "/img/champion/" + parseChampionImage(person.championName) + ".png",
       this.championMasteryImage = person.championMasteryLevel,
       this.championMasteryPoints = person.championMasteryPoints,
       this.name = person.name,
       this.summonerElo = person.liga.elo + " " + person.liga.tier,
       this.pdl = person.liga.pdl,
-      this.eloImage = eloImagePath(person.liga),
+      this.league = person.liga,
       this.runes = person.runes,
       this.championWinrate = person.championWR !== 'First Match' ? person.championWR + "%" : person.championWR,
       this.championWinLost = "(" + person.championWins + "W - " + (person.championMatches - person.championWins) + "L)",
@@ -17,30 +17,25 @@ class championCard {
   }
 }
 
-function eloImagePath(liga) {
-  if (liga.elo === "CHALLENGER" || liga.elo === "MASTER" || liga.elo === "UNRANKED") {
-    return liga.elo
-  } else {
 
-    let tierTranslation;
-    switch (liga.tier) {
-      case 'I':
-        tierTranslation = 1;
-        break;
-      case 'II':
-        tierTranslation = 2;
-        break;
-      case 'III':
-        tierTranslation = 3;
-        break;
-      case 'IV':
-        tierTranslation = 4;
-        break;
-      default:
-        tierTranslation = 5;
-        break;
+/**
+ * parseChampionImage - Parses the championName to its own respective image
+ *
+ * @param  {string} name Name of the champion
+ * @return {string}      Parsed name of the champion
+ */
+function parseChampionImage(name){
+
+  let fixedName = name.split("'"); //Splits Void Champions names
+  if (fixedName.length > 1){
+    fixedName[1] = fixedName[1].toLowerCase(); //If it was a void champion, lowercases the second name
+    fixedName = fixedName.join(""); //Joins it
+    if (fixedName == "Reksai"){ //Rek'Sai is a special case
+      fixedName = "RekSai";
     }
-
-    return liga.elo + "/" + tierTranslation;
+  } else {
+    fixedName = name.split(" ").join(""); //Else fixes the champion with space in the name
   }
+
+  return fixedName;
 }
