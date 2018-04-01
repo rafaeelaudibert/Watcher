@@ -1,5 +1,3 @@
-// @flow
-
 const electron = require('electron');
 const url = require('url');
 const path = require('path');
@@ -51,6 +49,9 @@ app.on('ready', function(){
   //Set the color
   mainWindow.setBackgroundColor(backColor);
 
+  //Hides the mainWindow while not loaded and/or not closed the welcomeWindow
+  mainWindow.hide();
+
   // OVERLAY TESTING
   /*
   mainWindow.setAlwaysOnTop(true, "floating");
@@ -78,6 +79,8 @@ app.on('ready', function(){
   //Set the color
   welcomeWindow.setBackgroundColor(backColor);
 
+  //When  the welcomeWindow is closed, shows the mainWindow
+  welcomeWindow.on('close', () => mainWindow.show())
 
 
   // Tray configuration \\
