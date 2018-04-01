@@ -13,40 +13,31 @@
 <body>
   <div class="carousel carousel-slider center" data-indicators="true">
     <div class="carousel-fixed-item center">
-      <a id='close-welcome' class="btn waves-effect white grey-text darken-text-2">Got it!</a>
+      <a id='close-welcome' class="btn waves-effect rich-black white-text">Got it!</a>
     </div>
     <div class="carousel-item red white-text" href="#one!">
-      <h2>LIVETRACKER</h2>
-      <p class="white-text">Your app to find live statistics for League of Legends</p>
+      <img src="./assets/welcomePage/1.jpg">
     </div>
     <div class="carousel-item amber white-text" href="#two!">
-      <h2>AUTOMATIC SEARCH</h2>
-      <p class="white-text">The app is always trying to see if you are in a match</p>
-      <p class="white-text">As soon as you connect to the Justice Fields, our engine starts running<br>This way you can receive the information you need faster</p>
+      <img src="./assets/welcomePage/2.jpg">
     </div>
     <div class="carousel-item green white-text" href="#three!">
-      <h2>SEARCH ANY SUMMONER</h2>
-      <p class="white-text">You can search other summoners than you, clicking at 'Search Another Summoner' at any time you want</p>
+      <img src="./assets/welcomePage/3.jpg">
     </div>
     <div class="carousel-item blue white-text" href="#four!">
-      <h2>WE HAVE GENERAL INFORMATION...</h2>
-      <p class="white-text">When we gathered all the information you need, everything will be shown to you</p>
+      <img src="./assets/welcomePage/4.jpg">
     </div>
     <div class="carousel-item outerspace white-text" href="#five!">
-      <h2>... AND THE SPECIFIC ONE AS WELL</h2>
-      <p class="white-text">Clicking in a champion portrait, you can see more information<br>You can find their runes, and their champion and ranked winrate</p>
+      <img src="./assets/welcomePage/5.jpg">
     </div>
     <div class="carousel-item copper white-text" href="#six!">
-      <h2>GORGEOUS TOOLTIPS</h2>
-      <p class="white-text">Hovering over some stuff, shows you a nice tooltip giving you some aditional information</p>
+      <img src="./assets/welcomePage/6.jpg">
     </div>
     <div class="carousel-item blue-munsell white-text" href="#seven!">
-      <h2>PROFILE</h2>
-      <p class="white-text">You can always see your own information heading over to Profile, in the left</p>
+      <img src="./assets/welcomePage/7.jpg">
     </div>
     <div class="carousel-item blue-munsell white-text" href="#eight!">
-      <h2>YOU ARE DONE!</h2>
-      <p class="white-text">You are ready to start configuring your LiveTracker</p>
+      <img src="./assets/welcomePage/8.jpg">
     </div>
   </div>
   <script type="text/javascript" src="js/hammer.js"></script>
@@ -54,14 +45,20 @@
   <script type="text/javascript" src="js\materialize.min.js"></script>
   <script type="text/javascript">
 
+    let interval, counter = 0;
+
     function moveNext(){
       $('.carousel').carousel('next');
-      console.log('Moved')
+      console.log('Moved');
+      counter++;
+      if (counter >= 7){
+        clearInterval(interval);
+      }
     }
 
     $(document).ready(function(){
-      $('.carousel.carousel-slider').carousel({fullWidth: true});
-      setInterval(moveNext, 9000);
+      $('.carousel.carousel-slider').carousel({fullWidth: true, noWrap: true});
+      interval = setInterval(moveNext, 9000);
 
       $('#close-welcome').on('click', () => {
         const { remote } = require('electron');
