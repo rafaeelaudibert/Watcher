@@ -30,11 +30,13 @@ function parseChampionImage(name){
   if (fixedName.length > 1){
     fixedName[1] = fixedName[1].toLowerCase(); //If it was a void champion, lowercases the second name
     fixedName = fixedName.join(""); //Joins it
-    if (fixedName == "Reksai"){ //Rek'Sai is a special case
-      fixedName = "RekSai";
-    }
   } else {
     fixedName = name.split(" ").join(""); //Else fixes the champion with space in the name
+  }
+
+  //Handling Name Exceptions
+  if (fixedName == "Reksai"){ //Rek'Sai is a special case
+    fixedName = "RekSai";
   }
 
   return fixedName;
