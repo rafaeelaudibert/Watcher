@@ -136,15 +136,14 @@ jquery.getJSON(statusPath)
         }
       }
     }
-    console.log("%c[RiotAPI Status]", "color:purple; font-size: medium", "- Retrieved APIStatus");
 
     if (APIStatus.length > 0) {
       //If we have some problem
-      console.log("%c[RiotAPI Status]", "color:purple; font-size: medium", "- Some methods have problems");
+      console.log("%c[RiotAPI Status]", "color:purple; font-size: medium", "- Some API methods have problems");
       console.log(APIStatus);
     } else {
       //No problem with the Riot API
-      console.log("%c[RiotAPI Status]", "color:purple; font-size: medium", "- Everything is okay");
+      console.log("%c[RiotAPI Status]", "color:purple; font-size: medium", "- Everything in the API is okay");
     }
 
   })
@@ -249,8 +248,9 @@ async function getInitialInfo(server = mainPlayer.server) {
       matchInformation.gameQueue = gameConstants[game.gameQueueConfigId].name; //Gameconstants are in globalConstants.js
       matchInformation.map = gameConstants[game.gameQueueConfigId].map;
       matchInformation.platformId = game.platformId;
+      matchInformation.server = server;
       matchInformation.playersList = new Array(0);
-      console.log("%c[matchInformation]", "color:purple; font-size: medium", "- Retrieved some match Information");
+      console.log("%c[matchInformation]", "color:purple; font-size: medium", "- Starting to retrieve match Information");
 
       //Creates the players object pushing its information to matchInformation.playersList
       game.participants.map(player => matchInformation.playersList.push(
@@ -272,7 +272,6 @@ async function getInitialInfo(server = mainPlayer.server) {
           if (championList[champion].id == player.championId) {
             //Set the champion name
             player.championName = championList[champion].name;
-            console.log("%c[championDecoding]", "color:purple; font-size: medium", "- Decoded this champion!");
           }
         }
       })
@@ -287,7 +286,6 @@ async function getInitialInfo(server = mainPlayer.server) {
             runeName: matchInformation.runesInfo[runeId].name
           }
         }
-        console.log("%c[runeDescription]", "color:purple; font-size: medium", "- Created rune description for this champion!");
       })
 
       //Gets the championMasteryLevel and championMasteryPoints, for each player in matchInformation.playersList
@@ -341,12 +339,12 @@ async function getInitialInfo(server = mainPlayer.server) {
                 }
               });
               player.liga = league;
-              console.log("%c[higherLeague]", "color:purple; font-size: medium", "- Ranked League set!")
+              console.log("%c[league]", "color:purple; font-size: medium", "- Ranked League set!")
             } else {
               // Verifies the higher league at all
               maiorLiga(leagues).then(higher => {
                 player.liga = higher;
-                console.log("%c[higherLeague]", "color:purple; font-size: medium", "- Higher League set!")
+                console.log("%c[league]", "color:purple; font-size: medium", "- Higher League set!")
               })
               .catch(console.log);
 
