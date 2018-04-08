@@ -11,7 +11,7 @@ const notifier = require('node-notifier');
 //Information constants
 const apiKey = remote.getGlobal('sharedObj').apiKey;
 const seasonAtual = 11;
-const defaultPlayer = 'Jack Varlett';
+const defaultPlayer = 'TyG Masked';
 const defaultServer = 'br';
 
 
@@ -25,8 +25,8 @@ const defaultServer = 'br';
   },
   function(err, response) {
     // Response is response from notification
-    console.log(err);
-    console.log(response);
+    console.log("ERR: " + err);
+    console.log("RESPONSE: " + response);
   }
 );*/
 
@@ -232,15 +232,22 @@ async function parseMastery(mastery){
   return masteryObject;
 }
 
+//Only an alias
+async function getMatch(server){
+    fetchInitialInfo(server);
+}
 
 
-//Gets the initial info: Info from people playing in the match being played bi the mainPlayer
-async function getInitialInfo(server = mainPlayer.server) {
+//Fetch the initial info: Info from people playing in the match being played bi the mainPlayer
+async function fetchInitialInfo(server) {
+
+  //Assigns the server if no server explicitly asked
+  if (!server){
+    server = mainPlayer.server
+  };
 
     //Gets the mainPlayer's currentGame info
-  let currentGame = kayn.CurrentGame.by.summonerID(mainPlayer.id).region(server)
-  currentGame.then(game => {
-      console.log(game);
+  kayn.CurrentGame.by.summonerID(mainPlayer.id).region(server).then(game => {
 
       //Sets the other information in matchInformation
       matchInformation.gameId = game.gameId;
@@ -265,6 +272,10 @@ async function getInitialInfo(server = mainPlayer.server) {
       //Created all the players in matchInformation.playersList
       console.log("%c[playersList]", "color:purple; font-size: medium", "- Filled all the players list with the match's players");
       console.log("%c[playersList]", "color:purple; font-size: medium", "- Filled with summonerName, profileIcon, championId, summonerId and runes");
+      console.log("%c[playersList]", "color:purple; font-size: medium", "- Starting to fetch the basicInfo");
+
+      //Calls the function who fetches the playerLevel and accountId, as we already have all the players
+      fetchBasicInfo();
 
       //Gets the champion Name according to the champion Id, for each player in matchInformation.playersList
       matchInformation.playersList.map(async player => {
@@ -305,15 +316,15 @@ async function getInitialInfo(server = mainPlayer.server) {
         kayn.LeaguePositions.by.summonerID(player.summonerId)
           .region(server)
           .then(leagues => {
-            let gameMode = matchInformation.gameQueueConfigId;
+            let gameMode = matchInformation.gameQueue;
             switch (gameMode) {
-              case 420:
+              case '5v5 Ranked Solo':
                 gameMode = 'RANKED_SOLO_5x5';
                 break;
-              case 440:
+              case '5v5 Ranked Flex':
                 gameMode = 'RANKED_FLEX_SR';
                 break;
-              case 470:
+              case '3v3 Ranked Flex':
                 gameMode = 'RANKED_FLEX_TT';
                 break;
               default:
@@ -374,27 +385,29 @@ async function getInitialInfo(server = mainPlayer.server) {
 }
 
 //Get the playerLevel and the playerAccountId
-async function getBasicInfo(server = mainPlayer.server) {
+async function fetchBasicInfo() {
   //Gets info of all the players
-  const players = Promise.all(matchInformation.playersList.map(player => kayn.Summoner.by.name(player.name).region(mainPlayer.server)));
+  const players = Promise.all(matchInformation.playersList.map(player => kayn.Summoner.by.name(player.name).region(matchInformation.server)));
   players.then(async value => {
 
       //Sets the info of the players in the matchInformation.playersList array
       for (player in matchInformation.playersList) {
-        let playerPos = matchInformation.playersList[player]
         const infoPlayer = value[player]
+        const playerPos = matchInformation.playersList[player]
         playerPos.level = infoPlayer.summonerLevel;
         playerPos.accountId = infoPlayer.accountId;
       }
       console.log("%c[basicInfo]", "color:purple; font-size: medium", "- Set the basic info");
+      console.log("%c[basicInfo]", "color:purple; font-size: medium", "- Starting to fetch the Advanced Info");
+      fetchAdvancedInfo();
     })
     .catch(err => console.log(err));
 }
 
 //Get matches for each player. After calls the function who sets the champion Win Rate for each player.
-async function getAdvancedInfo(server = mainPlayer.server) {
+async function fetchAdvancedInfo() {
 
-  const idMatches = Promise.all(matchInformation.playersList.map(player => retornaIdPartidasCampeoes(server, player.championId, player.accountId)));
+  const idMatches = Promise.all(matchInformation.playersList.map(player => retornaIdPartidasCampeoes(matchInformation.server, player.championId, player.accountId)));
 
   idMatches.then(async value => {
 
@@ -405,17 +418,18 @@ async function getAdvancedInfo(server = mainPlayer.server) {
     }
 
     //Gets the real matches and set the wins/win rate
+    champInfoFetch = 0;
     for (player in matchInformation.playersList) {
-      getChampInfo(player, server);
+      getChampInfo(player, matchInformation.server);
     }
 
   })
   .catch(console.log);
 }
 
-
+let champInfoFetch; //Counter for champInfo
 //This gets the matches after having the ID of the matches. After sets matches/Win Rate with the champion
-async function getChampInfo(playerPos, server = mainPlayer.server) {
+async function getChampInfo(playerPos, server) {
 
   //Alias for matchInformation.playersList[playerPos]
   let thisPlayer = matchInformation.playersList[playerPos]
@@ -424,6 +438,7 @@ async function getChampInfo(playerPos, server = mainPlayer.server) {
   console.time("Player " + playerPos + " matches done");
   const matches = await Promise.all(thisPlayer.matchList.map(data => kayn.Match.get(data).region(server)));
   console.timeEnd("Player " + playerPos + " matches done");
+
 
   //Check the victory in the matches
   const checkVictory = matches.map(match => checaVitoria(match, thisPlayer.accountId));
@@ -434,6 +449,12 @@ async function getChampInfo(playerPos, server = mainPlayer.server) {
   thisPlayer.championWins = wins;
   if (matches.length > 0) {
     thisPlayer.championWR = porcentagemVitorias(wins, matches.length);
+  }
+
+  champInfoFetch++;
+  if (champInfoFetch >= matchInformation.playersList.length){
+    console.log("%c[matchDone]", "color:red; font-size: medium", "- Match ready to be shown");
+    // TODO: Show data to the user
   }
 
 }
