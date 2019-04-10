@@ -23,7 +23,7 @@
   "license": "MIT",
   "dependencies": {
     "about-window": "^1.11.0",
-    "electron": "^1.8.4",
+    "electron": "^2.0.18",
     "electron-json-storage": "^4.0.2",
     "electron-rebuild": "^1.7.3",
     "jquery": "^3.3.1",
