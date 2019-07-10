@@ -13,7 +13,9 @@
     "package-linux": "electron-packager . LiveTracker --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/icon.png --prune=true --out=release-builds",
     "create-installer-win": "node installers/windows/createinstaller.js",
     "handlebars": "handlebars js/templates/ -f js/templates/templates.js",
-    "test-livetracker": "echo 'LiveTracker working'"
+    "test-livetracker": "echo 'LiveTracker working'",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -31,12 +33,14 @@
     "materialize-css": "^0.100.2",
     "node-notifier": "^5.2.1",
     "node-sass": "^4.8.3",
-    "sass": "^1.1.1"
+    "sass": "^1.1.1",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "electron-packager": "^10.1.2",
     "flow-bin": "^0.69.0",
     "flow-remove-types": "^1.2.3",
     "handlebars": "^4.1.2"
-  }
+  },
+  "snyk": true
 }
