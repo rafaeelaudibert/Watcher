@@ -24,23 +24,23 @@
   "author": "Rafael Audibert",
   "license": "MIT",
   "dependencies": {
-    "about-window": "^1.11.0",
-    "electron": "^2.0.18",
+    "about-window": "^1.13.0",
+    "electron": "^6.0.0",
     "electron-json-storage": "^4.0.2",
     "electron-rebuild": "^1.7.3",
     "jquery": "^3.4.0",
-    "kayn": "^0.8.9",
+    "kayn": "^0.10.0",
     "materialize-css": "^0.100.2",
     "node-notifier": "^5.2.1",
     "node-sass": "^4.8.3",
     "sass": "^1.1.1",
-    "snyk": "^1.192.6"
+    "handlebars": "^4.1.2"
   },
   "devDependencies": {
     "electron-packager": "^10.1.2",
     "flow-bin": "^0.69.0",
-    "flow-remove-types": "^1.2.3",
-    "handlebars": "^4.1.2"
+    "flow-remove-types": "^1.2.3",    
+    "snyk": "^1.192.6"
   },
   "snyk": true
 }
