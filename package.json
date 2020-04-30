@@ -28,7 +28,7 @@
     "electron": "^6.0.0",
     "electron-json-storage": "^4.0.2",
     "electron-rebuild": "^1.7.3",
-    "jquery": "^3.4.0",
+    "jquery": "^3.5.0",
     "kayn": "^0.10.0",
     "materialize-css": "^0.100.2",
     "node-notifier": "^5.2.1",
