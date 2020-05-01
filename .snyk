@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.13.5
+version: v1.14.1
 ignore: {}
 # patches apply the minimum changes required to fix a vulnerability
 patch:
@@ -32,3 +32,14 @@ patch:
         patched: '2019-07-10T21:17:20.000Z'
     - snyk > @snyk/dep-graph > graphlib > lodash:
         patched: '2019-07-10T21:17:20.000Z'
+  SNYK-JS-LODASH-567746:
+    - electron-json-storage > lodash:
+        patched: '2020-05-01T05:23:49.873Z'
+    - electron-json-storage > async > lodash:
+        patched: '2020-05-01T05:23:49.873Z'
+    - node-sass > sass-graph > lodash:
+        patched: '2020-05-01T05:23:49.873Z'
+    - node-sass > gaze > globule > lodash:
+        patched: '2020-05-01T05:23:49.873Z'
+    - kayn > riot-ratelimiter-temp > request-promise > request-promise-core > lodash:
+        patched: '2020-05-01T05:23:49.873Z'
