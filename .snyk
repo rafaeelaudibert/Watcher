@@ -35,3 +35,5 @@ patch:
   SNYK-JS-LODASH-567746:
     - electron > @electron/get > global-tunnel-ng > lodash:
         patched: '2020-05-04T04:52:53.658Z'
+    - node-sass > lodash:
+        patched: '2020-05-04T04:54:54.554Z'
