@@ -34,13 +34,13 @@
     "node-notifier": "^5.2.1",
     "node-sass": "^4.8.3",
     "sass": "^1.1.1",
-    "handlebars": "^4.6.0"
+    "handlebars": "^4.6.0",
+    "snyk": "^1.317.0"
   },
   "devDependencies": {
     "electron-packager": "^10.1.2",
     "flow-bin": "^0.69.0",
-    "flow-remove-types": "^1.2.3",    
-    "snyk": "^1.192.6"
+    "flow-remove-types": "^1.2.3"
   },
   "snyk": true
 }
