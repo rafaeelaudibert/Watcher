@@ -33,8 +33,8 @@
     "materialize-css": "^0.100.2",
     "node-notifier": "^8.0.1",
     "node-sass": "^4.13.1",
+    "handlebars": "^4.7.7",
     "sass": "^1.22.1",
-    "handlebars": "^4.6.0",
     "snyk": "^1.425.4"
   },
   "devDependencies": {
