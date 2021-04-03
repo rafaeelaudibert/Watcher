@@ -31,11 +31,11 @@
     "jquery": "^3.5.0",
     "kayn": "^0.10.0",
     "materialize-css": "^0.100.2",
-    "node-notifier": "^5.2.1",
-    "node-sass": "^4.14.1",
-    "sass": "^1.1.1",
+    "node-notifier": "^8.0.1",
+    "node-sass": "^4.13.1",
+    "sass": "^1.22.1",
     "handlebars": "^4.6.0",
-    "snyk": "^1.317.0"
+    "snyk": "^1.425.4"
   },
   "devDependencies": {
     "electron-packager": "^10.1.2",
