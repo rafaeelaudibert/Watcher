@@ -25,14 +25,14 @@
   "license": "MIT",
   "dependencies": {
     "about-window": "^1.13.0",
-    "electron": "^8.3.0",
+    "electron": "^19.0.15",
     "electron-json-storage": "^4.0.2",
     "electron-rebuild": "^1.8.5",
     "jquery": "^3.5.0",
     "kayn": "^0.10.0",
     "materialize-css": "^0.100.2",
     "node-notifier": "^8.0.1",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.2",
     "handlebars": "^4.7.7",
     "sass": "^1.22.1",
     "snyk": "^1.518.0"
