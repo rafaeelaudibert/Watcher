@@ -35,7 +35,7 @@
     "node-sass": "^4.13.1",
     "handlebars": "^4.7.7",
     "sass": "^1.22.1",
-    "snyk": "^1.518.0"
+    "snyk": "^1.996.0"
   },
   "devDependencies": {
     "electron-packager": "^10.1.2",
