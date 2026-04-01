@@ -38,7 +38,7 @@
     "snyk": "^1.518.0"
   },
   "devDependencies": {
-    "electron-packager": "^10.1.2",
+    "electron-packager": "^17.1.2",
     "flow-bin": "^0.69.0",
     "flow-remove-types": "^1.2.3"
   },
